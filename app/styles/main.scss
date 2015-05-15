@@ -1,0 +1,93 @@
+/*
+ 	Main imports
+ 	Avoid changing the order in which partials are loaded.
+
+ 	Order:
+
+ 	Helpers, Utilities and Configuration:
+ 	- functions
+ 	- mixins
+ 	- fonts
+ 	- variables
+
+ 	External Resources:
+ 	- bower components
+
+	Global Styles:
+ 	- base
+ 	- elements
+ 	- components
+
+ 	Application Specific Styles:
+ 	- core
+ 	- directives
+ 	- modules
+
+*/
+
+// Configuration:
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+// The all powerful cross-browser resets
+@import "normalize";
+
+/*
+ 	Helpers, Utilities and Configuration
+
+ 	Mixins and Functions must NEVER be dependant on variables.
+
+	Variables can have their values computed by mixins.
+*/
+
+// Functions
+/* ---> Do not delete this comment (functions) <--- */
+
+// Mixins
+/* ---> Do not delete this comment (mixins) <--- */
+
+// Fonts
+@import "fonts";
+
+// Variables
+@import "variables";
+
+/*
+ 	External Resources
+*/
+
+// Foundation is not automatically importable by wiredep
+@import "bower_components/foundation/scss/foundation";
+// Neither is Animate.css-scss
+@import "bower_components/animate.css-scss/animate";
+
+// Bower
+// endbower
+
+/*
+ 	Global Styles
+*/
+
+// Base
+/* ---> Do not delete this comment (base) <--- */
+
+// Elements
+@import "elements/loading-bar";
+/* ---> Do not delete this comment (elements) <--- */
+
+// Components
+/* ---> Do not delete this comment (components) <--- */
+
+/*
+	Application Specific Styles
+*/
+// Core
+@import "../common/core/logger/logger";
+@import "../common/core/loadingindicator/loadingindicator";
+
+// Directives
+/* ---> Do not delete this comment (Directives) <--- */
+
+// Modules
+@import "../modules/_application/application";
+@import "../modules/index/index";
+/* ---> Do not delete this comment (Modules) <--- */

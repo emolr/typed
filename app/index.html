@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<base href="/">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css(.tmp) styles/main.css -->
+		<link rel="stylesheet" href="styles/main.css">
+		<!-- endbuild -->
+	</head>
+	<body ng-app="typed">
+		<!--[if lt IE 9]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<h1>typed</h1>
+
+		<!-- Application Entry: -->
+		<div ui-view="application"></div>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-XXXXX-X');
+			// We use an angular module to track "page" views.
+			//ga('send', 'pageview');
+		</script>
+
+		<!-- build:js(.) scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="bower_components/modernizr/modernizr.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/toastr/toastr.js"></script>
+		<script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+		<script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+		<script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+		<script src="bower_components/foundation/js/foundation.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<script src="bower_components/ngstorage/ngStorage.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-touch/angular-touch.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+		<script src="bower_components/angular-busy/dist/angular-busy.js"></script>
+		<script src="bower_components/waypoints/waypoints.js"></script>
+		<script src="bower_components/SHA-1/sha1.js"></script>
+		<script src="bower_components/angulartics/src/angulartics.js"></script>
+		<script src="bower_components/angulartics/src/angulartics-cnzz.js"></script>
+		<script src="bower_components/angulartics/src/angulartics-ga.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="config/app.js"></script>
+        <script src="config/config.js"></script>
+        <script src="config/environment.js"></script>
+        <script src="config/run.js"></script>
+        <script src="config/api_endpoints.constant.js"></script>
+        <script src="common/core/exception/exception.module.js"></script>
+        <script src="common/core/exception/exception.provider.js"></script>
+        <script src="common/core/exception/exception.factory.js"></script>
+        <script src="common/core/translate/no-translate.module.js"></script>
+        <script src="common/core/translate/no-translate.provider.js"></script>
+        <script src="common/core/translate/no-translate.factory.js"></script>
+        <script src="common/core/logger/logger.module.js"></script>
+        <script src="common/core/logger/logger.factory.js"></script>
+        <script src="modules/_application/application.module.js"></script>
+        <script src="modules/_application/application.route.js"></script>
+        <script src="modules/_application/application.controller.js"></script>
+        <script src="modules/index/index.module.js"></script>
+        <script src="modules/index/index.route.js"></script>
+        <script src="modules/index/index.controller.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
