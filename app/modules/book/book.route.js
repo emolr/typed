@@ -31,9 +31,9 @@
 					documents: function(Documents) {
 
 						var params = {};
-	                    params.orderBy = [
-	                        ['created', 'DESC']
-	                    ];
+							params.orderBy = [
+							['created', 'DESC']
+						];
 
 						return Documents.findAll(params);
 					}
