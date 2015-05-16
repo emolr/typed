@@ -6,9 +6,11 @@
 		.controller('DocumentCtrl', DocumentCtrl);
 
 	/* @ngInject */
-	function DocumentCtrl() {
+	function DocumentCtrl($scope, Documents, documents) {
 		/*jshint validthis: true */
 		var vm = this;
+
+		vm.documents = documents;
 
 		activate();
 

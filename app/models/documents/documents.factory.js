@@ -6,15 +6,30 @@
 		.factory('Documents', Documents);
 
 	/* @ngInject */
-	function Documents() {
+	function Documents(DS) {
 
-		var service = {
-			//method references
-		};
+		return DS.defineResource({
+			name: 'Document',
+			beforeCreate: beforeCreate,
+			beforeUpdate: beforeUpdate
+		});
 
-		return service;
 
-		//function method() { };
+		function beforeCreate (resource, data, cb) {
+			data.created = Date.now();
+			data.touched = Date.now();
+
+			cb(null, data);
+		}
+
+
+		function beforeUpdate (resource, data, cb) {
+			data.modified = Date.now();
+			data.touched = Date.now();
+
+			cb(null, data);
+		}
+
 	};
 
 })();

@@ -26,6 +26,17 @@
 						controller: 'DocumentCtrl',
 						controllerAs: 'document'
 					}
+				},
+				resolve: {
+					documents: function(Documents) {
+
+						var params = {};
+	                    params.orderBy = [
+	                        ['created', 'DESC']
+	                    ];
+
+						return Documents.findAll(params);
+					}
 				}
 			};
 
