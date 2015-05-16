@@ -13,7 +13,7 @@
 		.module('typed')
 		.run(run);
 
-		function run(Translate, $state, $rootScope, $localStorage) {
+		function run(Translate, $state, $rootScope, $localStorage, DS, DSLocalForageAdapter,) {
 			var didRunTranslate = false;
 
 			$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
@@ -36,5 +36,8 @@
 					didRunTranslate = true;
 				}
 			});
+
+
+			DS.registerAdapter('localforage', DSLocalForageAdapter, {default: true});
 		}
 })();

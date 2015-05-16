@@ -5,7 +5,7 @@
 
 	var config = {
 		appErrorPrefix: '[NG-Modular Error] ', //Configure the exceptionHandler decorator,
-		appTitle: 'Title'
+		appTitle: 'Typed'
 	};
 
 	core.value('config', config);

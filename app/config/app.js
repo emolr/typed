@@ -11,7 +11,7 @@
 	 */
 	angular
 		.module('typed', [
-			
+
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -31,9 +31,12 @@
     'angulartics.google.analytics',
     'mm.foundation',
     'ngLodash',
+    'js-data',
     'application',
-    'index',
-  ,
+    'index'
+	'book',
+	'document',
+'documents',
 			/* ---> Do not delete this comment (ngImports) <--- */
 	]);
 })();
