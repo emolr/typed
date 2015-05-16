@@ -17,6 +17,19 @@
 				}
 			};
 
+			var Document = {
+				name: 'application.document',
+				url: '/book/document',
+				views: {
+					'application@': {
+						templateUrl: 'modules/book/document/document.template.html',
+						controller: 'DocumentCtrl',
+						controllerAs: 'document'
+					}
+				}
+			};
+
 			$stateProvider.state(Book);
+			$stateProvider.state(Document);
 		});
 })();
