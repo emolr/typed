@@ -57,8 +57,6 @@
 
 // Foundation is not automatically importable by wiredep
 @import "bower_components/foundation/scss/foundation";
-// Neither is Animate.css-scss
-@import "bower_components/animate.css-scss/animate";
 
 // Bower
 // endbower
@@ -81,8 +79,6 @@
 	Application Specific Styles
 */
 // Core
-@import "../common/core/logger/logger";
-@import "../common/core/loadingindicator/loadingindicator";
 
 // Directives
 /* ---> Do not delete this comment (Directives) <--- */

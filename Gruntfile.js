@@ -27,7 +27,9 @@ var bowerIgnore = [
 	'angulartics-woopra',
 	'angulartics-marketo',
 	'angulartics-intercom',
-	'angulartics-piwik'
+	'angulartics-piwik',
+	'localforage',
+	'js-data'
 ];
 // Since we are writing a new environment file, we remove it from the usemin processing
 var envFile = 'config/enviroment.js';

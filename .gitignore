@@ -3,8 +3,5 @@ node_modules
 .sass-cache
 bower_components
 _local.config.js
-**/.idea/workspace.xml
-**/.idea/tasks.xml
-.idea/workspace.xml
-.idea/tasks.xml
+.idea
 npm-debug.log
