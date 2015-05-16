@@ -13,7 +13,7 @@
 		.module('typed')
 		.run(run);
 
-		function run(DS, DSLocalForageAdapter) {
+		function run($state, DS, DSLocalForageAdapter) {
 			DS.registerAdapter('localforage', DSLocalForageAdapter, {default: true});
 		}
 })();
