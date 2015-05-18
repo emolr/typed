@@ -18,6 +18,7 @@
 			'ngSanitize',
 			'ngTouch',
 			'ui.router',
+			'angular-medium-editor',
 			'nCore',
 			'js-data',
 			'config',
@@ -28,7 +29,7 @@
 			'index',
 			'document',
 			'documents',
-'tdebounce',
+			'tdebounce',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

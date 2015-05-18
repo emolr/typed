@@ -1,11 +1,10 @@
 <div n-messages-wrapper></div>
 
 <h4>Document</h4>
-<textarea
+<div
+	medium-editor
 	placeholder="content"
-	ng-model="documents.currentDocument.content"
-	t-debounce="documents.updateDocument(documents.currentDocument);"
-	t-debounce-delay="500"></textarea>
+	ng-model="documents.currentDocument.content"></div>
 <button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>
 
 
