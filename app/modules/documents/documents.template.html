@@ -1,0 +1,16 @@
+<h4>Index</h4>
+<ul>
+  <li ng-repeat="document in document.documents track by document.id">
+    <h4>{{document.title}}</h4>
+    <p>{{document.content}}</p>
+    <button class="tiny">Edit</button>
+    <button class="tiny">Delete</button>
+  </li>
+</ul>
+
+<h4>Document</h4>
+<form>
+  <input type="text" placeholder="Title">
+  <textarea placeholder="content"></textarea>
+</form>
+

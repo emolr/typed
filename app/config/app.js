@@ -26,7 +26,6 @@
 			'mm.foundation',
 			'application',
 			'index',
-			'book',
 			'document',
 			'documents',
 			/* ---> Do not delete this comment (ngImports) <--- */

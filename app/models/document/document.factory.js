@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-		.module('documents')
-		.factory('Documents', Documents);
+		.module('document')
+		.factory('Document', Document);
 
 	/* @ngInject */
-	function Documents(DS) {
+	function Document(DS) {
 
 		return DS.defineResource({
 			name: 'Document',
