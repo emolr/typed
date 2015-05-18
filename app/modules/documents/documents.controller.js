@@ -65,8 +65,8 @@
 
 		/**
 		 * Destroys the document.
-		 * If {@param} is currently selected, is selects the latest created document in array,
-		 * If it's the only document left, it deletes it, and creates a new instance.
+		 * If {@param} is currently selected, it select's the latest touched document,
+		 * If it's the only document left, it deletes it, and creates a new document.
 		 *
 		 * @param  {object} doc Document object.
 		 */
