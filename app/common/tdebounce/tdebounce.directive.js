@@ -6,7 +6,7 @@
 	  	.directive('tDebounce', tDebounce);
 
 	/* @ngInject */
-	function tDebounce() {
+	function tDebounce($window) {
 		var directive = {
 
 			link: link,
@@ -28,9 +28,8 @@
 			});
 
 			function startTimeout() {
-				initial = window.setTimeout(function() {
+				initial = $window.setTimeout(function() {
 					scope.tDebounce();
-					scope.$apply();
 				}, scope.tDebounceDelay);
 			}
 		};
