@@ -20,7 +20,7 @@
 
 						var params = {};
 						params.orderBy = [
-							['created', 'DESC']
+							['touched', 'ASC']
 						];
 
 						return Document.findAll(params);

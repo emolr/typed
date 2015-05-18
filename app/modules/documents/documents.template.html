@@ -1,16 +1,21 @@
-<h4>Index</h4>
-<ul>
-  <li ng-repeat="document in document.documents track by document.id">
-    <h4>{{document.title}}</h4>
-    <p>{{document.content}}</p>
-    <button class="tiny">Edit</button>
-    <button class="tiny">Delete</button>
-  </li>
-</ul>
+<div n-messages-wrapper></div>
 
 <h4>Document</h4>
 <form>
-  <input type="text" placeholder="Title">
-  <textarea placeholder="content"></textarea>
+  <input type="text" placeholder="Title" ng-model="documents.currentDocument.title">
+  <textarea placeholder="content" ng-model="documents.currentDocument.content"></textarea>
+  <button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>
 </form>
 
+<h4>Index</h4>
+<button class="tiny" ng-click="documents.createDocument();">Create new</button>
+<ul>
+  <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id">
+    <h4>{{document.title}}</h4>
+    <p>{{document.content}}</p>
+    <small>{{document.created}}</small>
+    <small>{{document.touched}}</small><br>
+    <button class="tiny" ng-click="documents.selectDocument(document);">Edit</button>
+    <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+  </li>
+</ul>
