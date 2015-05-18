@@ -28,6 +28,7 @@
 			'index',
 			'document',
 			'documents',
+'tdebounce',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();
