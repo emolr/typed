@@ -58,7 +58,10 @@
 						nMessages.create('Saved succesfully');
 					});
 			} else {
-				Document.update(vm.currentDocument.id, vm.currentDocument);
+				Document.update(vm.currentDocument.id, vm.currentDocument)
+					.then(function() {
+						nMessages.create('Saved succesfully');
+					});
 			}
 		}
 
