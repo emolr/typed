@@ -6,7 +6,7 @@
 	core.config(configure);
 
 	/* @ngInject */
-	function configure(DEBUG_ENV, $logProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+	function configure(DEBUG_ENV, $logProvider, $stateProvider, $urlRouterProvider, $locationProvider, nMessagesProvider) {
 
 		if($logProvider.debugEnabled && DEBUG_ENV) {
 			$logProvider.debugEnabled(true);
@@ -34,6 +34,13 @@
 					}
 				}
 			});
+
+
+		nMessagesProvider.configure({
+			verticalPosition: 'top',
+			horizontalPosition: 'right',
+			maxNumber: 3
+		});
 	}
 
 })();
