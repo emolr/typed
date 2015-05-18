@@ -23,7 +23,7 @@
 							['created', 'DESC']
 						];
 
-					return Document.findAll(params);
+						return Document.findAll(params);
 					}
 				}
 			};
