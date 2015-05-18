@@ -2,15 +2,13 @@
 	'use strict';
 
 	angular
-		.module('document')
-		.controller('DocumentCtrl', DocumentCtrl);
+		.module('documents')
+		.controller('Documents', Documents);
 
 	/* @ngInject */
-	function DocumentCtrl($scope, Documents, documents) {
+	function Documents() {
 		/*jshint validthis: true */
 		var vm = this;
-
-		vm.documents = documents;
 
 		activate();
 
