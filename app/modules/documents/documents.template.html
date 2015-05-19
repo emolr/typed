@@ -4,6 +4,7 @@
 <div
 	medium-editor
 	placeholder="content"
+    ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
 	ng-model="documents.currentDocument.content"></div>
 <button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>
 
@@ -20,3 +21,6 @@
     <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
   </li>
 </ul>
+<hr/>
+<h4>Debug:</h4>
+<pre><code>{{documents.currentDocument}}</code></pre>
