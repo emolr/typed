@@ -397,8 +397,8 @@ module.exports = function (grunt) {
 				ignorePath: /\.\.\//
 			},
 			sass: {
-				src: ['<%= yeoman.app %>/styles/main.scss']
-				// ignorePath: /(\.\.\/){1,2}bower_components\//
+				src: ['<%= yeoman.app %>/styles/main.scss'],
+				ignorePath: /\.\.\/\.\.\//
 			}
 		},
 		// Empties folders to start fresh

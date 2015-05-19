@@ -19,7 +19,8 @@
     "nLogger": "*",
     "nMessages": "*",
     "nExceptionHandler": "*",
-    "angular-medium-editor": "~0.1.0"
+    "angular-medium-editor": "~0.1.0",
+    "nCore": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.3.0",
