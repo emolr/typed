@@ -6,12 +6,18 @@
 		.controller('Documents', Documents);
 
 	/* @ngInject */
-	function Documents($scope, Document, documents, nMessages) {
+	function Documents($timeout, $scope, Document, documents, nMessages) {
 		/*jshint validthis: true */
 		var vm = this;
 
 		vm.documents = documents;
+		vm.currentDocument = {};
 
+		/* Medium Editor config */
+
+		// We will bind the editor instance to this object
+		vm.editor = {};
+		// Configuration options
 		vm.editorConfig = {
 			placeholder: 'Min placeholdning',
 			buttons: [
@@ -26,43 +32,56 @@
 		vm.updateDocument = updateDocument;
 		vm.destroyDocument = destroyDocument;
 
-
+		// Watch any changes to the Documents collection and update view accordingly
 		$scope.$watch(function() {
 			return Document.lastModified();
 		}, function(documents) {
 			vm.documents = Document.filter();
 		});
 
+		// Watch any changes to the currently edited document, if it changes,
+		// parse the title and set it on the model.
+		// ** Requires $timeout, as we are messing about with "external" events
 		$scope.$watch(function() {
-			return vm.editor;
-		}, function(newVal) {
-			console.log(newVal);
-			console.log(vm.editor)
+			return vm.currentDocument.content;
+		}, function(newValue, oldValue) {
+			if(angular.equals(newValue, oldValue) || !angular.isDefined(newValue)) {
+				return;
+			}
+			$timeout(function() {
+				vm.currentDocument.title = vm.editor.parseTitle(true);
+			});
 		});
 
 
 		/* Initiate */
 		activate();
 
-
 		/* Public methods */
+
+		// View Controller activation
+		// ** Requires $timeout, as we are messing about with "external" events
 		function activate() {
-			if (vm.documents.length < 1) {
-				vm.createDocument();
-			} else {
-				var last = vm.documents[vm.documents.length - 1];
-				vm.selectDocument(last);
-			}
+			$timeout(function() {
+				if (vm.documents.length < 1) {
+					vm.createDocument();
+				} else {
+					var last = vm.documents[vm.documents.length - 1];
+					vm.selectDocument(last);
+				}
+			});
 		}
 
 
 		function createDocument() {
 			vm.currentDocument = Document.createInstance();
+			vm.editor.focus();
 		}
 
 
 		function selectDocument(doc) {
 			vm.currentDocument = doc;
+			vm.editor.focus();
 		}
 
 
