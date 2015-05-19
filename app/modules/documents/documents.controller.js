@@ -96,6 +96,7 @@
 
 
 		function updateDocument(doc) {
+
 			if (!vm.currentDocument.id) {
 				Document.create(vm.currentDocument)
 					.then(function (doc) {
@@ -108,7 +109,7 @@
 			} else {
 				Document.update(vm.currentDocument.id, vm.currentDocument)
 					.then(function() {
-						nMessages.create('Saved succesfully');
+						nMessages.create('Document succesfully saved');
 					});
 			}
 		}
