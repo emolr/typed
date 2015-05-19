@@ -33,6 +33,13 @@
 			vm.documents = Document.filter();
 		});
 
+		$scope.$watch(function() {
+			return vm.editor;
+		}, function(newVal) {
+			console.log(newVal);
+			console.log(vm.editor)
+		});
+
 
 		/* Initiate */
 		activate();

@@ -8,27 +8,49 @@
 	/* @ngInject */
 	function tMediumEditor(MediumEditor) {
 		var directive = {
-            require: 'ngModel',
+            require: ['ngModel', 'tMediumEditor'],
+			scope: { bindOptions: '=' },
 			link: link,
+			controller: controller,
 			restrict: 'EA'
 		};
 
 		return directive;
 
-		function link(scope, element, attrs, ngModel){
+		function link(scope, element, attrs, controllers){
+
+			var ngModel = controllers[0];
+			//var directiveController = controllers[1];
 
 			var options = {};
 			var placeholder = '';
 
-			// Attributes are parsed as strings, convert to object
-			if(attrs.options) {
-				options = scope.$eval(attrs.options);
-			}
-			placeholder = options.placeholder;
+			var initOptions = function() {
+				// Attributes are parsed as strings, convert to object
+				if(attrs.options) {
+					options = scope.$eval(attrs.options);
+				}
 
-			if(angular.isDefined(scope.bindOptions)) {
-				options = angular.extend(options, scope.bindOptions);
-			}
+				if(angular.isDefined(scope.bindOptions)) {
+					options = angular.extend(options, scope.bindOptions);
+				}
+				console.log(attrs.tMediumEditor)
+				if(attrs.tMediumEditor) {
+					console.log(attrs.tMediumEditor)
+					console.log(attrs.tMediumEditor.split('.'));
+
+					console.log(scope.$parent)
+
+					//attrs.tMediumEditor = new MediumEditor(element, options);
+				}
+
+				placeholder = options.placeholder;
+			};
+			initOptions();
+
+			//if(attrs.tMediumEditor) {
+			//	scope.$parent[attrs.tMediumEditor].editor = new MediumEditor(element, options);
+			//}
 
 			/*
 				This methods uses scope.$apply
@@ -41,7 +63,7 @@
 					// lacks an API method to alter placeholder after initialization
 					if (element.html() === '<p><br></p>' || element.html() === '') {
 						options.placeholder = placeholder;
-						var editor = new MediumEditor(element, options);
+						//scope.$parent[attrs.tMediumEditor].editor = new MediumEditor(element, options);
 					}
 
 					ngModel.$setViewValue(element.html());
@@ -71,7 +93,7 @@
 						options.placeholder = '';
 					}
 
-					this.editor = new MediumEditor(element, options);
+					//scope.$parent[attrs.tMediumEditor].editor = new MediumEditor(element, options);
 				}
 
 				element.html(ngModel.$isEmpty(ngModel.$viewValue) ? '' : ngModel.$viewValue);
@@ -79,6 +101,15 @@
 				if(!ngModel.$isEmpty(ngModel.$viewValue)) {
 					angular.element(element).removeClass('medium-editor-placeholder');
 				}
+			};
+
+		}
+
+		function controller() {
+			var vm = this;
+
+			vm.test = function() {
+				console.log('Test from directive controller');
 			};
 
 		}
