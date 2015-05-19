@@ -12,6 +12,14 @@
 
 		vm.documents = documents;
 
+		vm.editorConfig = {
+			placeholder: 'Min placeholdning',
+			buttons: [
+				'bold',
+				'italic'
+			]
+		};
+
 		/* Bind methods */
 		vm.createDocument = createDocument;
 		vm.selectDocument = selectDocument;

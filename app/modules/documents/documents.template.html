@@ -3,8 +3,8 @@
 <h4>Document</h4>
 <div
 	t-medium-editor
-	placeholder="content"
-    ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+    options="{{documents.editorConfig}}"
+    ng-model-options="{ updateOn: 'default blur'}"
 	ng-model="documents.currentDocument.content"></div>
 <button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>
 
