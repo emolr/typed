@@ -18,7 +18,6 @@
 			'ngSanitize',
 			'ngTouch',
 			'ui.router',
-			'angular-medium-editor',
 			'nCore',
 			'js-data',
 			'config',
