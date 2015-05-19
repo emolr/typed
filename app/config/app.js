@@ -30,6 +30,7 @@
 			'document',
 			'documents',
 			'tdebounce',
+'tMediumEditor',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();
