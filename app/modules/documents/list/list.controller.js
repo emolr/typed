@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-		.module('index')
-		.controller('Index', Index);
+		.module('list')
+		.controller('List', List);
 
 	/* @ngInject */
-	function Index() {
+	function List() {
 		/*jshint validthis: true */
 		var vm = this;
 

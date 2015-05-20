@@ -19,7 +19,6 @@
     "nLogger": "*",
     "nMessages": "*",
     "nExceptionHandler": "*",
-    "angular-medium-editor": "~0.1.0",
     "nCore": "*",
     "medium-editor": "~4.9.0"
   },

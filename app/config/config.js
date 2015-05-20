@@ -15,7 +15,7 @@
 		}
 
 		$locationProvider.html5Mode(true);
-		$urlRouterProvider.otherwise('/404');
+		//$urlRouterProvider.otherwise('/404');
 
 		$stateProvider
 			.state('application.notfound', {
