@@ -6,7 +6,7 @@
 		.controller('Documents', Documents);
 
 	/* @ngInject */
-	function Documents($timeout, $scope, Document, documents, nMessages) {
+	function Documents($state, $timeout, $scope, Document, documents, nMessages) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -74,14 +74,23 @@
 
 
 		function createDocument() {
+			// Set UI State to Create
+			$state.go('application.document.create')
+				.then(function() {
+					vm.editor.focus();
+				});
 			vm.currentDocument = Document.createInstance();
 			vm.editor.focus();
 		}
 
 
 		function selectDocument(doc) {
+			// Set UI State to Edit
+			$state.go('application.document.edit', {id: doc.id})
+				.then(function() {
+					vm.editor.focus();
+				});
 			vm.currentDocument = doc;
-			vm.editor.focus();
 		}
 
 
@@ -90,6 +99,10 @@
 				Document.create(vm.currentDocument)
 					.then(function (doc) {
 						nMessages.create('Saved succesfully');
+					})
+					.then(function() {
+						// Set UI State to Edit
+						$state.go('application.document.edit', {id: doc.id});
 					});
 			} else {
 				Document.update(vm.currentDocument.id, vm.currentDocument)

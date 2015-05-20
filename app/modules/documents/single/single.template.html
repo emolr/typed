@@ -1,0 +1,8 @@
+<h5>ui-view="right"</h5>
+<div
+    t-medium-editor="documents.editor"
+    options="{{documents.editorConfig}}"
+    ng-model-options="{ updateOn: 'default blur'}"
+    ng-model="documents.currentDocument.content">
+</div>
+<button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>

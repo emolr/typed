@@ -25,11 +25,12 @@
 			'API_ENDPOINTS',
 			'mm.foundation',
 			'application',
-			'index',
 			'document',
 			'documents',
 			'tdebounce',
 'tMediumEditor',
+'list',
+'single',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

@@ -13,7 +13,37 @@
 		.module('typed')
 		.run(run);
 
-		function run($state, DS, DSLocalForageAdapter) {
+		function run($rootScope, $state, DS, DSLocalForageAdapter, nLogger) {
 			DS.registerAdapter('localforage', DSLocalForageAdapter, {default: true});
+
+			/*
+				Debug help: Log route changes - disable by setting debugRouting to false
+			 */
+			var debugRouting = true;
+
+			$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+				if(debugRouting) {
+					nLogger.info('$stateChangeStart', toState);
+				}
+			});
+			$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+				if(debugRouting) {
+					nLogger.error('$stateChangeError', error);
+					$rootScope.currentState = {};
+				}
+			});
+			$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+				if(debugRouting) {
+					nLogger.success('$stateChangeSuccess', toState);
+					$rootScope.currentState = toState;
+				}
+			});
+			$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
+				if(debugRouting) {
+					nLogger.warning('$stateNotFound', unfoundState);
+					$rootScope.currentState = {};
+				}
+			});
+
 		}
 })();
