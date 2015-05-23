@@ -1,11 +1,12 @@
-.single {
-
-}
+// Single document
+//
+// This is both the editor and the document viewer at once.
 
 
 .document {
 	position: relative;
 	width: 100%;
+	display: flex;
 }
 
 
@@ -18,12 +19,21 @@
 }
 
 
+// The actual editor/viewer. is always have at least
+// the height of the window.
 .document__body {
 	width: 100%;
+	min-height: 100vh;
 	padding: 100px 30px;
-}
 
-.document__body > * {
-	margin: 0 auto;
-	max-width: 760px;
+	// &:focus {
+	// 	outline: none;
+	// }
+
+
+	// Center all child elements on editor
+	& > * {
+		max-width: 700px;
+		margin: 0 auto;
+	}
 }

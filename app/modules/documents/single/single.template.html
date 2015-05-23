@@ -1,12 +1,9 @@
-<h5>ui-view="right"</h5>
 <div class="document">
-  <div class="document__header">
-    Typed
-  </div>
   <div
     t-medium-editor="documents.editor"
-      options="{{documents.editorConfig}}"
+    options="{{documents.editorConfig}}"
     ng-model="documents.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
-    class="document__body"></div>
+    class="document__body"
+    data-medium-focused="true"></div>
 </div>

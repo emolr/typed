@@ -1,3 +1,11 @@
-.application {
+// Application layout
+//
+// Root DOM elemennt
 
+
+// Prepere the children to be working as a fullscreen app.
+.application {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
 }

@@ -19,11 +19,18 @@
 		vm.editor = {};
 		// Configuration options
 		vm.editorConfig = {
-			placeholder: 'Min placeholdning',
 			buttons: [
 				'bold',
-				'italic'
-			]
+				'italic',
+				'underline',
+				'header1',
+				'header2',
+				'justifyCenter',
+				'unorderedlist',
+				'anchor'
+
+			],
+			placeholder: ''
 		};
 
 		/* Bind methods */

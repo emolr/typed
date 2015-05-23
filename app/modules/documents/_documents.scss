@@ -1,3 +1,26 @@
-.documents {
+// Documents layout
+//
+// The layout consists of 2 views which can
+// change size and push eachother
 
+$document__index-width: 300px !default;
+$document__index-background: #fafafa !default;
+
+
+.documents {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+
+	.documents__index {
+		width: $document__index-width;
+		max-width: $document__index-width;
+		background-color: $document__index-background;
+		overflow: auto;
+	}
+
+	.documents__document {
+		flex: 1;
+		overflow: auto;
+	}
 }
