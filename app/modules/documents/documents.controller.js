@@ -56,6 +56,7 @@
 
 		/* Initiate */
 		activate();
+		autoSave();
 
 		/* Public methods */
 
@@ -95,6 +96,7 @@
 
 
 		function updateDocument(doc) {
+
 			if (!vm.currentDocument.id) {
 				Document.create(vm.currentDocument)
 					.then(function (doc) {
@@ -107,7 +109,7 @@
 			} else {
 				Document.update(vm.currentDocument.id, vm.currentDocument)
 					.then(function() {
-						nMessages.create('Saved succesfully');
+						nMessages.create('Document succesfully saved');
 					});
 			}
 		}
@@ -121,18 +123,43 @@
 		 * @param  {object} doc Document object.
 		 */
 		function destroyDocument(doc) {
-			if (vm.documents.length > 1 && vm.currentDocument.id === doc.id) {
-				Document.destroy(doc.id)
-					.then(function() {
-						var last = vm.documents[vm.documents.length - 1];
-						vm.selectDocument(last);
-					});
+			if (vm.documents.length > 1 && vm.currentDocument && vm.currentDocument.id === doc.id) {
+				Document.destroy(doc.id).then(function() {
+					_selectLatestDocument();
+				});
+			} else if (vm.currentDocument && vm.currentDocument.id === doc.id) {
+				Document.destroy(doc.id).then(function() {
+					createDocument();
+				});
 			} else {
-				Document.destroy(doc.id)
-					.then(function() {
-						vm.createDocument();
-					});
+				Document.destroy(doc.id);
 			}
+		}
+
+
+		/* Private Methods */
+		function _selectLatestDocument() {
+			var params = {};
+
+			params.orderBy = [
+				['touched', 'ASC']
+			];
+
+			params.limit = 1;
+
+			vm.currentDocument = Document.filter(params)[0];
+		}
+
+
+		/**
+		 * Autosave when detecting changes to the ng-model
+		 *
+		 */
+
+		function autoSave() {
+			$scope.$watch("documents.currentDocument.content", function( newValue, oldValue ) {
+				updateDocument(vm.currentDocument);
+			});
 		}
 
 
