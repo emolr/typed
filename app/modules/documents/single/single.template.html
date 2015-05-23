@@ -1,8 +1,12 @@
 <h5>ui-view="right"</h5>
-<div
+<div class="document">
+  <div class="document__header">
+    Typed
+  </div>
+  <div
     t-medium-editor="documents.editor"
-    options="{{documents.editorConfig}}"
-    ng-model-options="{ updateOn: 'default blur'}"
-    ng-model="documents.currentDocument.content">
+      options="{{documents.editorConfig}}"
+    ng-model="documents.currentDocument.content"
+    ng-model-options="{ debounce: 1000 }"
+    class="document__body"></div>
 </div>
-<button class="tiny" ng-click="documents.updateDocument(documents.currentDocument);">Save</button>
