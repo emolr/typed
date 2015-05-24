@@ -16,7 +16,8 @@ $document__index-background: #fafafa !default;
 		width: $document__index-width;
 		max-width: $document__index-width;
 		background-color: $document__index-background;
-		overflow: auto;
+		overflow-y: auto;
+
 	}
 
 	.documents__document {

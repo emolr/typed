@@ -2,6 +2,15 @@
 //
 // This is both the editor and the document viewer at once.
 
+$document-base-font-size: 20px !default;
+$document-heading1-size: 36px !default;
+$document-heading2-size: 28px !default;
+$document-color-primary: #333 !default;
+$document-color-secondary: #858585 !default;
+$document-blockquote-color: #858585 !default;
+$document-blockquote-font-size: 28px !default;
+
+$document-font-family: georgia, sans-serif !default;
 
 .document {
 	position: relative;
@@ -26,9 +35,9 @@
 	min-height: 100vh;
 	padding: 100px 30px;
 
-	// &:focus {
-	// 	outline: none;
-	// }
+	&:focus {
+		outline: none;
+	}
 
 
 	// Center all child elements on editor
@@ -36,4 +45,57 @@
 		max-width: 700px;
 		margin: 0 auto;
 	}
+}
+
+
+// Document typography
+
+// Base
+.document__body {
+	font-family: $document-font-family;
+	font-size: $document-base-font-size;
+	color: $document-color-primary;
+}
+
+
+// p
+.document__body p {
+	font-size: $document-base-font-size;
+	line-height: 1.5;
+	letter-spacing: .01rem;
+	font-weight: 400;
+	font-style: normal;
+}
+
+// Headings
+.document__body h3 {
+	position: relative;
+	font-size: $document-heading1-size;
+	font-family: $document-font-family;
+	font-weight: 600;
+	// text-align: center;
+	margin-bottom: 50px;
+
+	// &:after {
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 50%;
+	// 	transform: translateX(-50%);
+	// 	content: '';
+	// 	width: 100%;
+	// 	max-width: 140px;
+	// 	border-bottom: 1px solid $document-color-secondary;
+	// }
+
+}
+
+.document__body h4 {
+	font-size: $document-heading2-size;
+}
+
+
+// Blockquote
+.document__body blockquote {
+	font-size: $document-blockquote-font-size;
+	color: $document-blockquote-color;
 }
