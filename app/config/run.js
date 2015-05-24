@@ -19,7 +19,7 @@
 			/*
 				Debug help: Log route changes - disable by setting debugRouting to false
 			 */
-			var debugRouting = true;
+			var debugRouting = false;
 
 			$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
 				if(debugRouting) {

@@ -8,8 +8,16 @@
     class="document__body"></div>
 
   <div class="document__footer">
-  	<i ng-if="documents.isSaving" class="right type-muted">Saving...</i>
-  	<span ng-if="!documents.isSaving" class="right type-muted">Saved</span>
+  	<i
+  		ng-if="documents.isSaving"
+  		class="document__footer__save-state right type-muted">
+  		Saving...
+  	</i>
+  	<span
+  		ng-if="!documents.isSaving"
+  		class="document__footer__save-state right type-muted">
+  		Saved
+  	</span>
   </div>
   	}
 </div>
