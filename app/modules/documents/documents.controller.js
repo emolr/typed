@@ -56,7 +56,6 @@
 
 		/* Initiate */
 		activate();
-		autoSave();
 
 		/* Public methods */
 
@@ -71,6 +70,8 @@
 					vm.selectDocument(last);
 				}
 			});
+
+			autoSave();
 		}
 
 
@@ -157,7 +158,16 @@
 		 */
 
 		function autoSave() {
-			$scope.$watch("documents.currentDocument.content", function( newValue, oldValue ) {
+			$scope.$watch(function() {
+
+				return vm.currentDocument.content;
+
+			}, function(newValue, oldValue) {
+
+				if (angular.equals(newValue, oldValue)) {
+					return;
+				}
+
 				updateDocument(vm.currentDocument);
 			});
 		}
