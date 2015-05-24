@@ -2,6 +2,11 @@
 //
 // This is both the editor and the document viewer at once.
 
+// Layout
+$document-footer-padding: 15px !default;
+
+
+// Typography
 $document-base-font-size: 20px !default;
 $document-heading1-size: 36px !default;
 $document-heading2-size: 28px !default;
@@ -11,6 +16,7 @@ $document-blockquote-color: #858585 !default;
 $document-blockquote-font-size: 28px !default;
 
 $document-font-family: georgia, sans-serif !default;
+
 
 .document {
 	position: relative;
@@ -45,6 +51,15 @@ $document-font-family: georgia, sans-serif !default;
 		max-width: 700px;
 		margin: 0 auto;
 	}
+}
+
+
+.document__footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	padding: $document-footer-padding;
 }
 
 

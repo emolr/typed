@@ -104,20 +104,20 @@
 
 
 		function updateDocument(doc) {
-
 			if (!vm.currentDocument.id) {
 				Document.create(vm.currentDocument)
 					.then(function (doc) {
-						nMessages.create('Saved succesfully');
+						nMessages.create('Created');
 					})
 					.then(function() {
 						// Set UI State to Edit
 						$state.go('application.document.edit', {id: doc.id});
 					});
 			} else {
+				vm.isSaving = true;
 				Document.update(vm.currentDocument.id, vm.currentDocument)
 					.then(function() {
-						nMessages.create('Document succesfully saved');
+						_updateIsSavingFlag();
 					});
 			}
 		}
@@ -177,6 +177,13 @@
 
 				updateDocument(vm.currentDocument);
 			});
+		}
+
+
+		function _updateIsSavingFlag() {
+			$timeout(function(){
+				vm.isSaving = false;
+			}, 1000);
 		}
 
 

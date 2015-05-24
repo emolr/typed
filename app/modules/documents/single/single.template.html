@@ -1,8 +1,15 @@
 <div class="document">
+
   <div
     t-medium-editor="documents.editor"
     options="{{documents.editorConfig}}"
     ng-model="documents.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
     class="document__body"></div>
+
+  <div class="document__footer">
+  	<i ng-if="documents.isSaving" class="right type-muted">Saving...</i>
+  	<span ng-if="!documents.isSaving" class="right type-muted">Saved</span>
+  </div>
+  	}
 </div>
