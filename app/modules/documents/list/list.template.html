@@ -1,10 +1,13 @@
-<ul>
+<ul class="unstyled-list">
     <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id">
-        <h4>{{document.title}}</h4>
-        <p>{{document.content}}</p>
-        <small>{{document.created}}</small>
-        <small>{{document.touched}}</small><br>
-        <button class="tiny" ng-click="documents.selectDocument(document);">Edit</button>
-        <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+
+    	<div class="book" ng-click="documents.selectDocument(document);">
+    		<div class="book__actions">
+    			<button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+    		</div>
+    		<h4 class="book__title">{{document.title}}</h4>
+    	</div>
+    	<div class="type-small type-muted">Last edited: {{document.touched}}</div>
+
     </li>
 </ul>
