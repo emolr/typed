@@ -34,7 +34,7 @@
 					documents: function(Document) {
 						var params = {};
 						params.orderBy = [
-							['touched', 'ASC']
+							['created', 'ASC']
 						];
 
 						return Document.findAll(params);
