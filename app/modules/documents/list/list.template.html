@@ -1,4 +1,3 @@
-<button class="tiny" ng-click="documents.createDocument();">Create new</button>
 <ul>
     <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id">
         <h4>{{document.title}}</h4>

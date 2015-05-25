@@ -1,0 +1,92 @@
+$medium_editor_bgcolor:						#fafafa !default;
+$medium_editor_button_size:					40px !default;
+$medium_editor_button_color:				#6f6f6f !default;
+$medium_editor_button_color_hover:			#4a4a4a !default;
+$medium_editor_button_bgcolor_hover:		#f4f4f4 !default;
+$medium_editor_button_color_active:			#4A4A4A !default;
+$medium_editor_button_bgcolor_active:		#eee !default;
+$medium_editor_border_radius:				2px !default;
+$medium_editor_toolbar-font-family:			georgia, serif!default;
+
+.medium-toolbar-arrow-under:after {
+    top: $medium_editor_button_size;
+    border-color: $medium_editor_bgcolor transparent transparent transparent;
+}
+
+.medium-toolbar-arrow-over:before {
+    top: -8px;
+    border-color: transparent transparent $medium_editor_bgcolor transparent;
+}
+
+.medium-editor-toolbar {
+	margin-top: -10px;
+    background-color: $medium_editor_bgcolor;
+    border-radius: $medium_editor_border_radius;
+
+    li {
+        button {
+            min-width: $medium_editor_button_size;
+            height: $medium_editor_button_size;
+            border: 0;
+            padding: 0;
+            font-family: $medium_editor_toolbar-font-family;
+            font-weight: normal;
+            font-size: 18px;
+            background-color: $medium_editor_bgcolor;
+            color: $medium_editor_button_color;
+            transition: background-color .05s ease-in;
+
+            // Every letter is wrapped in <b>
+            b {
+            	font-weight: normal;
+            }
+
+            &:hover {
+                background-color: $medium_editor_button_bgcolor_hover;
+                color: $medium_editor_button_color_hover;
+            }
+        }
+
+        .medium-editor-button-first {
+            border-top-left-radius: $medium_editor_border_radius;
+            border-bottom-left-radius: $medium_editor_border_radius;
+        }
+
+        .medium-editor-button-last {
+            border-top-right-radius: $medium_editor_border_radius;
+            border-bottom-right-radius: $medium_editor_border_radius;
+        }
+
+        .medium-editor-button-active {
+            background-color: $medium_editor_button_bgcolor_active;
+            color: $medium_editor_button_color_active;
+        }
+    }
+}
+
+.medium-editor-toolbar-form {
+    background: $medium_editor_bgcolor;
+    color: #999;
+    border-radius: $medium_editor_border_radius;
+
+    .medium-editor-toolbar-input {
+        height: $medium_editor_button_size;
+        background: $medium_editor_bgcolor;
+        color: #ccc;
+        box-sizing: border-box;
+    }
+
+    a {
+        color: #fff;
+    }
+}
+
+.medium-editor-toolbar-anchor-preview {
+    background: $medium_editor_bgcolor;
+    color: #fff;
+    border-radius: $medium_editor_border_radius;
+}
+
+.medium-editor-placeholder:after {
+    color: #b3b3b1;
+}

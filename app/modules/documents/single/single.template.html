@@ -1,4 +1,8 @@
-<article class="document" ng-click="documents.editor.focus()">
+<div class="single__header">
+	<span class="type-muted right" ng-click="documents.createDocument();">Create new</span>
+</div>
+
+<article class="single__body document" ng-click="documents.editor.focus()">
 
   <div
     t-medium-editor="documents.editor"
