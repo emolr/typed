@@ -10,6 +10,9 @@
 		/*jshint validthis: true */
 		var vm = this;
 
+		// $scope.watch will be bound to this, so we can reset the watcher or destroy it
+		var autosaver;
+
 		vm.documents = documents;
 		vm.currentDocument = {};
 
@@ -47,18 +50,6 @@
 			vm.documents = Document.filter();
 		});
 
-		// Watch any changes to the currently edited document, if it changes,
-		// parse the title and set it on the model.
-		$scope.$watch(function() {
-			return vm.currentDocument.content;
-		}, function(newValue, oldValue) {
-			if(angular.equals(newValue, oldValue) || !angular.isDefined(newValue)) {
-				return;
-			}
-			vm.currentDocument.title = vm.editor.parseTitle(true);
-		});
-
-
 		/* Initiate */
 		activate();
 
@@ -78,9 +69,9 @@
 
 
 		function createDocument() {
-			vm.currentDocument = Document.create({});
-			// Set UI State to Create
-			$state.go('application.document.create');
+			vm.currentDocument = Document.create({}).then(function(doc) {
+				selectDocument(doc);
+			});
 		}
 
 
@@ -92,22 +83,16 @@
 
 
 		function updateDocument(doc) {
-			if (!vm.currentDocument.id) {
-				Document.create(vm.currentDocument)
-					.then(function (doc) {
-						return nMessages.create('Created');
-					})
-					.then(function() {
-						// Set UI State to Edit
-						$state.go('application.document.edit', {id: doc.id});
-					});
-			} else {
-				vm.isSaving = true;
-				Document.update(vm.currentDocument.id, vm.currentDocument)
-					.then(function() {
-						_updateIsSavingFlag();
-					});
+
+			var title = vm.editor.parseTitle(true);
+			if(title) {
+				vm.currentDocument.title = title;
 			}
+
+			Document.update(vm.currentDocument.id, vm.currentDocument)
+				.then(function() {
+					_updateIsSavingFlag();
+				});
 		}
 
 
@@ -119,7 +104,7 @@
 		 * @param  {object} doc Document object.
 		 */
 		function destroyDocument(doc) {
-			if (vm.documents.length > 1 && vm.currentDocument && vm.currentDocument.id === doc.id) {
+			if (vm.documents.length > 1) {
 				Document.destroy(doc.id).then(function() {
 					_selectLatestDocument();
 				});
@@ -130,40 +115,35 @@
 			}
 		}
 
-
-		/* Private Methods */
-		function _selectLatestDocument() {
-			var params = {};
-
-			params.orderBy = [
-				['created', 'ASC']
-			];
-
-			params.limit = 1;
-
-			var doc = Document.filter(params)[0];
-			selectDocument(doc);
-		}
-
-
 		/**
 		 * Autosave when detecting changes to the ng-model
 		 *
 		 */
-
 		function autoSave() {
-			$scope.$watch(function() {
+			// Clear previous watcher (nice if we're changing docs)
+			if(autosaver) {
+				autosaver();
+			}
+			autosaver = $scope.$watch(function() {
 
 				return vm.currentDocument.content;
 
 			}, function(newValue, oldValue) {
-
-				if (angular.equals(newValue, oldValue)) {
+				if(angular.equals(newValue, oldValue)) {
+					return;
+				}
+				if(!angular.isDefined(newValue)) {
 					return;
 				}
 
 				updateDocument(vm.currentDocument);
 			});
+		}
+
+		/* Private Methods */
+		function _selectLatestDocument() {
+			var doc = vm.documents[vm.documents.length - 1];
+			selectDocument(doc);
 		}
 
 
@@ -173,7 +153,6 @@
 			}, 1000);
 		}
 
-
-	};
+	}
 
 })();
