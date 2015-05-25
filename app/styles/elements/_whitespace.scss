@@ -1,0 +1,36 @@
+$whitespace: 15px !default;
+$whitespace--small: 10px !default;
+$whitespace--medium: 20px !default;
+$whitespace--large: 30px !default;
+
+
+.whitespace {
+	padding-top: $whitespace;
+	padding-bottom: $whitespace;
+}
+
+.whitespace--small {
+	padding-top: $whitespace--small;
+	padding-bottom: $whitespace--small;
+}
+
+.whitespace--medium {
+	padding-top: $whitespace--medium;
+	padding-bottom: $whitespace--medium;
+}
+
+.whitespace--large {
+	padding-top: $whitespace--large;
+	padding-bottom: $whitespace--large;
+}
+
+
+// Whitespace resetters
+
+.whitespace--reset-top {
+	padding-top: 0;
+}
+
+.whitespace--reset-bottom {
+	padding-bottom: 0;
+}
