@@ -32,12 +32,7 @@
 				},
 				resolve: {
 					documents: function(Document) {
-						var params = {};
-						params.orderBy = [
-							['created', 'ASC']
-						];
-
-						return Document.findAll(params);
+						return Document.findAll();
 					}
 				}
 			};

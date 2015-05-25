@@ -7,61 +7,61 @@
 
 	/* @ngInject */
 	function tMediumEditor(MediumEditor, $timeout) {
+
+		var editor;
+
+		var options = {};
+		var placeholder = '';
+
 		var directive = {
             require: ['ngModel', 'tMediumEditor'],
-			link: link,
+			link: {
+				pre: preLink,
+				post: postLink
+			},
 			controller: controller,
 			restrict: 'EA'
 		};
 
 		return directive;
 
-		function link(scope, element, attrs, controllers){
+		function preLink(scope, element, attrs, controllers) {
+
+			var directiveController = controllers[1];
+
+			// Attributes are parsed as strings, convert to object
+			if(attrs.options) {
+				options = scope.$eval(attrs.options);
+			}
+
+			placeholder = options.placeholder;
+
+			editor = new MediumEditor(element, options);
+
+			angular.forEach(directiveController, function(val, key) {
+				editor[key] = val;
+			});
+
+			var scopeTree = attrs.tMediumEditor.split('.');
+			scope[scopeTree[0]][scopeTree[1]] = editor;
+
+		}
+
+		function postLink(scope, element, attrs, controllers){
 
 			// Assign injected controllers to variables for sanity
 			var ngModel = controllers[0];
-			var directiveController = controllers[1];
-
-			var options = {};
-			var placeholder = '';
-
-			var initOptions = function() {
-				// Attributes are parsed as strings, convert to object
-				if(attrs.options) {
-					options = scope.$eval(attrs.options);
-				}
-				placeholder = options.placeholder;
-
-				// Create new Medium Editor instance
-				var mediumEditor = new MediumEditor(element, options);
-
-				// Attach Directive Controller methods to Medium Editor instance
-				angular.forEach(directiveController, function(val, key) {
-					mediumEditor[key] = val;
-				});
-
-				// Find the "controllerAs" path, attach the Medium Editor to it
-				// ie. given <t-medium-editor="documents.editor">,
-				// the mediumEditor instance will be attached to scope.documents.editor.
-				var scopeTree = attrs.tMediumEditor.split('.');
-				scope[scopeTree[0]][scopeTree[1]] = mediumEditor;
-
-			};
 
 			var onChange = function() {
 
-				scope.$apply(function() {
+				// If user cleared the whole text, we have to reset the editor because MediumEditor
+				// lacks an API method to alter placeholder after initialization
+				if (element.html() === '<p><br></p>' || element.html() === '') {
+					options.placeholder = placeholder;
+					editor.setup();
+				}
 
-					// If user cleared the whole text, we have to reset the editor because MediumEditor
-					// lacks an API method to alter placeholder after initialization
-					if (element.html() === '<p><br></p>' || element.html() === '') {
-						options.placeholder = placeholder;
-						initOptions();
-					}
-
-					ngModel.$setViewValue(element.html());
-
-				});
+				ngModel.$setViewValue(element.html());
 
 			};
 
@@ -83,12 +83,12 @@
 			 */
 			ngModel.$render = function() {
 				// On initial render of ngModel, if there's no mediumEditor yet - boot it up!
-				if(!this.editor) {
+				if(!editor) {
 					// If a value is present in the model, remove the placeholder from the mediumEditor options
 					if(!ngModel.$isEmpty(ngModel.$viewValue)) {
 						options.placeholder = '';
 					}
-					initOptions();
+					editor.setup();
 				}
 
 				element.html(ngModel.$isEmpty(ngModel.$viewValue) ? '' : ngModel.$viewValue);
@@ -96,6 +96,10 @@
 				if(!ngModel.$isEmpty(ngModel.$viewValue)) {
 					angular.element(element).removeClass('medium-editor-placeholder');
 				}
+
+				// Focus the editor :-)
+				element.focus();
+
 			};
 
 			scope.$on('$destroy', function() {
@@ -104,8 +108,8 @@
 
 		}
 
-
-		function controller($document, $scope, $element, $attrs) {
+		function controller($scope, $element, $attrs) {
+			/*jshint validthis:true */
 			var vm = this;
 
 			/**
@@ -159,6 +163,12 @@
 				return firstChildNode;
 			}
 
+		}
+
+		function _resetEditor(element) {
+			editor.destroy();
+			editor = undefined;
+			editor = new MediumEditor(element, options);
 		}
 	}
 })();
