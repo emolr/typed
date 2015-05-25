@@ -17,7 +17,7 @@ $document-blockquote-font-size: 26px !default;
 
 $document-font-family: georgia, sans-serif !default;
 
-$document-section-background: #333 !default;
+$document-section-background: #4a4a4a !default;
 $document-section-color: #fff !default;
 
 
@@ -35,14 +35,6 @@ $document-section-color: #fff !default;
 .document__body *::selection {
 	background: $document-section-background;
 	color: $document-section-color;
-}
-
-.document__header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	border-bottom: 1px solid #eee;
 }
 
 
@@ -97,6 +89,7 @@ $document-section-color: #fff !default;
 }
 
 .document__body h4 {
+	font-family: $document-font-family;
 	font-size: $document-heading2-size;
 }
 

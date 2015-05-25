@@ -1,10 +1,10 @@
-<button class="tiny" ng-click="documents.createDocument();">Create new</button>
+<!-- <button class="tiny" ng-click="documents.createDocument();">Create new</button> -->
 <ul>
     <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id">
         <h4>{{document.title}}</h4>
-        <p>{{document.content}}</p>
+        <!-- <p>{{document.content}}</p>
         <small>{{document.created}}</small>
-        <small>{{document.touched}}</small><br>
+        <small>{{document.touched}}</small><br> -->
         <button class="tiny" ng-click="documents.selectDocument(document);">Edit</button>
         <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
     </li>

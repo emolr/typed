@@ -60,7 +60,6 @@
 @import "bower_components/medium-editor/src/sass/clearfix";
 @import "bower_components/medium-editor/src/sass/pop-upwards";
 @import "bower_components/medium-editor/src/sass/medium-editor";
-@import "bower_components/medium-editor/src/sass/themes/default";
 @import "bower_components/nMessages/src/nMessages.scss";
 // bower:scss
 // endbower
@@ -79,6 +78,7 @@
 
 // Components
 @import "components/document";
+@import "components/medium-editor-theme";
 /* ---> Do not delete this comment (components) <--- */
 
 /*
