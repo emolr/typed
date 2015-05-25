@@ -1,12 +1,23 @@
-<h5>ui-view="right"</h5>
-<div class="document">
-  <div class="document__header">
-    Typed
-  </div>
+<article class="document" ng-click="documents.editor.focus()">
+
   <div
     t-medium-editor="documents.editor"
-      options="{{documents.editorConfig}}"
+    options="{{documents.editorConfig}}"
     ng-model="documents.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
     class="document__body"></div>
+
+</article>
+
+<div class="single__footer">
+	<i
+		ng-if="documents.isSaving"
+		class="document__footer__save-state right type-muted">
+		Saving...
+	</i>
+	<span
+		ng-if="!documents.isSaving"
+		class="document__footer__save-state right type-muted">
+		Saved
+	</span>
 </div>

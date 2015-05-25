@@ -2,28 +2,19 @@
 
 }
 
-
-.document {
-	position: relative;
-	width: 100%;
-}
-
-
-.document__header {
+// @todo - make the footer absolute without sticking it's position
+// in the parent which is scrollable.
+.single__footer {
 	position: fixed;
-	top: 0;
+	bottom: 0;
+	right: 0;
 	left: 0;
-	width: 100%;
-	border-bottom: 1px solid #eee;
+	padding: $document-footer-padding;
+
+	// Don't pick up the events, the user must scroll through it.
+	pointer-events: none;
 }
 
-
-.document__body {
-	width: 100%;
-	padding: 100px 30px;
-}
-
-.document__body > * {
-	margin: 0 auto;
-	max-width: 760px;
+.single__footer__save-state {
+	font-family: $secondary-font-family;
 }
