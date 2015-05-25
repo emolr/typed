@@ -1,0 +1,65 @@
+$book-padding-small: 15px 20px !default;
+$book-height-small: 260px !default;
+$book-max-width-small: 300px !default;
+
+$book-padding-large: 20px 30px !default;
+$book-height-large: 200px !default;
+$book-max-width-large: 150px !default;
+
+
+$book-bg-color: #fff !default;
+$book-font-family: georgia, serif !default;
+
+$book-title-color: #9b9b9b !default;
+$book-hover-title-color: #4A4A4A !default;
+
+
+.book {
+	position: relative;
+	min-height: $book-height-small;
+	width: 100%;
+	max-width: $book-max-width-small;
+	padding: $book-padding-small;
+	background-color: $book-bg-color;
+	margin-bottom: 10px;
+
+	&.book--large {
+		padding: $book-padding-large;
+		max-width: $book-max-width-large;
+		min-height: $book-height-large;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+.book__title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	max-height: $book-height-small - $book-padding-small;
+	overflow: auto;
+	padding: $book-padding-small;
+	margin: 0;
+	font-family: $book-font-family;
+	color: $book-title-color;
+	word-wrap: break-word;
+
+
+	.book:hover & {
+		color: $book-hover-title-color;
+	}
+
+	.book--large & {
+		padding: $book-padding-large;
+		max-height: $book-height-large - $book-padding-large;
+	}
+}
+
+
+.book__actions {
+
+}

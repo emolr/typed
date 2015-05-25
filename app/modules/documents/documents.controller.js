@@ -136,7 +136,7 @@
 			var params = {};
 
 			params.orderBy = [
-				['touched', 'ASC']
+				['created', 'ASC']
 			];
 
 			params.limit = 1;

@@ -2,10 +2,34 @@
 
 }
 
-// @todo - make the footer absolute without sticking it's position
+.single__header {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	padding: $document-footer-padding;
+
+	font-family: $secondary-font-family;
+}
+
+
+.single__body {
+	z-index: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+}
+
+
+// @todo - make the header/footer absolute without sticking it's position
 // in the parent which is scrollable.
 .single__footer {
-	position: fixed;
+	z-index: 10;
+	position: absolute;
 	bottom: 0;
 	right: 0;
 	left: 0;
