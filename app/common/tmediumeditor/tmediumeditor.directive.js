@@ -99,6 +99,7 @@
 
 				// Focus the editor :-)
 				element.focus();
+
 			};
 
 			scope.$on('$destroy', function() {
@@ -108,6 +109,7 @@
 		}
 
 		function controller($scope, $element, $attrs) {
+			/*jshint validthis:true */
 			var vm = this;
 
 			/**
@@ -123,7 +125,6 @@
 			 * Set focus on the editor
 			 */
 			vm.focus = function() {
-				console.log($element.children());
 				$element.focus();
 			};
 

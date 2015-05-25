@@ -78,16 +78,16 @@
 
 
 		function createDocument() {
+			vm.currentDocument = Document.create({});
 			// Set UI State to Create
 			$state.go('application.document.create');
-			vm.currentDocument = Document.createInstance();
 		}
 
 
 		function selectDocument(doc) {
+			vm.currentDocument = doc;
 			// Set UI State to Edit
 			$state.go('application.document.edit', {id: doc.id});
-			vm.currentDocument = doc;
 		}
 
 
@@ -123,12 +123,10 @@
 				Document.destroy(doc.id).then(function() {
 					_selectLatestDocument();
 				});
-			} else if (vm.currentDocument && vm.currentDocument.id === doc.id) {
+			} else {
 				Document.destroy(doc.id).then(function() {
 					createDocument();
 				});
-			} else {
-				Document.destroy(doc.id);
 			}
 		}
 
@@ -143,7 +141,8 @@
 
 			params.limit = 1;
 
-			vm.currentDocument = Document.filter(params)[0];
+			var doc = Document.filter(params)[0];
+			selectDocument(doc);
 		}
 
 
