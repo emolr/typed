@@ -7,7 +7,7 @@
     		</div>
     		<h4 class="book__title">{{document.title}}</h4>
     	</div>
-    	<div class="type-small type-muted">Last edited: {{document.touched}}</div>
+    	<div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
 
     </li>
 </ul>
