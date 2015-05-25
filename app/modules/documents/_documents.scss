@@ -20,6 +20,7 @@ $document__index-background: #fafafa !default;
 	}
 
 	.documents__document {
+		position: relative;
 		flex: 1;
 		overflow: auto;
 	}

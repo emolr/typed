@@ -27,6 +27,7 @@
 				'header2',
 				'justifyCenter',
 				'unorderedlist',
+				'quote',
 				'anchor'
 
 			],

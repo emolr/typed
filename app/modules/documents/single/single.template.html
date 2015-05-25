@@ -1,4 +1,4 @@
-<div class="document">
+<article class="document" ng-click="documents.editor.focus()">
 
   <div
     t-medium-editor="documents.editor"
@@ -7,17 +7,17 @@
     ng-model-options="{ debounce: 1000 }"
     class="document__body"></div>
 
-  <div class="document__footer">
-  	<i
-  		ng-if="documents.isSaving"
-  		class="document__footer__save-state right type-muted">
-  		Saving...
-  	</i>
-  	<span
-  		ng-if="!documents.isSaving"
-  		class="document__footer__save-state right type-muted">
-  		Saved
-  	</span>
-  </div>
-  	}
+</article>
+
+<div class="single__footer">
+	<i
+		ng-if="documents.isSaving"
+		class="document__footer__save-state right type-muted">
+		Saving...
+	</i>
+	<span
+		ng-if="!documents.isSaving"
+		class="document__footer__save-state right type-muted">
+		Saved
+	</span>
 </div>
