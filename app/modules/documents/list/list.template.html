@@ -1,5 +1,5 @@
 <ul class="unstyled-list">
-    <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id">
+    <li ng-repeat="document in documents.documents | orderBy: '-touched' track by document.id" class="whitespace">
 
     	<div class="book" ng-click="documents.selectDocument(document);">
     		<div class="book__actions">

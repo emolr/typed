@@ -40,10 +40,14 @@ $book-hover-title-color: #4A4A4A !default;
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	max-height: $book-height-small - $book-padding-small;
+	overflow: auto;
 	padding: $book-padding-small;
 	margin: 0;
 	font-family: $book-font-family;
 	color: $book-title-color;
+	word-wrap: break-word;
+
 
 	.book:hover & {
 		color: $book-hover-title-color;
@@ -51,6 +55,7 @@ $book-hover-title-color: #4A4A4A !default;
 
 	.book--large & {
 		padding: $book-padding-large;
+		max-height: $book-height-large - $book-padding-large;
 	}
 }
 
