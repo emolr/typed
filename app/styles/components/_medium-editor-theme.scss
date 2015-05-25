@@ -20,11 +20,8 @@ $medium_editor_toolbar-font-family:			georgia, serif!default;
 
 .medium-editor-toolbar {
 	margin-top: -10px;
-    // border: 0 solid #000;
     background-color: $medium_editor_bgcolor;
-    // background: linear-gradient(to bottom, $medium_editor_bgcolor, rgba($medium_editor_bgcolor, 0.75));
     border-radius: $medium_editor_border_radius;
-    // box-shadow: 0 0 3px #000;
 
     li {
         button {
@@ -35,13 +32,8 @@ $medium_editor_toolbar-font-family:			georgia, serif!default;
             font-family: $medium_editor_toolbar-font-family;
             font-weight: normal;
             font-size: 18px;
-            // border-right: 1px solid #000;
-            // border-left: 1px solid #333;
-            // border-left: 1px solid rgba(#fff, .1);
             background-color: $medium_editor_bgcolor;
             color: $medium_editor_button_color;
-            // background: linear-gradient(to bottom, $medium_editor_bgcolor, rgba($medium_editor_bgcolor, 0.89));
-            // box-shadow: 0 2px 2px rgba(0,0,0,0.3);
             transition: background-color .05s ease-in;
 
             // Every letter is wrapped in <b>
