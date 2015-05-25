@@ -49,16 +49,13 @@
 
 		// Watch any changes to the currently edited document, if it changes,
 		// parse the title and set it on the model.
-		// ** Requires $timeout, as we are messing about with "external" events
 		$scope.$watch(function() {
 			return vm.currentDocument.content;
 		}, function(newValue, oldValue) {
 			if(angular.equals(newValue, oldValue) || !angular.isDefined(newValue)) {
 				return;
 			}
-			$timeout(function() {
-				vm.currentDocument.title = vm.editor.parseTitle(true);
-			});
+			vm.currentDocument.title = vm.editor.parseTitle(true);
 		});
 
 
@@ -68,16 +65,13 @@
 		/* Public methods */
 
 		// View Controller activation
-		// ** Requires $timeout, as we are messing about with "external" events
 		function activate() {
-			$timeout(function() {
-				if (vm.documents.length < 1) {
-					vm.createDocument();
-				} else {
-					var last = vm.documents[vm.documents.length - 1];
-					vm.selectDocument(last);
-				}
-			});
+			if (vm.documents.length < 1) {
+				vm.createDocument();
+			} else {
+				var last = vm.documents[vm.documents.length - 1];
+				vm.selectDocument(last);
+			}
 
 			autoSave();
 		}
@@ -85,21 +79,14 @@
 
 		function createDocument() {
 			// Set UI State to Create
-			$state.go('application.document.create')
-				.then(function() {
-					vm.editor.focus();
-				});
+			$state.go('application.document.create');
 			vm.currentDocument = Document.createInstance();
-			vm.editor.focus();
 		}
 
 
 		function selectDocument(doc) {
 			// Set UI State to Edit
-			$state.go('application.document.edit', {id: doc.id})
-				.then(function() {
-					vm.editor.focus();
-				});
+			$state.go('application.document.edit', {id: doc.id});
 			vm.currentDocument = doc;
 		}
 
@@ -108,7 +95,7 @@
 			if (!vm.currentDocument.id) {
 				Document.create(vm.currentDocument)
 					.then(function (doc) {
-						nMessages.create('Created');
+						return nMessages.create('Created');
 					})
 					.then(function() {
 						// Set UI State to Edit
