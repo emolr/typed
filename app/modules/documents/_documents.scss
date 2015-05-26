@@ -3,19 +3,20 @@
 // The layout consists of 2 views which can
 // change size and push eachother
 
-$document__index-width: 250px !default;
-$document__index-background: #fafafa !default;
+$document__list-width: 250px !default;
+$document__list-background: #fafafa !default;
 
+$document__overview-background: #fff;
 
 .documents {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 
-	.documents__index {
-		width: $document__index-width;
-		max-width: $document__index-width;
-		background-color: $document__index-background;
+	.documents__list {
+		width: $document__list-width;
+		max-width: $document__list-width;
+		background-color: $document__list-background;
 		overflow-y: auto;
 	}
 
@@ -23,5 +24,16 @@ $document__index-background: #fafafa !default;
 		position: relative;
 		flex: 1;
 		overflow: auto;
+	}
+
+	.documents__overview {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		flex: 1;
+		overflow: hidden;
+		background-color: $document__overview-background;
 	}
 }

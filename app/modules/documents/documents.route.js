@@ -37,23 +37,6 @@
 				}
 			};
 
-			var Create = {
-				name: 'application.document.create',
-				url: '/',
-				views: {
-					'left': {
-						templateUrl: 'modules/documents/list/list.template.html',
-						controller: 'List',
-						controllerAs: 'list'
-					},
-					'right': {
-						templateUrl: 'modules/documents/single/single.template.html',
-						controller: 'Single',
-						controllerAs: 'single'
-					}
-				}
-			};
-
 			var Edit = {
 				name: 'application.document.edit',
 				url: '/:id',
@@ -71,8 +54,19 @@
 				}
 			};
 
+			var Overview = {
+				name: 'application.document.overview',
+				views: {
+					'full': {
+						templateUrl: 'modules/documents/overview/overview.template.html',
+						controller: 'Overview',
+						controllerAs: 'overview'
+					}
+				}
+			};
+
 			$stateProvider.state(Documents);
-			$stateProvider.state(Create);
 			$stateProvider.state(Edit);
+			$stateProvider.state(Overview);
 		});
 })();

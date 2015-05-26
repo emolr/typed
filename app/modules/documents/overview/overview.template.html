@@ -1,0 +1,18 @@
+<div class="documents__overview">
+
+    <a class="type-muted right" ui-sref="application.document.edit({id: documents.currentDocument.id})">Back</a>
+
+    <ul class="book__list book__list--horizontal">
+        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="whitespace">
+
+            <div class="book" ng-click="documents.selectDocument(document);">
+                <div class="book__actions">
+                    <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+                </div>
+                <h4 class="book__title">{{document.title}}</h4>
+            </div>
+            <div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
+
+        </li>
+    </ul>
+</div>

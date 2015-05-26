@@ -31,6 +31,7 @@
 'tMediumEditor',
 'list',
 'single',
+'overview',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

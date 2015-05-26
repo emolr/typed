@@ -1,0 +1,16 @@
+.book__list {
+	@include clearfix;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	li {
+		display: inline-block;
+
+		// fake lidt lir indtil single books er lidt mere fleksible...
+		margin: 0 100px;
+	}
+}
