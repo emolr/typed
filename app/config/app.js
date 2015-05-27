@@ -33,6 +33,7 @@
 'single',
 'overview',
 'animateto',
+'toolbar'
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

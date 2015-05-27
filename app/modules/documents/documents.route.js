@@ -9,8 +9,8 @@
 				Application states:
 
 				application.document - root state
-				application.document.create - child state
 				application.document.edit - child state
+				application.document.overview - index state
 
 				UI-View structure:
 				|------application------|
@@ -41,6 +41,11 @@
 				name: 'application.document.edit',
 				url: '/:id',
 				views: {
+					'toolbar': {
+						templateUrl: 'modules/documents/toolbar/toolbar.template.html',
+						controller: 'Toolbar',
+						controllerAs: 'toolbar'
+					},
 					'left': {
 						templateUrl: 'modules/documents/list/list.template.html',
 						controller: 'List',
@@ -61,6 +66,11 @@
 						templateUrl: 'modules/documents/overview/overview.template.html',
 						controller: 'Overview',
 						controllerAs: 'overview'
+					},
+					'toolbar': {
+						templateUrl: 'modules/documents/toolbar/toolbar.overview.template.html',
+						controller: 'Toolbar',
+						controllerAs: 'toolbar'
 					}
 				}
 			};

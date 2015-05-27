@@ -20,6 +20,14 @@ $document__overview-background: #fafafa;
 		overflow-y: auto;
 	}
 
+	.documents__toolbar {
+		z-index: 10;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
 	.documents__document {
 		position: relative;
 		flex: 1;
