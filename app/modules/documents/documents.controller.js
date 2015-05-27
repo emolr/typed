@@ -148,6 +148,7 @@
 
 
 		function _updateIsSavingFlag() {
+			vm.isSaving = true;
 			$timeout(function(){
 				vm.isSaving = false;
 			}, 1000);
