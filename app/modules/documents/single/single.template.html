@@ -1,6 +1,6 @@
 <div class="single__header">
 	<span class="type-muted right" ng-click="documents.createDocument();">Create new</span>
-    <a class="type-muted right" ui-sref="application.document.overview">Overview</a>
+    <a class="type-muted left" ui-sref="application.document.overview">Overview</a>
 </div>
 
 <article class="single__body document" ng-click="documents.editor.focus()">
@@ -10,7 +10,7 @@
     options="{{documents.editorConfig}}"
     ng-model="documents.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
-    class="document__body"></div>
+    class="document__body record"></div>
 
 </article>
 

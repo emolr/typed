@@ -7,6 +7,13 @@
 				orderBy: [
 					['created', 'DESC']
 				]
+			},
+			animation: {
+				globalDuration: {
+					short: 0.2,
+					medium: 0.4,
+					long: 1
+				}
 			}
 		});
 })();

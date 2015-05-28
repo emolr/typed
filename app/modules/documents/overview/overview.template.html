@@ -1,9 +1,10 @@
 <div class="documents__overview">
 
-    <a class="type-muted right" ui-sref="application.document.edit({id: documents.currentDocument.id})">Back</a>
+    <a class="type-muted right animate-me" ui-sref="application.document.edit({id: documents.currentDocument.id})">Back</a>
 
     <ul class="book__list book__list--horizontal">
-        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="whitespace">
+        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id"
+            class="whitespace book-wrapper">
 
             <div class="book book--large" ng-click="documents.selectDocument(document);">
                 <div class="book__actions">
