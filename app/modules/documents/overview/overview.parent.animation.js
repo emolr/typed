@@ -60,7 +60,10 @@
 
 			// Let's find all books in the overview list
 			var children = angular.element(element).find('.book-wrapper');
-			console.log(children, typeof children);
+			
+			if(children.length > 0) {
+				children = children.get().reverse();
+			}
 
 			// Final state of animatable elements (.ng-enter-active)
 			TweenMax.staggerTo(children, settings.animation.globalDuration.medium, {opacity: 0, y: '30%'}, 0.2, animateMyParent);
