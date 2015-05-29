@@ -28,7 +28,7 @@
 
 		return {
 			enter: enter,
-			leave: leave
+			//leave: leave
 		};
 
 		function enter(element, doneFn) {
@@ -60,7 +60,7 @@
 
 			// Let's find all books in the overview list
 			var children = angular.element(element).find('.book-wrapper');
-			
+
 			if(children.length > 0) {
 				children = children.get().reverse();
 			}
