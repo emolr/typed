@@ -29,7 +29,7 @@
 				var tempElChilds = tempEl.children;
 
 				// Append the cloned element to body
-				document.getElementsByTagName('body')[0].appendChild(tempEl);
+				element.parent()[0].appendChild(tempEl);
 
 
 				// Animate the cloned element
@@ -61,6 +61,7 @@
 
 			newAnchorEl.className += ' ' + 'animate-anchor-out';
 			newAnchorEl.style.position = 'absolute';
+			newAnchorEl.style.zIndex = '9999';
 			newAnchorEl.style.width = dimensions.width + 'px';
 			newAnchorEl.style.height = dimensions.height + 'px';
 			newAnchorEl.style.top = dimensions.top + 'px';
