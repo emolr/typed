@@ -8,8 +8,7 @@
             class="whitespace book-wrapper">
 
             <div class="book book--large"
-            	animate-to=".documents__document"
-            	ng-click="documents.selectDocument(document);">
+            	animate-to end-fn="documents.selectDocument(document);">
                 <div class="book__actions">
                     <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
                 </div>
