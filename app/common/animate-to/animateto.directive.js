@@ -33,7 +33,7 @@
 
 
 				// Animate the cloned element
-				TweenMax.to(tempEl, .6, {
+				TweenMax.to(tempEl, 0.6, {
 					top: 0,
 					left: 0,
 					width: '100%',
@@ -47,7 +47,7 @@
 
 				// Animate all children independently
 				for (var i = 0, len = tempElChilds.length; i < len; i++ ) {
-					TweenMax.to(tempElChilds[i], .4, {
+					TweenMax.to(tempElChilds[i], 0.4, {
 						opacity: 0
 					});
 				}
