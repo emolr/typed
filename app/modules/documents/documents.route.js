@@ -56,7 +56,6 @@
 
 			var Overview = {
 				name: 'application.document.overview',
-				url: '/',
 				views: {
 					'right': {
 						templateUrl: 'modules/documents/overview/overview.template.html',
