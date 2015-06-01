@@ -61,6 +61,12 @@ $book-hover-title-color: #4A4A4A !default;
 }
 
 
+// If the title is :empty, show a placeholder title
+.book__title:empty:before {
+	content: "Untitled";
+}
+
+
 .book__actions {
 
 }

@@ -39,7 +39,7 @@
 
 			var Edit = {
 				name: 'application.document.edit',
-				url: '/:id',
+				url: '/documents/:id',
 				views: {
 					'toolbar': {
 						templateUrl: 'modules/documents/toolbar/toolbar.template.html',
@@ -61,7 +61,13 @@
 
 			var Overview = {
 				name: 'application.document.overview',
+				url: '/',
 				views: {
+					'toolbar': {
+						templateUrl: 'modules/documents/toolbar/toolbar-overview.template.html',
+						controller: 'Toolbar',
+						controllerAs: 'toolbar'
+					},
 					'right': {
 						templateUrl: 'modules/documents/overview/overview.template.html',
 						controller: 'Overview',
