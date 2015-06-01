@@ -58,10 +58,10 @@
 		// View Controller activation
 		function activate() {
 			if (vm.documents.length < 1) {
-				vm.createDocument();
+				// vm.createDocument();
 			} else {
 				var last = vm.documents[vm.documents.length - 1];
-				vm.selectDocument(last);
+				// vm.selectDocument(last);
 			}
 
 			autoSave();
@@ -104,13 +104,13 @@
 		 * @param  {object} doc Document object.
 		 */
 		function destroyDocument(doc) {
-			if (vm.documents.length > 1) {
+			if (vm.currentDocument.id = doc.id) {
 				Document.destroy(doc.id).then(function() {
-					// _selectLatestDocument();
+					$state.go('application.document.overview');
 				});
 			} else {
 				Document.destroy(doc.id).then(function() {
-					createDocument();
+					// createDocument();
 				});
 			}
 		}
