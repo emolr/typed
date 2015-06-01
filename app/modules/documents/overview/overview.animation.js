@@ -3,11 +3,24 @@
 
 	angular
 		.module('overview')
-		.animation('.documents__overview', Animation)
+		.animation('.book-wrapper', Animation);
+
 
 	/* @ngInject */
 	function Animation() {
-		/*jshint validthis: true */
+
+		return {
+			enter: enter,
+			leave: leave
+		};
+
+		function enter(element, doneFn) {
+
+		}
+
+		function leave(element, doneFn) {
+
+		}
 	}
 
 })();

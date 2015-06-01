@@ -32,6 +32,7 @@
 'list',
 'single',
 'overview',
+'animateto',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

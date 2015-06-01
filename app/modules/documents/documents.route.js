@@ -57,7 +57,7 @@
 			var Overview = {
 				name: 'application.document.overview',
 				views: {
-					'full': {
+					'right': {
 						templateUrl: 'modules/documents/overview/overview.template.html',
 						controller: 'Overview',
 						controllerAs: 'overview'
