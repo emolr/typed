@@ -106,7 +106,7 @@
 		function destroyDocument(doc) {
 			if (vm.documents.length > 1) {
 				Document.destroy(doc.id).then(function() {
-					_selectLatestDocument();
+					// _selectLatestDocument();
 				});
 			} else {
 				Document.destroy(doc.id).then(function() {
