@@ -8,7 +8,9 @@
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id">
             <div class="book__actions">
                 <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+
             </div>
+
 
             <div class="book book--large"
             	animate-to end-fn="documents.selectDocument(document);">
