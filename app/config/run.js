@@ -13,8 +13,17 @@
 		.module('typed')
 		.run(run);
 
-		function run($rootScope, $state, DS, DSLocalForageAdapter, nLogger) {
+		function run($rootScope, $state, DS, DSLocalForageAdapter, nLogger, $stateParams) {
 			DS.registerAdapter('localforage', DSLocalForageAdapter, {default: true});
+
+			$rootScope.currentDocument = undefined;
+			$rootScope.$on('$stateChangeStart', function(e, toState, toParams) {
+				if(toParams.id) {
+					$rootScope.currentDocument = toParams.id;
+				} else {
+					$rootScope.currentDocument = undefined;
+				}
+			});
 
 			/*
 				Debug help: Log route changes - disable by setting debugRouting to false

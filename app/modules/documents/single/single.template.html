@@ -1,10 +1,10 @@
-<article class="single__body document" ng-click="documents.editor.focus()">
+<article class="single__body document" ng-click="single.editor.focus()">
 
   <div id="typed-editor"
-    t-medium-editor="documents.editor"
-    options="{{documents.editorConfig}}"
-    ng-animate-ref="{{documents.currentDocument.id}}"
-    ng-model="documents.currentDocument.content"
+    t-medium-editor="single.editor"
+    options="{{single.editorConfig}}"
+    ng-animate-ref="{{single.currentDocument.id}}"
+    ng-model="single.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
     class="document__body"></div>
 
@@ -12,12 +12,12 @@
 
 <div class="single__footer">
 	<i
-		ng-if="documents.isSaving"
+		ng-if="single.isSaving"
 		class="document__footer__save-state right type-muted type-small">
 		Saving...
 	</i>
 	<span
-		ng-if="!documents.isSaving"
+		ng-if="!single.isSaving"
 		class="document__footer__save-state right type-muted type-small">
 		Saved
 	</span>

@@ -1,7 +1,11 @@
 <div class="documents__overview">
+	<div ng-if="documents.documents.length < 1">
+		<button ng-click="documents.createDocument();">
+			Create new
+		</button>
+	</div>
     <ul class="book__list book__list--horizontal">
-        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id"
-            class="whitespace book-wrapper">
+        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id">
             <div class="book__actions">
                 <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
             </div>
