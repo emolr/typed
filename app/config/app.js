@@ -35,6 +35,7 @@
 'animateto',
 'toolbar',
 'tgrunticon',
+'navigatable',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();
