@@ -15,8 +15,6 @@
 		function activate() {
 
 		};
-
-		console.log('loaded')
 	};
 
 })();

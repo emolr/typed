@@ -42,7 +42,7 @@
 				url: '/documents/:id',
 				views: {
 					'toolbar': {
-						templateUrl: 'modules/documents/toolbar/toolbar.template.html',
+						templateUrl: 'modules/documents/toolbar/toolbar.single.template.html',
 						controller: 'Toolbar',
 						controllerAs: 'toolbar'
 					},
@@ -54,7 +54,12 @@
 					'right': {
 						templateUrl: 'modules/documents/single/single.template.html',
 						controller: 'Single',
-						controllerAs: 'single'
+						controllerAs: 'single',
+						resolve: {
+							doc: function($stateParams, Document) {
+								return Document.find($stateParams.id);
+							}
+						}
 					}
 				}
 			};
@@ -72,11 +77,6 @@
 						templateUrl: 'modules/documents/overview/overview.template.html',
 						controller: 'Overview',
 						controllerAs: 'overview'
-					},
-					'toolbar': {
-						templateUrl: 'modules/documents/toolbar/toolbar.overview.template.html',
-						controller: 'Toolbar',
-						controllerAs: 'toolbar'
 					}
 				}
 			};
