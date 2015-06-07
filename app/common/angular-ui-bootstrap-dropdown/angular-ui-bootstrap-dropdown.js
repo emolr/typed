@@ -161,7 +161,7 @@
     });
   }])
 
-  .directive('dropdown', function() {
+  .directive('uiDropdown', function() {
     return {
       controller: 'DropdownController',
       link: function(scope, element, attrs, dropdownCtrl) {
@@ -170,10 +170,10 @@
     };
   })
 
-  .directive('dropdownMenu', function() {
+  .directive('uiDropdownMenu', function() {
     return {
       restrict: 'AC',
-      require: '?^dropdown',
+      require: '?^uiDropdown',
       link: function(scope, element, attrs, dropdownCtrl) {
         if ( !dropdownCtrl ) {
           return;
@@ -183,9 +183,9 @@
     };
   })
 
-  .directive('dropdownToggle', function() {
+  .directive('uiDropdownToggle', function() {
     return {
-      require: '?^dropdown',
+      require: '?^uiDropdown',
       link: function(scope, element, attrs, dropdownCtrl) {
         if ( !dropdownCtrl ) {
           return;
