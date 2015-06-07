@@ -4,6 +4,15 @@
 			Create new
 		</button>
 	</div>
+
+	<span ui-dropdown is-open="drop.isopen">
+	<button ui-dropdown-toggle>ui-Dropdown</button>
+	<ul class="ui-dropdown-menu">
+		<li>Hej</li>
+		<li>hej</li>
+	</ul>
+	</span>
+
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id">
             <div class="book__actions">
