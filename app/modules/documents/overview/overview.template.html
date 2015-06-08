@@ -5,29 +5,19 @@
 		</button>
 	</div>
 
-	<span ui-dropdown is-open="drop.isopen">
-	<button ui-dropdown-toggle>ui-Dropdown</button>
-	<ul class="ui-dropdown-menu">
-		<li>Hej</li>
-		<li>hej</li>
-	</ul>
-	</span>
-
     <ul class="book__list book__list--horizontal">
-        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id">
+        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book">
             <div class="book__actions">
                 <i class="icon-more" data-grunticon-embed t-grunticon></i>
                 <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
-
             </div>
 
-
-            <div class="book book--large"
+            <div class="book book--large " style="height: 100px;"
             	animate-to end-fn="documents.selectDocument(document);">
                 <h4 class="book__title">{{document.title}}</h4>
             </div>
-            <div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
 
+            <div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
         </li>
     </ul>
 </div>
