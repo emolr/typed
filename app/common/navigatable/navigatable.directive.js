@@ -6,7 +6,7 @@
 	  	.directive('navigatable', navigatable);
 
 	/* @ngInject */
-	function navigatable() {
+	function navigatable($window) {
 		var directive = {
 
 			link: link,
@@ -21,6 +21,10 @@
 
 			// Initially focus the first dropdown item
 			listItems[activeItem].focus();
+
+
+			console.log(listItems);
+			console.log(listItems[activeItem]);
 
 			// Set focus on mouseover of an element
 			listItems.on('mouseover', function() {
