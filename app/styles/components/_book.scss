@@ -14,7 +14,23 @@ $book-title-color: #9b9b9b !default;
 $book-hover-title-color: #4A4A4A !default;
 
 
+// Book is a container which can contain book covers and actions
 .book {
+	position: relative;
+}
+
+// Book actions are positioned on top of any content
+.book__actions {
+	position: absolute;
+	z-index: 99; // always on top
+	top: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+
+// Book cover resembles the visual element of an actual book
+.book-cover {
 	position: relative;
 	height: $book-height-small;
 	width: $book-width-small;
@@ -22,7 +38,7 @@ $book-hover-title-color: #4A4A4A !default;
 	background-color: $book-bg-color;
 	margin-bottom: 10px;
 
-	&.book--large {
+	&.book-cover--large {
 		padding: $book-padding-large;
 		width: $book-width-large;
 		height: $book-height-large;
@@ -34,7 +50,7 @@ $book-hover-title-color: #4A4A4A !default;
 }
 
 
-.book__title {
+.book-cover__title {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -50,11 +66,11 @@ $book-hover-title-color: #4A4A4A !default;
 	transition: color .1s linear;
 
 
-	.book:hover & {
+	.book-cover:hover & {
 		color: $book-hover-title-color;
 	}
 
-	.book--large & {
+	.book-cover--large & {
 		padding: $book-padding-large;
 		max-height: $book-height-large - $book-padding-large;
 	}
@@ -62,11 +78,6 @@ $book-hover-title-color: #4A4A4A !default;
 
 
 // If the title is :empty, show a placeholder title
-.book__title:empty:before {
+.book-cover__title:empty:before {
 	content: "Untitled";
-}
-
-
-.book__actions {
-
 }
