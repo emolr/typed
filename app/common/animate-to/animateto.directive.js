@@ -60,7 +60,7 @@
 			var newAnchorEl = el[0].cloneNode(true);
 
 			newAnchorEl.className += ' ' + 'animate-anchor-out';
-			newAnchorEl.style.position = 'absolute';
+			newAnchorEl.style.position = 'fixed';
 			newAnchorEl.style.zIndex = '9999';
 			newAnchorEl.style.width = dimensions.width + 'px';
 			newAnchorEl.style.height = dimensions.height + 'px';
