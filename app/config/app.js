@@ -33,7 +33,9 @@
 'single',
 'overview',
 'animateto',
-'toolbar'
+'toolbar',
+'ui.bootstrap',
+'navigatable',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

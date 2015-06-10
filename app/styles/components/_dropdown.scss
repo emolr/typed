@@ -1,0 +1,107 @@
+// Dropdown
+// ==========================================================
+//
+// Example html:
+// <span class="dropdown">
+// 	<button class="dropdown__toggle">Dropdown toggle</button>
+// 	<ul class="dropdown__content">
+// 		<li>
+// 			<a href="#">Link</a>
+// 		</li>
+// 	</ul>
+// </span>
+
+
+
+// Variables
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//
+
+$dropdown-offset-value: 					10px !default;
+$dropdown-offset: 							$dropdown-offset-value 0 0 $dropdown-offset-value !default;
+$dropdown-min-width: 						120px !default;
+
+$dropdown-toggle-height: 					40px !default;
+
+$dropdown-font-family: 						'lucida grande', sans-serif !default;
+$dropdown-font-size: 						14px !default;
+$dropdown-background-color: 				#FAFAFA !default;
+$dropdown-border-radius: 					3px !default;
+
+$dropdown-item-color: 						#9B9B9B !default;
+$dropdown-item-color-active: 				#000 !default;
+$dropdown-item-background-color-active: 	#eee !default;
+
+
+// Style
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//
+
+// Offset the container, what the container have in minus.
+.dropdown {
+	position: relative;
+	margin: $dropdown-offset;
+}
+
+// The dropdown-trigger
+//
+// The height of this item is needed to be known.
+.dropdown__toggle {
+	position: relative;
+	z-index: 2;
+}
+
+// The content have minus offset to be placed behind the trigger,
+// and with containing the padding aswell.
+.dropdown__content {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	margin: 0;
+	margin-top: - $dropdown-offset-value;
+	margin-left: - $dropdown-offset-value;
+	padding: $dropdown-toggle-height 0 $dropdown-offset-value;
+	list-style-type: none;
+	border-radius: $dropdown-border-radius;
+	min-width: $dropdown-min-width;
+	background-color: $dropdown-background-color;
+}
+
+// This styling only apply's if the dropdown is used as
+// an menu (it can also hold other types of content)
+.dropdown__content > li > a {
+	display: block;
+	padding: 5px 20px;
+	text-decoration: none;
+	font-family: $dropdown-font-family;
+	-webkit-font-smoothing: antialiased;
+	font-size: $dropdown-font-size;
+	color: $dropdown-item-color;
+}
+
+// Dropdown link item when the HTML structure implies that the
+// module is used as a dropdown menu.
+.dropdown__content > li > a:focus {
+	outline: none;
+	background-color: $dropdown-item-background-color-active;
+	color: $dropdown-item-color-active;
+}
+
+
+// Alternative dropdown alignment
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//
+
+.dropdown.dropdown--align-right {
+	margin: $dropdown-offset-value $dropdown-offset-value 0 0;
+}
+
+// Change fix point to right.
+.dropdown.dropdown--align-right .dropdown__content {
+	left: auto;
+	right: 0;
+	margin-top: -$dropdown-offset-value;
+	margin-left: 0;
+	margin-right: -$dropdown-offset-value;
+}

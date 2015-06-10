@@ -8,7 +8,8 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 	padding-left: 200px;
-	li {
+
+	.book__list__book {
 		display: inline-block;
 
 		// fake lidt lir indtil single books er lidt mere fleksible...
