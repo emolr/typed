@@ -82,8 +82,7 @@ $dropdown-item-background-color-active: 	#eee !default;
 
 // Dropdown link item when the HTML structure implies that the
 // module is used as a dropdown menu.
-.dropdown__content > li > a:focus,
-.dropdown__content > li > a:hover {
+.dropdown__content > li > a:focus {
 	outline: none;
 	background-color: $dropdown-item-background-color-active;
 	color: $dropdown-item-color-active;
