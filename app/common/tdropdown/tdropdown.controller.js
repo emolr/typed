@@ -17,6 +17,8 @@
 		// This should be moved to a provider
 		var config = {
 			openClass: 'dropdown--open',
+			menuOpenClass: 'dropdown__content--open',
+			// TODO: toggleActiveClass?
 			placeholderClass: 'dropdown__placeholder'
 		};
 
@@ -48,6 +50,10 @@
 		// Initialization
 		function activate(element) {
 
+			if(vm.dropdownMenu && $attrs.templateUrl) {
+				throw 'Please use either an inline directive or a template-url, not both.';
+			}
+
 			vm.$element = element;
 
 			if($attrs.isOpen) {
@@ -77,6 +83,9 @@
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.openClass);
 
 			// TODO: use ngAnimate to toggle a class on the menu, on everythin even?!
+			if(vm.dropdownMenu && !$attrs.templateUrl) {
+				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownMenu, config.menuOpenClass);
+			}
 
 			// It should open
 			if(isOpen) {
@@ -89,10 +98,7 @@
 
 						// Compile the template, and animate it, appending to the toggleElement
 						$compile(tpl.trim())(templateScope, function(dropdownElement) {
-							$animate.enter(dropdownElement, vm.$element, vm.toggleElement).then(function() {
-								// Register the menu with the controller
-								vm.dropdownMenu = dropdownElement;
-							});
+							$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
 						});
 
 					});
@@ -134,7 +140,8 @@
 		// "Root" scope methods
 		function toggle(open) {
 			// If argument is provided use this, otherwise do the opposite of the childScopes current state
-			return childScope.isOpen = arguments.length ? !!open : !childScope.isOpen;
+			childScope.isOpen = arguments.length ? !!open : !childScope.isOpen;
+			return childScope.isOpen;
 		}
 
 		function isOpen() {

@@ -20,6 +20,7 @@
 			if(!tDropdownController) {
 				return;
 			}
+
 			tDropdownController.dropdownMenu = element;
 			//var templateUrl = attrs.templateUrl;
 			//if(templateUrl) {

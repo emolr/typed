@@ -3,8 +3,14 @@
 	position: relative;
 	z-index: 2;
 }
+.t-dropdown__content {
+	opacity: 0;
+}
+.t-dropdown__content.dropdown__content--open {
+	opacity: 1;
+}
 
-
+// Dette er til template-url
 .t-dropdown__content.ng-animate {
 	transition: all 5s;
 }
@@ -18,5 +24,23 @@
 	opacity: 1;
 }
 .t-dropdown__content.ng-leave-active {
+	opacity: 0;
+}
+
+// Dette er til inline
+.t-dropdown__content.ng-animate {
+	transition: all 5s;
+}
+
+.dropdown__content--open-add {
+	opacity: 0;
+}
+.dropdown__content--open-add-active {
+	opacity: 1;
+}
+.dropdown__content--open-remove {
+	opacity: 1;
+}
+.dropdown__content--open-remove-active {
 	opacity: 0;
 }
