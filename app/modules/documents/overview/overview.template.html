@@ -8,11 +8,10 @@
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
             <div class="book__actions">
-                <div t-dropdown class="dropdown" ng-animate-children>
-                    <div t-dropdown-toggle class="dropdown__toggle">
+                <div t-dropdown template-url="dropdown.html" class="dropdown t-dropdown" ng-animate-children>
+                    <div t-dropdown-toggle class="t-dropdown__toggle">
                         +
                     </div>
-                    <ul t-dropdown-menu template-url="dropdown.html"></ul>
                 </div>
             </div>
 
@@ -25,13 +24,14 @@
         </li>
     </ul>
 </div>
+<!--TODO: Move this to a file?! I dont really know if it makes sense tbh... -->
 <script type="text/ng-template" id="dropdown.html">
-    <ul role="menu" class="dropdown__content">
+    <ul role="menu" class="t-dropdown__content">
         <li><a href="#">Action in Template</a></li>
         <li><a href="#">Another action in Template</a></li>
         <li><a href="#">Something else here</a></li>
         <li><a href="#">Separated link in Template</a></li>
     </ul>
 </script>
-
+<!--Gemmer vi til senere, nu er det fuld focus på animizzle -->
 <!--<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>-->
