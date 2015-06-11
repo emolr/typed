@@ -20,14 +20,14 @@
 			if(!tDropdownController) {
 				return;
 			}
-
-			var templateUrl = attrs.templateUrl;
-			if(templateUrl) {
-				tDropdownController.dropdownMenuTemplateUrl = templateUrl;
-			}
-			if(!tDropdownController.dropdownMenu) {
-				tDropdownController.dropdownMenu = element;
-			}
+			tDropdownController.dropdownMenu = element;
+			//var templateUrl = attrs.templateUrl;
+			//if(templateUrl) {
+			//	tDropdownController.dropdownMenuTemplateUrl = templateUrl;
+			//}
+			//if(!tDropdownController.dropdownMenu) {
+			//	tDropdownController.dropdownMenu = element;
+			//}
 		}
 	}
 })();

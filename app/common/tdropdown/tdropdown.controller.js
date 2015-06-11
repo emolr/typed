@@ -76,40 +76,47 @@
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.openClass);
 
-			if(isOpen) {
-				// Compile and update dom with the provided template
-				if(vm.dropdownMenuTemplateUrl) {
-					$templateRequest(vm.dropdownMenuTemplateUrl).then(function(tpl) {
+			// TODO: use ngAnimate to toggle a class on the menu, on everythin even?!
 
+			// It should open
+			if(isOpen) {
+				// Compile and animate the menu with the provided template
+				if($attrs.templateUrl) {
+					$templateRequest($attrs.templateUrl).then(function(tpl) {
+
+						// Assign a scope to the new tempalte
 						templateScope = $scope.$new();
 
+						// Compile the template, and animate it, appending to the toggleElement
 						$compile(tpl.trim())(templateScope, function(dropdownElement) {
-							var newElement = dropdownElement;
-							vm.dropdownMenu.replaceWith(newElement);
-							vm.dropdownMenu = newElement;
+							$animate.enter(dropdownElement, vm.$element, vm.toggleElement).then(function() {
+								// Register the menu with the controller
+								vm.dropdownMenu = dropdownElement;
+							});
 						});
 
 					});
 				}
-
+				// Set focus on the toggle element (EMIL, DET ER HER DU SKAL JAMME MED DIN NAVIGATABLE)
 				childScope.focusToggleElement();
+				// Tell our service to register event listeners etc.
 				tDropdownService.open(childScope);
 			} else {
 
-				if (vm.dropdownMenuTemplateUrl) {
+			// It should close
+				if ($attrs.templateUrl) {
 					if(templateScope) {
+						// Destroy the template scope, and animate the menu out
 						templateScope.$destroy();
+						$animate.leave(vm.dropdownMenu);
 					}
-
-					// Replace with placeholder
-					var newEl = angular.element('<ul class="' + config.placeholderClass + '"></ul>');
-					vm.dropdownMenu.replaceWith(newEl);
-					vm.dropdownMenu = newEl;
 				}
 
+				// Tell our service to deregister event listeners etc.
 				tDropdownService.close(childScope);
 			}
 
+			// Update the open attribute (this also reflects to the WAI ARIA)
 			setAttributeIsOpen($scope, isOpen);
 
 		});

@@ -1,49 +1,22 @@
 // Skov Dennis' debug geiles:
-
-.dropdown.ng-animate .dropdown__content {
-	transition: all 1s;
+.t-dropdown__toggle {
+	position: relative;
+	z-index: 2;
 }
-.dropdown--open-add {
 
+
+.t-dropdown__content.ng-animate {
+	transition: all 5s;
 }
-.dropdown--open-add-active .dropdown__content {
+.t-dropdown__content.ng-enter {
 	opacity: 0;
 }
-.dropdown.dropdown--open .dropdown__content {
+.t-dropdown__content.ng-enter-active {
 	opacity: 1;
 }
-.dropdown--open-remove .dropdown__content {
+.t-dropdown__content.ng-leave {
 	opacity: 1;
 }
-.dropdown--open-remove-active .dropdown__content {
+.t-dropdown__content.ng-leave-active {
 	opacity: 0;
-}
-
-
-.dropdown__content.ng-enter {
-	opacity: 0;
-}
-.dropdown__content.ng-enter-active {
-	opacity: 1;
-}
-.dropdown__content.ng-leave {
-	opacity: 1;
-}
-.dropdown__content.ng-leave-active {
-	opacity: 0;
-}
-
-.dropdown.dropdown > .dropdown__content {
-	opacity: 1;
-	visibility: visible;
-}
-
-.dropdown__content {
-	display: block;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: opacity 500ms ease, visibility 500ms ease;
-	-moz-transition: opacity 500ms ease, visibility 500ms ease;
-	-o-transition: opacity 500ms ease, visibility 500ms ease;
-	transition: opacity 500ms ease, visibility 500ms ease;
 }
