@@ -8,8 +8,12 @@
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
             <div class="book__actions">
-                <i class="icon-more" data-grunticon-embed t-grunticon></i>
-                <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
+                <div t-dropdown class="dropdown" ng-animate-children>
+                    <div t-dropdown-toggle class="dropdown__toggle">
+                        +
+                    </div>
+                    <ul t-dropdown-menu template-url="dropdown.html"></ul>
+                </div>
             </div>
 
             <div class="book-cover book-cover--large"
@@ -21,3 +25,13 @@
         </li>
     </ul>
 </div>
+<script type="text/ng-template" id="dropdown.html">
+    <ul role="menu" class="dropdown__content">
+        <li><a href="#">Action in Template</a></li>
+        <li><a href="#">Another action in Template</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link in Template</a></li>
+    </ul>
+</script>
+
+<!--<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>-->
