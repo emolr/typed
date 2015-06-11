@@ -96,12 +96,13 @@
 			if ( appendToBody && vm.dropdownMenu ) {
 
 				// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
+				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'center-center', true);
 
 				vm.dropdownMenu.css({
 					top: pos.top + 'px',
 					left: pos.left + 'px',
-					display: isOpen ? 'block' : 'none'
+					visibility: isOpen ? 'visible' : 'hidden',
+					position: 'absolute'
 				});
 			}
 
