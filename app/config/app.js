@@ -36,6 +36,7 @@
 'toolbar',
 'navigatable',
 'tDropdown',
+'tPositionizer',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

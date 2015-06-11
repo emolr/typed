@@ -8,8 +8,8 @@
 	/* @ngInject */
 	function tDropdownController(
 		$scope, $attrs, $parse, $animate, $document, $compile, $templateRequest,
-		tDropdownService
-		//tPositionizer
+		tDropdownService,
+		tPositionizer
 	) {
 		/*jshint validthis: true */
 		var vm = this;
@@ -30,7 +30,9 @@
 		 */
 		var childScope = $scope.$new();
 
-		var templateScope, oldElement;
+		var templateScope;
+
+		var appendToBody = false;
 
 		// Element Attribute getter/setter
 		var getAttributeIsOpen;
@@ -70,6 +72,18 @@
 
 			}
 
+			appendToBody = angular.isDefined($attrs.appendToBody);
+
+			if ( appendToBody && vm.dropdownMenu ) {
+
+				$document.find('body').append( vm.dropdownMenu );
+
+				element.on('$destroy', function handleDestroyEvent() {
+					vm.dropdownMenu.remove();
+				});
+
+			}
+
 		}
 
 		// Watch the childscope isOpen boolean
@@ -78,6 +92,18 @@
 			return childScope.isOpen;
 
 		}, function(isOpen, wasOpen) {
+
+			if ( appendToBody && vm.dropdownMenu ) {
+
+				// TODO: Bottom left? Skal du sq da ik bestemme din cunt
+				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
+
+				vm.dropdownMenu.css({
+					top: pos.top + 'px',
+					left: pos.left + 'px',
+					display: isOpen ? 'block' : 'none'
+				});
+			}
 
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.openClass);
