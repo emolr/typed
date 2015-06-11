@@ -1,5 +1,5 @@
 (function () {
 	'use strict';
 
-	angular.module('tDropdown', ['ngAnimate']);
+	angular.module('tDropdown', ['ngAnimate', 'tPositionizer']);
 })();
