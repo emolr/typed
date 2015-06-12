@@ -8,16 +8,16 @@
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
             <div class="book__actions">
-                <div t-dropdown class="dropdown t-dropdown" ng-animate-children append-to-body="true">
+                <div t-dropdown class="dropdown t-dropdown" ng-animate-children append-to-body="true" template-url="dropdown.html">
                     <div t-dropdown-toggle class="t-dropdown__toggle">
                         +
                     </div>
-                    <ul role="menu" t-dropdown-menu class="t-dropdown__content">
-                        <li><a href="#">Action in Template</a></li>
-                        <li><a href="#">Another action in Template</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link in Template</a></li>
-                    </ul>
+                    <!--<ul role="menu" t-dropdown-menu class="t-dropdown__content">-->
+                        <!--<li><a href="#">Action in Template</a></li>-->
+                        <!--<li><a href="#">Another action in Template</a></li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li><a href="#">Separated link in Template</a></li>-->
+                    <!--</ul>-->
                 </div>
             </div>
 
