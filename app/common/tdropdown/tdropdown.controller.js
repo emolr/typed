@@ -88,20 +88,17 @@
 
 		// Watch the childscope isOpen boolean
 		childScope.$watch(function() {
-
 			return childScope.isOpen;
-
 		}, function(isOpen, wasOpen) {
 
 			if ( appendToBody && vm.dropdownMenu ) {
 
 				// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'center-center', true);
+				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
 
 				vm.dropdownMenu.css({
 					top: pos.top + 'px',
 					left: pos.left + 'px',
-					visibility: isOpen ? 'visible' : 'hidden',
 					position: 'absolute'
 				});
 			}
@@ -125,7 +122,25 @@
 
 						// Compile the template, and animate it, appending to the toggleElement
 						$compile(tpl.trim())(templateScope, function(dropdownElement) {
-							$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
+
+							if(appendToBody) {
+								$animate.enter(dropdownElement, document.body, document.body.lastChild);
+
+								vm.dropdownMenu = dropdownElement;
+
+								vm.dropdownMenu.addClass(config.menuOpenClass);
+
+								// TODO: Bottom left? Skal du sq da ik bestemme din cunt
+								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
+
+								vm.dropdownMenu.css({
+									top: pos.top + 'px',
+									left: pos.left + 'px',
+									position: 'absolute'
+								});
+							} else {
+								$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
+							}
 						});
 
 					});
