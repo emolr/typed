@@ -17,7 +17,7 @@
 		// This could be moved to a provider
 		var config = {
 			openClass: 't-dropdown--open',
-			menuOpenClass: 't-dropdown__menu--open',
+			menuOpenClass: 't-dropdown__content--open',
 			toggleActiveClass: 't-dropdown__toggle--active'
 		};
 
