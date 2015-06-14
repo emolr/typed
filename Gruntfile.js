@@ -205,6 +205,7 @@ module.exports = function (grunt) {
 			}
 		},
 
+
 		/*
 			Javascript Tasks
 		*/
@@ -434,6 +435,9 @@ module.exports = function (grunt) {
 		 */
 		grunticon: {
 			icons: {
+				options: {
+					enhanceSVG: true
+				},
 				files: [{
 					expand: true,
 					cwd: '<%= yeoman.app %>/assets/icons/raw',
