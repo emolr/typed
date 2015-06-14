@@ -58,7 +58,7 @@
 
 			vm.$element = element;
 
-			if($attrs.isOpen) {
+			if($attrs.tDropddownIsOpen) {
 
 				// Attribute Getter
 				getAttributeIsOpen = $parse($attrs.isOpen);
@@ -72,7 +72,7 @@
 
 			}
 
-			appendToBody = angular.isDefined($attrs.appendToBody);
+			appendToBody = angular.isDefined($attrs.tDropdownAppendToBody);
 
 			if ( appendToBody && vm.dropdownMenu ) {
 
@@ -114,8 +114,8 @@
 			// It should open
 			if(isOpen) {
 				// Compile and animate the menu with the provided template
-				if($attrs.templateUrl) {
-					$templateRequest($attrs.templateUrl).then(function(tpl) {
+				if($attrs.tDropdownTemplateUrl) {
+					$templateRequest($attrs.tDropdownTemplateUrl).then(function(tpl) {
 
 						// Assign a scope to the new tempalte
 						templateScope = $scope.$new();
@@ -152,7 +152,7 @@
 			} else {
 
 			// It should close
-				if ($attrs.templateUrl) {
+				if ($attrs.tDropdownTemplateUrl) {
 					if(templateScope) {
 						// Destroy the template scope, and animate the menu out
 						templateScope.$destroy();
