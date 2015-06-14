@@ -14,12 +14,11 @@
 		/*jshint validthis: true */
 		var vm = this;
 
-		// This should be moved to a provider
+		// This could be moved to a provider
 		var config = {
-			openClass: 'dropdown--open',
-			menuOpenClass: 'dropdown__content--open',
-			// TODO: toggleActiveClass?
-			placeholderClass: 'dropdown__placeholder'
+			openClass: 't-dropdown--open',
+			menuOpenClass: 't-dropdown__menu--open',
+			toggleActiveClass: 't-dropdown__toggle--active'
 		};
 
 		/*
@@ -52,7 +51,7 @@
 		// Initialization
 		function activate(element) {
 
-			if(vm.dropdownMenu && $attrs.templateUrl) {
+			if(vm.dropdownMenu && $attrs.tDropdownTemplateUrl) {
 				throw 'Please use either an inline directive or a template-url, not both.';
 			}
 
@@ -104,9 +103,11 @@
 			}
 
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
+			// Root element (the "wrapper")
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.openClass);
+			// Toggle element
+			$animate[isOpen ? 'addClass' : 'removeClass'](vm.toggleElement, config.toggleActiveClass);
 
-			// TODO: use ngAnimate to toggle a class on the menu, on everythin even?!
 			if(vm.dropdownMenu && !$attrs.templateUrl) {
 				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownMenu, config.menuOpenClass);
 			}

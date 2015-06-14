@@ -32,15 +32,15 @@
 	transition: all 5s;
 }
 
-.dropdown__content--open-add {
+.t-dropdown__content--open-add {
 	opacity: 0;
 }
-.dropdown__content--open-add-active {
+.t-dropdown__content--open-add-active {
 	opacity: 1;
 }
-.dropdown__content--open-remove {
+.t-dropdown__content--open-remove {
 	opacity: 1;
 }
-.dropdown__content--open-remove-active {
+.t-dropdown__content--open-remove-active {
 	opacity: 0;
 }
