@@ -8,7 +8,7 @@
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
             <div class="book__actions">
-                <div t-dropdown class="dropdown t-dropdown" ng-animate-children append-to-body="true" template-url="dropdown.html">
+                <div t-dropdown class="dropdown t-dropdown" ng-animate-children t-dropdown-append-to-body="true" t-dropdown-template-url="dropdown.html">
                     <div t-dropdown-toggle class="t-dropdown__toggle">
                         +
                     </div>
