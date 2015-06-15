@@ -9,7 +9,6 @@
 	function Documents($state, $timeout, $scope, $rootScope, Document, documents, nMessages, $stateParams) {
 		/*jshint validthis: true */
 		var vm = this;
-		console.log('init af doculoco controller')
 
 		vm.documents = documents;
 

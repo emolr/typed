@@ -23,7 +23,7 @@
 			'config',
 			'DEBUG_ENV',
 			'API_ENDPOINTS',
-			'mm.foundation',
+			//'mm.foundation',
 			'application',
 			'document',
 			'documents',
@@ -33,7 +33,10 @@
 'single',
 'overview',
 'animateto',
-'toolbar'
+'toolbar',
+'navigatable',
+'tDropdown',
+'tPositionizer',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

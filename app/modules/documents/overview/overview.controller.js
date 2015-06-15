@@ -6,7 +6,7 @@
 		.controller('Overview', Overview);
 
 	/* @ngInject */
-	function Overview() {
+	function Overview($scope) {
 		/*jshint validthis: true */
 		var vm = this;
 
