@@ -9,6 +9,7 @@
 
 .t-dropdown__content {
 	display: none;
+	z-index: 99;
 }
 
 .t-dropdown__content.ng-animate {
