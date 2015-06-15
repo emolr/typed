@@ -1,45 +1,53 @@
-// Skov Dennis' debug geiles:
-.t-dropdown__toggle {
-	position: relative;
-	z-index: 2;
-}
+// Dropdown
+// ============================================
+// Developer: Two cool dudes from Copenhagen
 
 
-// General setup
+// Variables
+// ––––––––––––––––––––––––––––––––––––––––––––
 
+// Dropdown content animation classes
+$dropdown-animation-enter: 			'.t-dropdown__content.ng-enter, .t-dropdown__content--open-add';
+$dropdown-animation-enter-active: 	'.t-dropdown__content.ng-enter-active, .t-dropdown__content--open-add-active';
+$dropdown-animation-leave: 			'.t-dropdown__content.ng-leave, .t-dropdown__content--open-remove';
+$dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dropdown__content--open-remove-active';
+
+
+// Base component structure
 .t-dropdown__content {
 	display: none;
-	z-index: 99;
+	z-index: 999; // Should always be on top of content
 }
 
+// Set the content to display block when animation starts
 .t-dropdown__content.ng-animate {
-	transition: all .2s;
 	display: block;
 }
 
+// Keep the content in display block as long is it's visible
 .t-dropdown__content--open {
 	display: block;
 }
-.t-dropdown__menu--open {
-	// Og når den er åben
-	display: block;
-}
 
 
-$dropdown-animation-enter: '.t-dropdown__content.ng-enter, .t-dropdown__content--open-add';
-$dropdown-animation-enter-active: '.t-dropdown__content.ng-enter-active, .t-dropdown__content--open-add-active';
-$dropdown-animation-leave: '.t-dropdown__content.ng-leave, .t-dropdown__content--open-remove';
-$dropdown-animation-leave-active: '.t-dropdown__content.ng-leave-active, .t-dropdown__content--open-remove-active';
+// Fade animation
+.t-dropdown-animation--fade {
 
-#{$dropdown-animation-enter} {
-	opacity: 0;
-}
-#{$dropdown-animation-enter-active} {
-	opacity: 1;
-}
-#{$dropdown-animation-leave} {
-	opacity: 1;
-}
-#{$dropdown-animation-leave-active} {
-	opacity: 0;
+	.t-dropdown__content.ng-animate {
+		transition: all .2s ease-in-out;
+	}
+
+	#{$dropdown-animation-enter} {
+		opacity: 0;
+	}
+	#{$dropdown-animation-enter-active} {
+		opacity: 1;
+	}
+	#{$dropdown-animation-leave} {
+		opacity: 1;
+	}
+	#{$dropdown-animation-leave-active} {
+		opacity: 0;
+	}
+
 }
