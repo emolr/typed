@@ -5,40 +5,49 @@
 		</button>
 	</div>
 
-    <ul class="book__list book__list--horizontal">
-        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
-            <div class="book__actions">
-                <div t-dropdown class="dropdown t-dropdown" ng-animate-children t-dropdown-append-to-body="true" t-dropdown-template-url="dropdown.html">
-                    <button t-dropdown-toggle class="t-dropdown__toggle">
-                        +
-                    </button>
-                    <!--<ul role="menu" t-dropdown-menu class="t-dropdown__content">-->
-                        <!--<li><a href="#">Action in Template</a></li>-->
-                        <!--<li><a href="#">Another action in Template</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li><a href="#">Separated link in Template</a></li>-->
-                    <!--</ul>-->
-                </div>
-            </div>
+	<ul class="book__list book__list--horizontal">
+		<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
+			<div class="book__actions">
 
-            <div class="book-cover book-cover--large"
-            	animate-to end-fn="documents.selectDocument(document);">
-                <h4 class="book-cover__title">{{document.title}}</h4>
-            </div>
+				<!-- Templated Dropdown -->
+				<div t-dropdown class="dropdown t-dropdown" ng-animate-children t-dropdown-append-to-body="true" t-dropdown-template-url="dropdown.html">
+					<button t-dropdown-toggle class="t-dropdown__toggle">
+						template
+					</button>
+				</div>
 
-            <div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
-        </li>
-    </ul>
+				<!-- Inline Dropdown -->
+				<div t-dropdown class="dropdown t-dropdown" ng-animate-children>
+					<button t-dropdown-toggle class="t-dropdown__toggle">
+						inline
+					</button>
+					<ul role="menu" t-dropdown-menu class="t-dropdown__content">
+						<li><a href="#">Action in Template</a></li>
+						<li><a href="#">Another action in Template</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li><a href="#">Separated link in Template</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="book-cover book-cover--large"
+			animate-to end-fn="documents.selectDocument(document);">
+			<h4 class="book-cover__title">{{document.title}}</h4>
+		</div>
+
+		<div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
+	</li>
+</ul>
 </div>
 <!--TODO: Move this to a file?! I dont really know if it makes sense tbh... -->
 <script type="text/ng-template" id="dropdown.html">
-    <ul role="menu" class="t-dropdown__content">
-        <li><a ng-click="documents.destroyDocument(document);">Delete</a></li>
-        <li><a href="#">Action in Template</a></li>
-        <li><a href="#">Another action in Template</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li><a href="#">Separated link in Template</a></li>
-    </ul>
+	<ul role="menu" class="t-dropdown__content">
+		<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>
+		<li><a href="#">Action in Template</a></li>
+		<li><a href="#">Another action in Template</a></li>
+		<li><a href="#">Something else here</a></li>
+		<li><a href="#">Separated link in Template</a></li>
+	</ul>
 </script>
 <!--Gemmer vi til senere, nu er det fuld focus på animizzle -->
 <!--<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>-->

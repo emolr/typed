@@ -3,49 +3,42 @@
 	position: relative;
 	z-index: 2;
 }
-// .t-dropdown__content {
-// 	opacity: 0;
-// }
-.t-dropdown__content.dropdown__content--open {
-	opacity: 1;
+
+
+// General setup
+
+.t-dropdown__content {
+	display: none;
 }
 
-// Dette er til template-url
 .t-dropdown__content.ng-animate {
 	transition: all .2s;
-}
-.t-dropdown__content.ng-enter {
-	opacity: 0;
-}
-.t-dropdown__content.ng-enter-active {
-	opacity: 1;
-}
-.t-dropdown__content.ng-leave {
-	opacity: 1;
-}
-.t-dropdown__content.ng-leave-active {
-	opacity: 0;
+	display: block;
 }
 
-// Dette er til inline
-.t-dropdown__content.ng-animate {
-	transition: all .2s;
+.t-dropdown__content--open {
+	display: block;
 }
 .t-dropdown__menu--open {
 	// Og når den er åben
 	display: block;
 }
 
-.t-dropdown__menu--open-add {
+
+$dropdown-animation-enter: '.t-dropdown__content.ng-enter, .t-dropdown__content--open-add';
+$dropdown-animation-enter-active: '.t-dropdown__content.ng-enter-active, .t-dropdown__content--open-add-active';
+$dropdown-animation-leave: '.t-dropdown__content.ng-leave, .t-dropdown__content--open-remove';
+$dropdown-animation-leave-active: '.t-dropdown__content.ng-leave-active, .t-dropdown__content--open-remove-active';
+
+#{$dropdown-animation-enter} {
 	opacity: 0;
 }
-.t-dropdown__menu--open-add-active {
+#{$dropdown-animation-enter-active} {
 	opacity: 1;
 }
-
-.t-dropdown__menu--open-remove {
+#{$dropdown-animation-leave} {
 	opacity: 1;
 }
-.t-dropdown__menu--open-remove-active {
+#{$dropdown-animation-leave-active} {
 	opacity: 0;
 }
