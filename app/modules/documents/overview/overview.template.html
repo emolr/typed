@@ -7,6 +7,7 @@
     <ul class="book__list book__list--horizontal">
         <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id">
             <div class="book__actions">
+                <i class="icon-more" data-grunticon-embed t-grunticon></i>
                 <button class="tiny" ng-click="documents.destroyDocument(document);">Delete</button>
             </div>
 
