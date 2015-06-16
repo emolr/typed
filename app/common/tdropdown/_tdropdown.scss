@@ -1,42 +1,40 @@
-// Skov Dennis' debug geiles:
-.t-dropdown__toggle {
-	position: relative;
-	z-index: 2;
-}
-.t-dropdown__content {
-	opacity: 0;
-}
-.t-dropdown__content.dropdown__content--open {
-	opacity: 1;
-}
+// Dropdown
+// ============================================
+// Developer: Two cool dudes from Copenhagen
 
-// Dette er til template-url
-.t-dropdown__content.ng-animate {
-	transition: all 5s;
-}
-.t-dropdown__content.ng-enter {
-	opacity: 0;
-}
-.t-dropdown__content.ng-enter-active {
-	opacity: 1;
-}
-.t-dropdown__content.ng-leave {
-	opacity: 1;
-}
-.t-dropdown__content.ng-leave-active {
-	opacity: 0;
-}
 
+<<<<<<< HEAD
 // Dette er til inline
 .t-dropdown__content {
 	// Når den ikke vises, display den totalt none
+=======
+// Variables
+// ––––––––––––––––––––––––––––––––––––––––––––
+
+// Dropdown content animation classes
+$dropdown-animation-enter: 			'.t-dropdown__content.ng-enter, .t-dropdown__content--open-add';
+$dropdown-animation-enter-active: 	'.t-dropdown__content.ng-enter-active, .t-dropdown__content--open-add-active';
+$dropdown-animation-leave: 			'.t-dropdown__content.ng-leave, .t-dropdown__content--open-remove';
+$dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dropdown__content--open-remove-active';
+
+
+// Base component structure
+.t-dropdown__content {
+>>>>>>> origin/emil-jammer
 	display: none;
+	z-index: 999; // Should always be on top of content
 }
+<<<<<<< HEAD
 .t-dropdown__content.ng-animate {
 	// Sæt til display block når der animeres
+=======
+
+// Set the content to display block when animation starts
+.t-dropdown__content.ng-animate {
+>>>>>>> origin/emil-jammer
 	display: block;
-	transition: all 5s;
 }
+<<<<<<< HEAD
 .t-dropdown__content--open {
 	// Og når den er åben
 	display: block;
@@ -54,4 +52,33 @@
 }
 .t-dropdown__content--open-remove-active {
 	opacity: 0;
+=======
+
+// Keep the content in display block as long is it's visible
+.t-dropdown__content--open {
+	display: block;
+}
+
+
+// Fade animation
+.t-dropdown-animation--fade {
+
+	.t-dropdown__content.ng-animate {
+		transition: all .2s ease-in-out;
+	}
+
+	#{$dropdown-animation-enter} {
+		opacity: 0;
+	}
+	#{$dropdown-animation-enter-active} {
+		opacity: 1;
+	}
+	#{$dropdown-animation-leave} {
+		opacity: 1;
+	}
+	#{$dropdown-animation-leave-active} {
+		opacity: 0;
+	}
+
+>>>>>>> origin/emil-jammer
 }
