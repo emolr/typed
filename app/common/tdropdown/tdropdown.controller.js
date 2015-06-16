@@ -21,6 +21,21 @@
 			toggleActiveClass: 't-dropdown__toggle--active'
 		};
 
+		var lol = {
+			wrapperClass: 't-dropdown',
+			wrapperOpenClass: 't-dropdown--open',
+			wrapperAppendToBodyClass: 't-dropdown--apend-to-body',
+			wrapperAppendToElementClass: 't-dropdown--append-to-element',
+
+			toggleClass: 't-dropdown__toggle',
+			toggleActiveClass: 't-dropdown__active',
+
+			contentClass: 't-dropdown__content',
+			contentOpenClass: 't-dropdown__content--open',
+		};
+		
+		// position..?
+
 		/*
 			Since this directive does not use an isolate scope, we create
 			one anyways, but in a much lighter version.
@@ -51,7 +66,7 @@
 		// Initialization
 		function activate(element) {
 
-			if(vm.dropdownMenu && $attrs.tDropdownTemplateUrl) {
+			if(vm.dropdownContent && $attrs.tDropdownTemplateUrl) {
 				throw 'Please use either an inline directive or a template-url, not both.';
 			}
 
@@ -73,12 +88,12 @@
 
 			appendToBody = angular.isDefined($attrs.tDropdownAppendToBody);
 
-			if ( appendToBody && vm.dropdownMenu ) {
+			if ( appendToBody && vm.dropdownContent ) {
 
-				$document.find('body').append( vm.dropdownMenu );
+				$document.find('body').append(vm.dropdownContent);
 
 				element.on('$destroy', function handleDestroyEvent() {
-					vm.dropdownMenu.remove();
+					vm.dropdownContent.remove();
 				});
 
 			}
@@ -90,12 +105,12 @@
 			return childScope.isOpen;
 		}, function(isOpen, wasOpen) {
 
-			if ( appendToBody && vm.dropdownMenu ) {
+			if ( appendToBody && vm.dropdownContent ) {
 
 				// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
+				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true);
 
-				vm.dropdownMenu.css({
+				vm.dropdownContent.css({
 					top: pos.top + 'px',
 					left: pos.left + 'px',
 					position: 'absolute'
@@ -108,8 +123,8 @@
 			// Toggle element
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.toggleElement, config.toggleActiveClass);
 
-			if(vm.dropdownMenu && !$attrs.templateUrl) {
-				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownMenu, config.menuOpenClass);
+			if(vm.dropdownContent && !$attrs.templateUrl) {
+				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownContent, config.menuOpenClass);
 			}
 
 			// It should open
@@ -127,14 +142,14 @@
 							if(appendToBody) {
 								$animate.enter(dropdownElement, document.body, document.body.lastChild);
 
-								vm.dropdownMenu = dropdownElement;
+								vm.dropdownContent = dropdownElement;
 
-								vm.dropdownMenu.addClass(config.menuOpenClass);
+								vm.dropdownContent.addClass(config.menuOpenClass);
 
 								// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownMenu, 'bottom-left', true);
+								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true);
 
-								vm.dropdownMenu.css({
+								vm.dropdownContent.css({
 									top: pos.top + 'px',
 									left: pos.left + 'px',
 									position: 'absolute'
@@ -157,7 +172,7 @@
 					if(templateScope) {
 						// Destroy the template scope, and animate the menu out
 						templateScope.$destroy();
-						$animate.leave(vm.dropdownMenu);
+						$animate.leave(vm.dropdownContent);
 					}
 				}
 
