@@ -5,9 +5,9 @@
 		</button>
 	</div>
 
-    <ul class="book__list book__list--horizontal">
-        <li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
-            <div class="book__actions">
+	<ul class="book__list book__list--horizontal">
+		<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
+			<div class="book__actions">
 
 				<!-- Templated Dropdown -->
 				<div t-dropdown class="dropdown t-dropdown t-dropdown-animation--fade" ng-animate-children t-dropdown-append-to-body="true" t-dropdown-template-url="dropdown.html">
@@ -21,7 +21,7 @@
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						inline
 					</button>
-					<ul role="menu" t-dropdown-content class="t-dropdown__content">
+					<ul role="menu" t-dropdown-menu class="t-dropdown__content">
 						<li><a href="#">Action in Template</a></li>
 						<li><a href="#">Another action in Template</a></li>
 						<li><a href="#">Something else here</a></li>

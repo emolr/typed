@@ -34,6 +34,7 @@
 'overview',
 'animateto',
 'toolbar',
+'tgrunticon',
 'navigatable',
 'tDropdown',
 'tPositionizer',
