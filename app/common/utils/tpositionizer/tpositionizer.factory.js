@@ -43,7 +43,8 @@
 			};
 		}
 
-		function positionElements(hostEl, targetEl, positionStr, appendToBody) {
+		function positionElements(hostEl, targetEl, positionStr, appendToBody, forceLayout) {
+
 			var positionStrParts = positionStr.split('-');
 			var pos0 = positionStrParts[0], pos1 = positionStrParts[1] || 'center';
 
@@ -54,8 +55,23 @@
 
 			hostElPos = appendToBody ? offset(hostEl) : position(hostEl);
 
-			targetElWidth = targetEl.prop('offsetWidth');
-			targetElHeight = targetEl.prop('offsetHeight');
+			if(forceLayout) {
+				var ghostEl = targetEl.clone(false);
+				ghostEl.css({
+					visibility: 'hidden',
+					position: 'absolute'
+				});
+				ghostEl.appendTo('body');
+				targetElWidth = ghostEl.prop('offsetWidth');
+				targetElHeight = ghostEl.prop('offsetHeight');
+				ghostEl.remove();
+			} else {
+				targetElWidth = targetEl.prop('offsetWidth');
+				targetElHeight = targetEl.prop('offsetHeight');
+			}
+
+
+			console.log(targetElWidth, targetElHeight)
 
 			var shiftWidth = {
 				center: function () {
@@ -133,6 +149,7 @@
 			}
 			return offsetParent || docDomEl;
 		}
+
 	}
 
 })();

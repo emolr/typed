@@ -147,17 +147,17 @@
 								$animate.enter(dropdownElement, document.body, document.body.lastChild);
 
 								vm.dropdownContent = dropdownElement;
-
 								vm.dropdownContent.addClass(config.contentOpenClass);
 
 								// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true);
+								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true, true);
 
 								vm.dropdownContent.css({
 									top: pos.top + 'px',
 									left: pos.left + 'px',
 									position: 'absolute'
 								});
+
 							} else {
 								$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
 							}
