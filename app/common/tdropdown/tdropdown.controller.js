@@ -14,26 +14,28 @@
 		/*jshint validthis: true */
 		var vm = this;
 
-		// This could be moved to a provider
 		var config = {
-			openClass: 't-dropdown--open',
-			menuOpenClass: 't-dropdown__content--open',
-			toggleActiveClass: 't-dropdown__toggle--active'
-		};
-
-		var lol = {
-			wrapperClass: 't-dropdown',
 			wrapperOpenClass: 't-dropdown--open',
 			wrapperAppendToBodyClass: 't-dropdown--apend-to-body',
 			wrapperAppendToElementClass: 't-dropdown--append-to-element',
 
-			toggleClass: 't-dropdown__toggle',
 			toggleActiveClass: 't-dropdown__active',
 
-			contentClass: 't-dropdown__content',
-			contentOpenClass: 't-dropdown__content--open',
+			contentOpenClass: 't-dropdown__content--open'
 		};
-		
+
+		var getAttributeClassConfig = $parse($attrs.tDropdownClassConfig);
+
+		// Overwrite config if the user has overwritten any key via an attribute
+		if(getAttributeClassConfig($scope)) {
+			var userConfig = getAttributeClassConfig($scope);
+			for(var i in userConfig) {
+				if(config.hasOwnProperty(i)) {
+					config[i] = userConfig[i];
+				}
+			}
+		}
+
 		// position..?
 
 		/*
@@ -88,6 +90,8 @@
 
 			appendToBody = angular.isDefined($attrs.tDropdownAppendToBody);
 
+			vm.$element.addClass(appendToBody ? config.wrapperAppendToBodyClass : config.wrapperAppendToElementClass);
+
 			if ( appendToBody && vm.dropdownContent ) {
 
 				$document.find('body').append(vm.dropdownContent);
@@ -119,12 +123,12 @@
 
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
 			// Root element (the "wrapper")
-			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.openClass);
+			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.wrapperOpenClass);
 			// Toggle element
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.toggleElement, config.toggleActiveClass);
 
 			if(vm.dropdownContent && !$attrs.templateUrl) {
-				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownContent, config.menuOpenClass);
+				$animate[isOpen ? 'addClass' : 'removeClass'](vm.dropdownContent, config.contentOpenClass);
 			}
 
 			// It should open
@@ -144,7 +148,7 @@
 
 								vm.dropdownContent = dropdownElement;
 
-								vm.dropdownContent.addClass(config.menuOpenClass);
+								vm.dropdownContent.addClass(config.contentOpenClass);
 
 								// TODO: Bottom left? Skal du sq da ik bestemme din cunt
 								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true);
