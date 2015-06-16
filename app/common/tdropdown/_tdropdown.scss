@@ -3,11 +3,6 @@
 // Developer: Two cool dudes from Copenhagen
 
 
-<<<<<<< HEAD
-// Dette er til inline
-.t-dropdown__content {
-	// Når den ikke vises, display den totalt none
-=======
 // Variables
 // ––––––––––––––––––––––––––––––––––––––––––––
 
@@ -20,39 +15,14 @@ $dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dro
 
 // Base component structure
 .t-dropdown__content {
->>>>>>> origin/emil-jammer
 	display: none;
 	z-index: 999; // Should always be on top of content
 }
-<<<<<<< HEAD
-.t-dropdown__content.ng-animate {
-	// Sæt til display block når der animeres
-=======
 
 // Set the content to display block when animation starts
 .t-dropdown__content.ng-animate {
->>>>>>> origin/emil-jammer
 	display: block;
 }
-<<<<<<< HEAD
-.t-dropdown__content--open {
-	// Og når den er åben
-	display: block;
-}
-
-.t-dropdown__content--open-add {
-	opacity: 0;
-}
-.t-dropdown__content--open-add-active {
-	opacity: 1;
-}
-
-.t-dropdown__content--open-remove {
-	opacity: 1;
-}
-.t-dropdown__content--open-remove-active {
-	opacity: 0;
-=======
 
 // Keep the content in display block as long is it's visible
 .t-dropdown__content--open {
@@ -80,5 +50,4 @@ $dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dro
 		opacity: 0;
 	}
 
->>>>>>> origin/emil-jammer
 }

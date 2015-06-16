@@ -15,6 +15,14 @@
 		function activate() {
 
 		};
+
+		vm.viewSpecificDropdownClasses = {
+			toggleClass: 'tis__toggle',
+			toggleActiveClass: 'ttis__active',
+
+			contentClass: 'hest__content',
+			contentOpenClass: 'hest__content--open'
+		}
 	};
 
 })();
