@@ -3,10 +3,10 @@
 
 	angular
 		.module('tDropdown')
-	  	.directive('tDropdownMenu', tDropdownMenu);
+	  	.directive('tDropdownContent', tDropdownContent);
 
 	/* @ngInject */
-	function tDropdownMenu() {
+	function tDropdownContent() {
 		var directive = {
 			require: '?^tDropdown',
 			link: link,
@@ -21,7 +21,7 @@
 				return;
 			}
 
-			tDropdownController.dropdownMenu = element;
+			tDropdownController.dropdownContent = element;
 
 		}
 	}
