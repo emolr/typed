@@ -1,0 +1,57 @@
+// Buttons.scss
+// ===========================================
+
+// Dependencies
+// Foundation mixing button
+
+
+// Variables
+$button-default-bg: 				#4a4a4a !default;
+$button-clear-default-color: 		#4a4a4a !default;
+
+$button-padding-small: 				rem-calc(6) !default;
+$button-padding-medium: 			rem-calc(10) !default;
+$button-padding-large: 				rem-calc(16) !default;
+
+$button-font-size-small:			rem-calc(10) !default;
+$button-font-size-medium:			rem-calc(16) !default;
+$button-font-size-large:			rem-calc(22) !default;
+
+
+// Default button style
+
+.button {
+	@include button(
+		$padding: $button-padding-medium,
+		$bg: $button-default-bg,
+		$radius: 2px
+	);
+
+	font-size: $button-font-size-medium;
+	color: #fff;
+}
+
+
+// Clear button style
+
+.button.button--clear {
+	background: transparent;
+	color: $button-clear-default-color;
+
+	.no-touch &:hover {
+		color: darken($button-clear-default-color, 20%);
+	}
+}
+
+
+// Button sizes
+
+.button--small {
+	@include button-size($button-padding-small);
+	font-size: $button-font-size-small;
+}
+
+.button--large {
+	@include button-size($button-padding-large);
+	font-size: $button-font-size-large;
+}

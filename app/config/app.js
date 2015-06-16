@@ -33,7 +33,8 @@
 'single',
 'overview',
 'animateto',
-'toolbar'
+'toolbar',
+'tgrunticon',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();
