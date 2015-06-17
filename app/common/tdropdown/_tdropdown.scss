@@ -5,13 +5,7 @@
 
 // Variables
 // ––––––––––––––––––––––––––––––––––––––––––––
-
-// Dropdown content animation classes
-$dropdown-animation-enter: 			'.t-dropdown__content.ng-enter, .t-dropdown__content--open-add';
-$dropdown-animation-enter-active: 	'.t-dropdown__content.ng-enter-active, .t-dropdown__content--open-add-active';
-$dropdown-animation-leave: 			'.t-dropdown__content.ng-leave, .t-dropdown__content--open-remove';
-$dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dropdown__content--open-remove-active';
-
+$t-dropdown-transition: all .2s ease-in-out;
 
 // Base component structure
 .t-dropdown__content {
@@ -29,24 +23,31 @@ $dropdown-animation-leave-active: 	'.t-dropdown__content.ng-leave-active, .t-dro
 	display: block;
 }
 
-
 // Fade animation
 .t-dropdown-animation--fade {
 
-	.t-dropdown__content.ng-animate {
-		transition: all .2s ease-in-out;
+	&.ng-animate {
+		transition: $t-dropdown-transition;
 	}
 
-	#{$dropdown-animation-enter} {
+	&.ng-enter,
+	&.t-dropdown__content--open-add {
 		opacity: 0;
 	}
-	#{$dropdown-animation-enter-active} {
+
+	&.ng-enter-active,
+	&.t-dropdown__content--open-add-active {
 		opacity: 1;
 	}
-	#{$dropdown-animation-leave} {
+
+	&.ng-leave,
+	&.t-dropdown__content--open-remove {
 		opacity: 1;
 	}
-	#{$dropdown-animation-leave-active} {
+
+	&.ng-leave-active,
+	&.t-dropdown__content--open-remove-active {
 		opacity: 0;
 	}
+
 }

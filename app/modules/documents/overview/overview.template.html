@@ -15,7 +15,7 @@
                      t-dropdown-content-position="center-center"
                      ng-animate-children
                      t-dropdown-template-url="dropdown.html"
-                     class="t-dropdown t-dropdown-animation--fade">
+                     class="t-dropdown">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						template
 					</button>
@@ -25,11 +25,11 @@
 				<div t-dropdown
                      t-dropdown-class-config="overview.viewSpecificDropdownClasses"
                      ng-animate-children
-                     class="t-dropdown t-dropdown-animation--fade">
+                     class="t-dropdown">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						inline
 					</button>
-					<ul role="menu" t-dropdown-content class="t-dropdown__content">
+					<ul role="menu" t-dropdown-content class="t-dropdown__content t-dropdown-animation--fade">
 						<li><a href="#">Action in Template</a></li>
 						<li><a href="#">Another action in Template</a></li>
 						<li><a href="#">Something else here</a></li>
@@ -49,7 +49,7 @@
 </div>
 <!--TODO: Move this to a file?! I dont really know if it makes sense tbh... -->
 <script type="text/ng-template" id="dropdown.html">
-	<ul role="menu" class="t-dropdown__content">
+	<ul role="menu" class="t-dropdown__content t-dropdown-animation--fade">
 		<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>
 		<li><a href="#">Action in Template</a></li>
 		<li><a href="#">Another action in Template</a></li>
