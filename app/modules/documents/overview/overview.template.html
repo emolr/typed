@@ -10,14 +10,21 @@
 			<div class="book__actions">
 
 				<!-- Templated Dropdown -->
-				<div t-dropdown class="dropdown t-dropdown t-dropdown-animation--fade" ng-animate-children t-dropdown-append-to-body="true" t-dropdown-template-url="dropdown.html">
+				<div t-dropdown
+                     t-dropdown-append-to-body="true"
+                     ng-animate-children
+                     t-dropdown-template-url="dropdown.html"
+                     class="t-dropdown t-dropdown-animation--fade">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						template
 					</button>
 				</div>
 
 				<!-- Inline Dropdown -->
-				<div t-dropdown t-dropdown-class-config="overview.viewSpecificDropdownClasses" class="t-dropdown t-dropdown-animation--fade" ng-animate-children>
+				<div t-dropdown
+                     t-dropdown-class-config="overview.viewSpecificDropdownClasses"
+                     ng-animate-children
+                     class="t-dropdown t-dropdown-animation--fade">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						inline
 					</button>
