@@ -23,7 +23,9 @@
 
 			toggleActiveClass: 't-dropdown__active',
 
-			contentOpenClass: 't-dropdown__content--open'
+			contentOpenClass: 't-dropdown__content--open',
+			contentItemClass: 't-dropdown__content-item',
+			contentItemActiveClass: 't-dropdown__content-item--active'
 		};
 
 		var getAttributeClassConfig = $parse($attrs.tDropdownClassConfig);
@@ -53,6 +55,8 @@
 
 		var appendToBody = false;
 
+		var enableContentNavigation = false;
+
 		// Element Attribute getter/setter
 		var getAttributeIsOpen;
 		var setAttributeIsOpen = angular.noop;
@@ -66,6 +70,7 @@
 		childScope.getToggleElement 	= getToggleElement;
 		childScope.getAutoClose 		= getAutoClose;
 		childScope.getElement			= getElement;
+		childScope.getContentElement	= getContentElement;
 		childScope.focusToggleElement	= focusToggleElement;
 
 		// Initialization
@@ -90,6 +95,9 @@
 				});
 
 			}
+
+			// Should the content be navigatable and focus-able?
+			enableContentNavigation = ($attrs.tDropdownContentNavigatable === 'true');
 
 			appendToBody = angular.isDefined($attrs.tDropdownAppendToBody);
 
@@ -168,14 +176,34 @@
 							} else {
 								$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
 							}
+
+							if(enableContentNavigation) {
+								vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
+								vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
+								vm.activeContentItem.addClass(config.contentItemActiveClass);
+								$document.bind('keydown', _bindNavigationKeys);
+							}
+
 						});
 
 					});
 				}
-				// Set focus on the toggle element (EMIL, DET ER HER DU SKAL JAMME MED DIN NAVIGATABLE)
-				childScope.focusToggleElement();
+				// If the content is not navigatable, we focus the toggle element
+				if(!enableContentNavigation) {
+					childScope.focusToggleElement();
+				}
+
+				if(enableContentNavigation && !appendToBody) {
+					vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
+					vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
+					vm.activeContentItem.addClass(config.contentItemActiveClass);
+					$document.bind('keydown', _bindNavigationKeys);
+				}
+
 				// Tell our service to register event listeners etc.
 				tDropdownService.open(childScope);
+
+
 			} else {
 
 			// It should close
@@ -186,6 +214,9 @@
 						$animate.leave(vm.dropdownContent);
 					}
 				}
+
+				vm.dropdownContentItems = vm.activeContentItem = undefined;
+				$document.unbind('keydown', _bindNavigationKeys);
 
 				// Tell our service to deregister event listeners etc.
 				tDropdownService.close(childScope);
@@ -230,12 +261,41 @@
 			return vm.$element;
 		}
 
+		function getContentElement() {
+			return vm.dropdownContent;
+		}
+
 		function focusToggleElement() {
 			// If the DOM toggleElement is defined, focus it
 			if(vm.toggleElement) {
 				vm.toggleElement[0].focus();
 			}
 		}
+
+		function focusContentElement(element) {
+			element = angular.element(element);
+			element.find('a').focus();
+			return element;
+		}
+
+		function _bindNavigationKeys(event) {
+
+			if(event.which === 40) {
+				if(vm.activeContentItem.next().length > 0) {
+					vm.activeContentItem.removeClass(config.contentItemActiveClass);
+					vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
+					vm.activeContentItem.addClass(config.contentItemActiveClass);
+				}
+			}
+			if(event.which === 38) {
+				if(vm.activeContentItem.prev().length > 0) {
+					vm.activeContentItem.removeClass(config.contentItemActiveClass);
+					vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
+					vm.activeContentItem.addClass(config.contentItemActiveClass);
+				}
+			}
+		}
+
 	}
 
 })();
