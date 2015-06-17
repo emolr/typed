@@ -45,8 +45,7 @@
 
 		function positionElements(hostEl, targetEl, positionStr, appendToBody, forceLayout) {
 
-			var positionStrParts = positionStr.split('-');
-			var pos0 = positionStrParts[0], pos1 = positionStrParts[1] || 'center';
+			var pos = positionStr;
 
 			var hostElPos,
 				targetElWidth,
@@ -59,7 +58,8 @@
 				var ghostEl = targetEl.clone(false);
 				ghostEl.css({
 					visibility: 'hidden',
-					position: 'absolute'
+					position: 'absolute',
+					left: '-9999px'
 				});
 				ghostEl.appendTo('body');
 				targetElWidth = ghostEl.prop('offsetWidth');
@@ -69,9 +69,6 @@
 				targetElWidth = targetEl.prop('offsetWidth');
 				targetElHeight = targetEl.prop('offsetHeight');
 			}
-
-
-			console.log(targetElWidth, targetElHeight)
 
 			var shiftWidth = {
 				center: function () {
@@ -97,29 +94,62 @@
 				}
 			};
 
-			switch (pos0) {
-				case 'right':
+			/*
+				hor - ver
+			 */
+			switch(pos) {
+				case 'left-bottom':
 					targetElPos = {
-						top: shiftHeight[pos1](),
-						left: shiftWidth[pos0]()
+						left: shiftWidth['left'](),
+						top: shiftHeight['bottom']()
 					};
 					break;
-				case 'left':
+				case 'center-bottom':
 					targetElPos = {
-						top: shiftHeight[pos1](),
-						left: hostElPos.left - targetElWidth
+						left: shiftWidth['center'](),
+						top: shiftHeight['bottom']()
 					};
 					break;
-				case 'bottom':
+				case 'right-bottom':
 					targetElPos = {
-						top: shiftHeight[pos0](),
-						left: shiftWidth[pos1]()
+						left: shiftWidth['right'](),
+						top: shiftHeight['bottom']()
 					};
 					break;
-				default:
+				case 'left-center':
 					targetElPos = {
-						top: hostElPos.top - targetElHeight,
-						left: shiftWidth[pos1]()
+						left: shiftWidth['left'](),
+						top: shiftHeight['center']()
+					};
+					break;
+				case 'center-center':
+					targetElPos = {
+						left: shiftWidth['center'](),
+						top: shiftHeight['center']()
+					};
+					break;
+				case 'right-center':
+					targetElPos = {
+						left: shiftWidth['right'](),
+						top: shiftHeight['center']()
+					};
+					break;
+				case 'left-top':
+					targetElPos = {
+						left: shiftWidth['left'](),
+						top: shiftHeight['top']()
+					};
+					break;
+				case 'center-top':
+					targetElPos = {
+						left: shiftWidth['center'](),
+						top: shiftHeight['top']()
+					};
+					break;
+				case 'right-top':
+					targetElPos = {
+						left: shiftWidth['right'](),
+						top: shiftHeight['top']()
 					};
 					break;
 			}

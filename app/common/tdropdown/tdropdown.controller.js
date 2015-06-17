@@ -36,7 +36,16 @@
 			}
 		}
 
-		// position..?
+		/*
+			When appending the content to the body, we need to position it absolutely.
+
+			A dash seperated string determines where to position the element, the syntax is:
+			[horizontal-position]-[vertical-position]
+
+			For horizontal the following positions are available: left, center, right
+			For vertical the following positions are available: top, center, bottom
+		 */
+		var appendToBodyPosition = $attrs.tDropdownContentPosition || 'left-bottom';
 
 		/*
 			Since this directive does not use an isolate scope, we create
@@ -111,8 +120,7 @@
 
 			if ( appendToBody && vm.dropdownContent ) {
 
-				// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true);
+				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, appendToBodyPosition, true, true);
 
 				vm.dropdownContent.css({
 					top: pos.top + 'px',
@@ -149,8 +157,7 @@
 								vm.dropdownContent = dropdownElement;
 								vm.dropdownContent.addClass(config.contentOpenClass);
 
-								// TODO: Bottom left? Skal du sq da ik bestemme din cunt
-								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, 'bottom-left', true, true);
+								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, appendToBodyPosition, true, true);
 
 								vm.dropdownContent.css({
 									top: pos.top + 'px',
