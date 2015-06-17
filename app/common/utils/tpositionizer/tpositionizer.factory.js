@@ -1,6 +1,16 @@
 (function () {
 	'use strict';
 
+	/**
+	 * @ngdoc service
+	 * @name tPositionizer
+	 * @author Dennis Haulund Nielsen
+	 *
+	 * @description
+	 * Factory that constructs objects for use when reading/writing positioning for DOM nodes.
+	 * Based on https://github.com/angular-ui/bootstrap/blob/master/src/position/position.js
+	 */
+
 	angular
 		.module('tPositionizer')
 		.factory('tPositionizer', tPositionizer);
@@ -14,6 +24,17 @@
 			positionElements: positionElements
 		};
 
+		/**
+		 * @ngdoc method
+		 * @name tPositionizer.position
+		 * @kind function
+		 *
+		 * @description
+		 * Returns a read-only equivalent of jQuery's position function
+		 *
+		 * @param {DOMElement} el
+		 * @returns {Object}
+		 */
 		function position(el) {
 			var elBCR = offset(el);
 			var offsetParentBCR = { top: 0, left: 0 };
@@ -33,6 +54,17 @@
 			};
 		}
 
+		/**
+		 * @ngdoc method
+		 * @name tPositionizer.offset
+		 * @kind function
+		 *
+		 * @description
+		 * Returns a read-only equivalent of jQuery's offset function
+		 *
+		 * @param {DOMElement} el
+		 * @returns {Object}
+		 */
 		function offset(el) {
 			var boundingClientRect = el[0].getBoundingClientRect();
 			return {
@@ -43,7 +75,28 @@
 			};
 		}
 
+		/**
+		 * @ngdoc method
+		 * @name tPositionizer.positionElements
+		 * @kind function
+		 *
+		 * @description
+		 * Returns an object with coordinates for the targetEl in relation to the hostEl
+		 *
+		 * A dash seperated string determines where to position the element, the syntax is:
+		 * [horizontal-position]-[vertical-position]
+		 * For horizontal the following positions are available: left, center, right
+		 * For vertical the following positions are available: top, center, bottom
+		 *
+		 * @param {DOMElement} hostEl
+		 * @param {DOMElement} targetEl
+		 * @param {String} positionStr
+		 * @param {Boolean} appendToBody
+		 * @param {Boolean} forceLayout
+		 * @returns {Object}
+		 */
 		function positionElements(hostEl, targetEl, positionStr, appendToBody, forceLayout) {
+			/*jshint maxcomplexity:false */
 
 			var pos = positionStr;
 

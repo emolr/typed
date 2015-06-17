@@ -12,6 +12,8 @@
 		tPositionizer
 	) {
 		/*jshint validthis: true */
+		/*jshint maxcomplexity:false */
+
 		var vm = this;
 
 		var config = {
@@ -29,22 +31,14 @@
 		// Overwrite config if the user has overwritten any key via an attribute
 		if(getAttributeClassConfig($scope)) {
 			var userConfig = getAttributeClassConfig($scope);
-			for(var i in userConfig) {
-				if(config.hasOwnProperty(i)) {
-					config[i] = userConfig[i];
+			for(var key in userConfig) {
+				if(userConfig.hasOwnProperty(key)) {
+					config[key] = userConfig[key];
 				}
 			}
 		}
 
-		/*
-			When appending the content to the body, we need to position it absolutely.
-
-			A dash seperated string determines where to position the element, the syntax is:
-			[horizontal-position]-[vertical-position]
-
-			For horizontal the following positions are available: left, center, right
-			For vertical the following positions are available: top, center, bottom
-		 */
+		// tPositionizer position combination
 		var appendToBodyPosition = $attrs.tDropdownContentPosition || 'left-bottom';
 
 		/*
@@ -116,11 +110,14 @@
 		// Watch the childscope isOpen boolean
 		childScope.$watch(function() {
 			return childScope.isOpen;
-		}, function(isOpen, wasOpen) {
+		}, function(isOpen) {
 
 			if ( appendToBody && vm.dropdownContent ) {
 
-				var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, appendToBodyPosition, true, true);
+				var pos = tPositionizer.positionElements(
+					vm.$element,
+					vm.dropdownContent,
+					appendToBodyPosition, true, true);
 
 				vm.dropdownContent.css({
 					top: pos.top + 'px',
@@ -157,7 +154,10 @@
 								vm.dropdownContent = dropdownElement;
 								vm.dropdownContent.addClass(config.contentOpenClass);
 
-								var pos = tPositionizer.positionElements(vm.$element, vm.dropdownContent, appendToBodyPosition, true, true);
+								var pos = tPositionizer.positionElements(
+									vm.$element,
+									vm.dropdownContent,
+									appendToBodyPosition, true, true);
 
 								vm.dropdownContent.css({
 									top: pos.top + 'px',
