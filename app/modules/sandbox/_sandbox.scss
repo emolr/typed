@@ -1,0 +1,18 @@
+.sandbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100vh;
+}
+.t-dropdown.debug {
+	width: 200px;
+	height: 150px;
+
+	border: 1px solid red;
+}
+
+.t-dropdown__content.debug {
+	border: 1px solid green;
+}

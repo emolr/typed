@@ -38,6 +38,8 @@
 'navigatable',
 'tDropdown',
 'tPositionizer',
+'sandbox',
+'tdebugbar',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

@@ -1,0 +1,15 @@
+t-debugbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+}
+.t-debugbar {
+	min-width: 20px;
+	min-height: 20px;
+
+	background: red;
+}
+.t-debugbar--open {
+	background: #fff;
+}

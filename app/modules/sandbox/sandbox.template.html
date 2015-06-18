@@ -1,0 +1,24 @@
+<div class="sandbox">
+
+    <div t-dropdown
+         t-dropdown-append-to-body="true"
+         t-dropdown-content-position="right-center"
+         t-dropdown-content-navigatable="true"
+         ng-animate-children
+         t-dropdown-template-url="dropdown.html"
+         class="t-dropdown debug">
+        <button t-dropdown-toggle class="t-dropdown__toggle">
+            template
+        </button>
+    </div>
+    <script type="text/ng-template" id="dropdown.html">
+        <ul role="menu" class="t-dropdown__content t-dropdown-animation--fade debug">
+            <li class="t-dropdown__content-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
+            <li class="t-dropdown__content-item"><a href="#">Action in Template</a></li>
+            <li class="t-dropdown__content-item"><a href="#">Another action in Template</a></li>
+            <li class="t-dropdown__content-item"><a href="#">Something else here</a></li>
+            <li class="t-dropdown__content-item"><a href="#">Separated link in Template</a></li>
+        </ul>
+    </script>
+
+</div>
