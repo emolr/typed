@@ -31,12 +31,15 @@
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						inline
 					</button>
-					<ul role="menu" t-dropdown-content class="t-dropdown__content t-dropdown-animation--fade">
-						<li class="t-dropdown__content-item"><a href="#">Action in Template</a></li>
-						<li class="t-dropdown__content-item"><a href="#">Another action in Template</a></li>
-						<li class="t-dropdown__content-item"><a href="#">Something else here</a></li>
-						<li class="t-dropdown__content-item"><a href="#">Separated link in Template</a></li>
-					</ul>
+					<div t-dropdown-content class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default">
+						<ul class="t-dropdown__menu">
+							<li class="t-dropdown__menu-item"><a href="#">Action in Template</a></li>
+							<li class="t-dropdown__menu-item"><a href="#">Another action in Template</a></li>
+							<li class="t-dropdown__menu-divider"></li>
+							<li class="t-dropdown__menu-item"><a href="#">Something else here</a></li>
+							<li class="t-dropdown__menu-item"><a href="#">Separated link in Template</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 

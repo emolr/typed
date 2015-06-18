@@ -24,8 +24,8 @@
 			toggleActiveClass: 't-dropdown__active',
 
 			contentOpenClass: 't-dropdown__content--open',
-			contentItemClass: 't-dropdown__content-item',
-			contentItemActiveClass: 't-dropdown__content-item--active'
+			contentItemClass: 't-dropdown__menu-item',
+			contentItemActiveClass: 't-dropdown__menu-item--active'
 		};
 
 		var getAttributeClassConfig = $parse($attrs.tDropdownClassConfig);
@@ -283,14 +283,28 @@
 			if(event.which === 40) {
 				if(vm.activeContentItem.next().length > 0) {
 					vm.activeContentItem.removeClass(config.contentItemActiveClass);
-					vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
+
+					// Skip the next item if it is not a menu item
+					if (!vm.activeContentItem.next().hasClass(config.contentItemClass)) {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.next().next());
+					} else {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
+					}
+
 					vm.activeContentItem.addClass(config.contentItemActiveClass);
 				}
 			}
 			if(event.which === 38) {
 				if(vm.activeContentItem.prev().length > 0) {
 					vm.activeContentItem.removeClass(config.contentItemActiveClass);
-					vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
+
+					// Skip the prev item if it is not a menu item
+					if (!vm.activeContentItem.prev().hasClass(config.contentItemClass)) {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.prev().prev());
+					} else {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
+					}
+
 					vm.activeContentItem.addClass(config.contentItemActiveClass);
 				}
 			}
