@@ -1,16 +1,479 @@
 <div class="sandbox">
 
-    <div t-dropdown
-         t-dropdown-append-to-body="true"
-         t-dropdown-content-position="right-center"
-         t-dropdown-content-navigatable="true"
-         ng-animate-children
-         t-dropdown-template-url="dropdown.html"
-         class="t-dropdown debug">
-        <button t-dropdown-toggle class="t-dropdown__toggle">
-            template
-        </button>
+    <div class="row">
+        <div class="small-12 columns">
+            <button ng-click="sandbox.state = 'leftTop'">left top</button>
+            <button ng-click="sandbox.state = 'leftCenter'">left center</button>
+            <button ng-click="sandbox.state = 'leftBottom'">left bottom</button>
+    
+            <button ng-click="sandbox.state = 'centerTop'">center top</button>
+            <button ng-click="sandbox.state = 'centerCenter'">center center</button>
+            <button ng-click="sandbox.state = 'centerBottom'">center bottom</button>
+
+            <button ng-click="sandbox.state = 'rightTop'">right top</button>
+            <button ng-click="sandbox.state = 'rightCenter'">right center</button>
+            <button ng-click="sandbox.state = 'rightBottom'">right bottom</button>
+
+        </div>
     </div>
+
+    <div ng-show="sandbox.state === 'rightBottom'">
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-bottom|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-bottom|inside-inside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-bottom|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-bottom|inside-outside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-bottom|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-bottom|outside-outside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-bottom|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-bottom|outside-inside
+            </button>
+        </div>
+
+    </div>
+    
+    <div ng-show="sandbox.state === 'rightCenter'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-center|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-center|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-center|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-center|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-center|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-center|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-center|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-center|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    <div ng-show="sandbox.state === 'rightTop'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-top|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-top|inside-inside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-top|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-top|inside-outside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-top|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-top|outside-outside
+            </button>
+        </div>
+
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="right-top|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                right-top|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    <div ng-show="sandbox.state === 'leftBottom'">
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-bottom|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-bottom|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-bottom|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-bottom|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-bottom|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-bottom|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-bottom|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-bottom|outside-inside
+            </button>
+        </div>
+    
+    </div>
+    
+    <div ng-show="sandbox.state === 'leftCenter'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-center|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-center|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-center|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-center|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-center|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-center|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-center|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-center|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    <div ng-show="sandbox.state === 'leftTop'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-top|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-top|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-top|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-top|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-top|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-top|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="left-top|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                left-top|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    <div ng-show="sandbox.state === 'centerBottom'">
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-bottom|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-bottom|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-bottom|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-bottom|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-bottom|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-bottom|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-bottom|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-bottom|outside-inside
+            </button>
+        </div>
+    
+    </div>
+    
+    <div ng-show="sandbox.state === 'centerCenter'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-center|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-center|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-center|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-center|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-center|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-center|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-center|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-center|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    <div ng-show="sandbox.state === 'centerTop'">
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-top|inside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-top|inside-inside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-top|inside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-top|inside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-top|outside-outside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-top|outside-outside
+            </button>
+        </div>
+        
+        <div t-dropdown
+             t-dropdown-append-to-body="true"
+             t-dropdown-content-position="center-top|outside-inside"
+             t-dropdown-content-navigatable="true"
+             ng-animate-children
+             t-dropdown-template-url="dropdown.html"
+             class="t-dropdown debug">
+            <button t-dropdown-toggle class="t-dropdown__toggle">
+                center-top|outside-inside
+            </button>
+        </div>
+    </div>
+    
+    
     <script type="text/ng-template" id="dropdown.html">
         <ul role="menu" class="t-dropdown__content t-dropdown-animation--fade debug">
             <li class="t-dropdown__content-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>

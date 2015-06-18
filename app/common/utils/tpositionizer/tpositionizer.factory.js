@@ -97,8 +97,15 @@
 		 */
 		function positionElements(hostEl, targetEl, positionStr, appendToBody, forceLayout) {
 			/*jshint maxcomplexity:false */
+			var prePos = positionStr.split('|');
+			var preRules, horRule, verRule;
+			if(prePos.length > 1) {
+				preRules = prePos[1].split('-');
+				horRule = preRules[0];
+				verRule = preRules[1];
+			}
 
-			var pos = positionStr;
+			var pos = prePos[0];
 
 			var hostElPos,
 				targetElWidth,
@@ -128,9 +135,15 @@
 					return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
 				},
 				left: function () {
-					return hostElPos.left;
+					if(horRule === 'inside') {
+						return hostElPos.left;
+					}
+					return hostElPos.left - targetElWidth;
 				},
 				right: function () {
+					if(horRule === 'inside') {
+						return (hostElPos.left + hostElPos.width) - targetElWidth;
+					}
 					return hostElPos.left + hostElPos.width;
 				}
 			};
@@ -140,9 +153,15 @@
 					return hostElPos.top + hostElPos.height / 2 - targetElHeight / 2;
 				},
 				top: function () {
-					return hostElPos.top;
+					if(verRule === 'inside') {
+						return hostElPos.top;
+					}
+					return hostElPos.top - targetElHeight;
 				},
 				bottom: function () {
+					if(verRule === 'inside') {
+						return (hostElPos.top + hostElPos.height) - targetElHeight;
+					}
 					return hostElPos.top + hostElPos.height;
 				}
 			};
