@@ -1,0 +1,53 @@
+// Dropdown
+// ============================================
+// Developer: Two cool dudes from Copenhagen
+
+
+// Variables
+// ––––––––––––––––––––––––––––––––––––––––––––
+$t-dropdown-transition: all .2s ease-in-out;
+
+// Base component structure
+.t-dropdown__content {
+	display: none;
+	z-index: 999; // Should always be on top of content
+}
+
+// Set the content to display block when animation starts
+.t-dropdown__content.ng-animate {
+	display: block;
+}
+
+// Keep the content in display block as long is it's visible
+.t-dropdown__content--open {
+	display: block;
+}
+
+// Fade animation
+.t-dropdown-animation--fade {
+
+	&.ng-animate {
+		transition: $t-dropdown-transition;
+	}
+
+	&.ng-enter,
+	&.t-dropdown__content--open-add {
+		opacity: 0;
+	}
+
+	&.ng-enter-active,
+	&.t-dropdown__content--open-add-active {
+		opacity: 1;
+	}
+
+	&.ng-leave,
+	&.t-dropdown__content--open-remove {
+		opacity: 1;
+	}
+
+	&.ng-leave-active,
+	&.t-dropdown__content--open-remove-active {
+		opacity: 0;
+	}
+
+}

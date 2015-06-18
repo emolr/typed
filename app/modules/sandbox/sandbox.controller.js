@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-		.module('overview')
-		.controller('Overview', Overview);
+		.module('sandbox')
+		.controller('Sandbox', Sandbox);
 
 	/* @ngInject */
-	function Overview($scope) {
+	function Sandbox() {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -14,8 +14,7 @@
 
 		function activate() {
 
-		}
-
-	}
+		};
+	};
 
 })();

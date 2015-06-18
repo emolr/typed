@@ -1,0 +1,35 @@
+<div id="tDebugbar">
+    <div class="t-debugbar"
+         ng-mouseenter="showDebugContent = true"
+         ng-mouseleave="showDebugContent = false" ng-class="{'t-debugbar--open': showDebugContent}">
+        <div class="t-debugbar__content" ng-show="showDebugContent">
+            <div class="row">
+                <div class="small-12 columns">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2">State information:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name:</td>
+                                <td>{{currentState.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Url:</td>
+                                <td>{{currentState.url}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <button ng-hide="isAtSandbox" ng-click="goToSandbox()">Go to sandbox</button>
+                    <button ng-show="isAtSandbox" ng-click="goToRoot('application.document.overview')">Go to root</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

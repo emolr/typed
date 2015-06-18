@@ -38,20 +38,20 @@
 			$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
 				if(debugRouting) {
 					nLogger.error('$stateChangeError', error);
-					$rootScope.currentState = {};
 				}
+				$rootScope.currentState = {};
 			});
 			$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 				if(debugRouting) {
 					nLogger.success('$stateChangeSuccess', toState);
-					$rootScope.currentState = toState;
 				}
+				$rootScope.currentState = toState;
 			});
 			$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
 				if(debugRouting) {
 					nLogger.warning('$stateNotFound', unfoundState);
-					$rootScope.currentState = {};
 				}
+				$rootScope.currentState = {};
 			});
 
 		}
