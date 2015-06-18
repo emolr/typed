@@ -9,37 +9,19 @@
 		<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book__list__book book">
 			<div class="book__actions">
 
-				<!-- Templated Dropdown -->
-				<div t-dropdown
-                     t-dropdown-append-to-body="true"
-                     t-dropdown-content-position="right-bottom"
-                     t-dropdown-content-navigatable="true"
-                     t-dropdown-template-url="dropdown.html"
-                     class="t-dropdown">
-					<button t-dropdown-toggle class="t-dropdown__toggle">
-						template
-					</button>
-				</div>
-
-				<!-- Inline Dropdown -->
 				<div t-dropdown
                      t-dropdown-class-config="overview.viewSpecificDropdownClasses"
                      t-dropdown-content-navigatable="true"
-                     class="t-dropdown">
-					<button t-dropdown-toggle class="t-dropdown__toggle">
-						inline
+                     t-dropdown-append-to-body="true"
+                     t-dropdown-template-url="dropdown.html"
+                     class="t-dropdown right">
+
+					<button t-dropdown-toggle class="t-dropdown__toggle button button--clear">
+						<div class="icon-more" t-grunticon data-grunticon-embed></div>
 					</button>
-					<div t-dropdown-content class="t-dropdown__content t-dropdown-animation--grow t-dropdown--default">
-						<ul class="t-dropdown__menu">
-							<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
-							<li class="t-dropdown__menu-item"><a href="#">Edit</a></li>
-							<li class="t-dropdown__menu-item"><a href="#">Refresh</a></li>
-							<li class="t-dropdown__menu-divider"></li>
-							<li class="t-dropdown__menu-item"><a href="#">Help</a></li>
-							<li class="t-dropdown__menu-item"><a href="#" style="padding-right: 50px;">Feedback</a></li>
-						</ul>
-					</div>
-				</div>
+
+				</div> <!-- /t-dropdown -->
+
 			</div>
 
 			<div class="book-cover book-cover--large"
@@ -55,11 +37,8 @@
 <script type="text/ng-template" id="dropdown.html">
 	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--grow t-dropdown--default">
 		<ul role="menu" class="t-dropdown__menu">
+			<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.selectDocument(document);">Edit</a></li>
 			<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
-			<li class="t-dropdown__menu-item"><a href="#">Action in Template</a></li>
-			<li class="t-dropdown__menu-item"><a href="#">Another action in Template</a></li>
-			<li class="t-dropdown__menu-item"><a href="#">Something else here</a></li>
-			<li class="t-dropdown__menu-item"><a href="#">Separated link in Template</a></li>
 		</ul>
 	</div>
 </script>

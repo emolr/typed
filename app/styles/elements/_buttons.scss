@@ -7,7 +7,7 @@
 
 // Variables
 $button-default-bg: 				#4a4a4a !default;
-$button-clear-default-color: 		#4a4a4a !default;
+$button-clear-default-color: 		#999 !default;
 
 $button-padding-small: 				rem-calc(6) !default;
 $button-padding-medium: 			rem-calc(10) !default;
@@ -27,8 +27,19 @@ $button-font-size-large:			rem-calc(22) !default;
 		$radius: 2px
 	);
 
+	margin-bottom: 0;
+
+	&:focus,
+	&:active {
+		outline: 0;
+	}
+
 	font-size: $button-font-size-medium;
 	color: #fff;
+
+	path {
+		fill: #FFF;
+	}
 }
 
 
@@ -38,8 +49,16 @@ $button-font-size-large:			rem-calc(22) !default;
 	background: transparent;
 	color: $button-clear-default-color;
 
+	path {
+		fill: $button-clear-default-color;
+	}
+
 	.no-touch &:hover {
 		color: darken($button-clear-default-color, 20%);
+
+		path {
+			fill: darken($button-clear-default-color, 30%);
+		}
 	}
 }
 
