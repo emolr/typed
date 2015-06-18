@@ -12,7 +12,7 @@ $t-dropdown-transition: all .2s ease-in-out;
 $t-dropdown-include-classes: true !default;
 
 // Default theme variable
-$t-dropdown-content-padding: 						3px 0 !default;
+$t-dropdown-content-padding: 						6px 0 !default;
 $t-dropdown-content-background-color: 				#fff !default;
 $t-dropdown-content-border-radius: 					3px !default;
 $t-dropdown-content-border: 						false !default;
@@ -51,40 +51,6 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 // Keep the content in display block as long is it's visible
 .t-dropdown__content--open {
 	display: inline-block;
-}
-
-
-
-// Animation
-// ––––––––––––––––––––––––––––––––––––––––––––
-
-// Fadeing transition
-.t-dropdown-animation--fade {
-
-	&.ng-animate {
-		transition: $t-dropdown-transition;
-	}
-
-	&.ng-enter,
-	&.t-dropdown__content--open-add {
-		opacity: 0;
-	}
-
-	&.ng-enter-active,
-	&.t-dropdown__content--open-add-active {
-		opacity: 1;
-	}
-
-	&.ng-leave,
-	&.t-dropdown__content--open-remove {
-		opacity: 1;
-	}
-
-	&.ng-leave-active,
-	&.t-dropdown__content--open-remove-active {
-		opacity: 0;
-	}
-
 }
 
 
@@ -194,3 +160,95 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 	}
 
 } // @if end
+
+
+// Animation
+// ––––––––––––––––––––––––––––––––––––––––––––
+
+// Fade in transition
+.t-dropdown-animation--fade {
+
+	&.ng-animate {
+		transition: $t-dropdown-transition;
+	}
+
+	&.ng-enter,
+	&.t-dropdown__content--open-add {
+		opacity: 0;
+	}
+
+	&.ng-enter-active,
+	&.t-dropdown__content--open-add-active {
+		opacity: 1;
+	}
+
+	&.ng-leave,
+	&.t-dropdown__content--open-remove {
+		opacity: 1;
+	}
+
+	&.ng-leave-active,
+	&.t-dropdown__content--open-remove-active {
+		opacity: 0;
+	}
+
+}
+
+
+// Growing transition
+.t-dropdown-animation--grow {
+
+	transform-origin: top left;
+
+	.t-dropdown__menu > * {
+		opacity: 0;
+		transition: all .4s ease-in-out;
+		transition-delay: .1s;
+	}
+
+
+	&.ng-animate {
+		transition: $t-dropdown-transition;
+	}
+
+	&.ng-enter,
+	&.t-dropdown__content--open-add {
+		opacity: 0;
+		transform: scale(0.2);
+	}
+
+	&.ng-enter-active,
+	&.t-dropdown__content--open-add-active {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&.t-dropdown__content--open {
+		> .t-dropdown__menu > *{
+			opacity: 1;
+		}
+	}
+
+	&.ng-leave,
+	&.t-dropdown__content--open-remove {
+		opacity: 1;
+		transform: scale(1);
+
+		> .t-dropdown__menu > *{
+			opacity: 1;
+			transition: all .2s ease-in-out;
+		}
+	}
+
+	&.ng-leave-active,
+	&.t-dropdown__content--open-remove-active {
+		opacity: 0;
+		transform: scale(0.2);
+
+		> .t-dropdown__menu > *{
+			opacity: 0;
+		}
+
+	}
+
+}

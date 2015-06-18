@@ -12,9 +12,8 @@
 				<!-- Templated Dropdown -->
 				<div t-dropdown
                      t-dropdown-append-to-body="true"
-                     t-dropdown-content-position="right-center"
+                     t-dropdown-content-position="right-bottom"
                      t-dropdown-content-navigatable="true"
-                     ng-animate-children
                      t-dropdown-template-url="dropdown.html"
                      class="t-dropdown">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
@@ -26,18 +25,18 @@
 				<div t-dropdown
                      t-dropdown-class-config="overview.viewSpecificDropdownClasses"
                      t-dropdown-content-navigatable="true"
-                     ng-animate-children
                      class="t-dropdown">
 					<button t-dropdown-toggle class="t-dropdown__toggle">
 						inline
 					</button>
-					<div t-dropdown-content class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default">
+					<div t-dropdown-content class="t-dropdown__content t-dropdown-animation--grow t-dropdown--default">
 						<ul class="t-dropdown__menu">
-							<li class="t-dropdown__menu-item"><a href="#">Action in Template</a></li>
-							<li class="t-dropdown__menu-item"><a href="#">Another action in Template</a></li>
+							<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
+							<li class="t-dropdown__menu-item"><a href="#">Edit</a></li>
+							<li class="t-dropdown__menu-item"><a href="#">Refresh</a></li>
 							<li class="t-dropdown__menu-divider"></li>
-							<li class="t-dropdown__menu-item"><a href="#">Something else here</a></li>
-							<li class="t-dropdown__menu-item"><a href="#">Separated link in Template</a></li>
+							<li class="t-dropdown__menu-item"><a href="#">Help</a></li>
+							<li class="t-dropdown__menu-item"><a href="#" style="padding-right: 50px;">Feedback</a></li>
 						</ul>
 					</div>
 				</div>
@@ -54,13 +53,15 @@
 </div>
 <!--TODO: Move this to a file?! I dont really know if it makes sense tbh... -->
 <script type="text/ng-template" id="dropdown.html">
-	<ul role="menu" class="t-dropdown__content t-dropdown-animation--fade">
-		<li class="t-dropdown__content-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
-		<li class="t-dropdown__content-item"><a href="#">Action in Template</a></li>
-		<li class="t-dropdown__content-item"><a href="#">Another action in Template</a></li>
-		<li class="t-dropdown__content-item"><a href="#">Something else here</a></li>
-		<li class="t-dropdown__content-item"><a href="#">Separated link in Template</a></li>
-	</ul>
+	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--grow t-dropdown--default">
+		<ul role="menu" class="t-dropdown__menu">
+			<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(document);">Delete</a></li>
+			<li class="t-dropdown__menu-item"><a href="#">Action in Template</a></li>
+			<li class="t-dropdown__menu-item"><a href="#">Another action in Template</a></li>
+			<li class="t-dropdown__menu-item"><a href="#">Something else here</a></li>
+			<li class="t-dropdown__menu-item"><a href="#">Separated link in Template</a></li>
+		</ul>
+	</div>
 </script>
 <!--Gemmer vi til senere, nu er det fuld focus på animizzle -->
 <!--<li><a ng-click="documents.destroyDocument(document);">Delete</a></li>-->

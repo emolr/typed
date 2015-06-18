@@ -7,7 +7,7 @@
 
 	/* @ngInject */
 	function tDropdownController(
-		$scope, $attrs, $parse, $animate, $document, $compile, $templateRequest,
+		$scope, $attrs, $parse, $animate, $document, $compile, $templateRequest, $timeout,
 		tDropdownService,
 		tPositionizer
 	) {
@@ -160,7 +160,9 @@
 								$animate.enter(dropdownElement, document.body, document.body.lastChild);
 
 								vm.dropdownContent = dropdownElement;
-								vm.dropdownContent.addClass(config.contentOpenClass);
+								$timeout(function() {
+									vm.dropdownContent.addClass(config.contentOpenClass);
+								});
 
 								var pos = tPositionizer.positionElements(
 									vm.$element,
@@ -179,8 +181,10 @@
 
 							if(enableContentNavigation) {
 								vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
-								vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
-								vm.activeContentItem.addClass(config.contentItemActiveClass);
+								$timeout(function() {
+									vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0])
+								});
+								vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
 								$document.bind('keydown', _bindNavigationKeys);
 							}
 
@@ -195,8 +199,10 @@
 
 				if(enableContentNavigation && !appendToBody) {
 					vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
-					vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
+					$timeout(function() {
+						vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0])
+					});
+					vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
 					$document.bind('keydown', _bindNavigationKeys);
 				}
 
@@ -273,16 +279,24 @@
 		}
 
 		function focusContentElement(element) {
-			element = angular.element(element);
+			var element = angular.element(element);
+			var activeElements = element.parent().find('.' + config.contentItemActiveClass);
+
+			// Find all elements with the active class and remove them && and add it to the current.
+			activeElements.removeClass(config.contentItemActiveClass);
+			element.addClass(config.contentItemActiveClass);
 			element.find('a').focus();
 			return element;
+		}
+
+		function _setActiveContentItem(element) {
+			vm.activeContentItem = focusContentElement(this);
 		}
 
 		function _bindNavigationKeys(event) {
 
 			if(event.which === 40) {
 				if(vm.activeContentItem.next().length > 0) {
-					vm.activeContentItem.removeClass(config.contentItemActiveClass);
 
 					// Skip the next item if it is not a menu item
 					if (!vm.activeContentItem.next().hasClass(config.contentItemClass)) {
@@ -290,13 +304,10 @@
 					} else {
 						vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
 					}
-
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
 				}
 			}
 			if(event.which === 38) {
 				if(vm.activeContentItem.prev().length > 0) {
-					vm.activeContentItem.removeClass(config.contentItemActiveClass);
 
 					// Skip the prev item if it is not a menu item
 					if (!vm.activeContentItem.prev().hasClass(config.contentItemClass)) {
@@ -304,8 +315,6 @@
 					} else {
 						vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
 					}
-
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
 				}
 			}
 		}
