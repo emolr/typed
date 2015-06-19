@@ -119,6 +119,7 @@
 				ghostEl.css({
 					visibility: 'hidden',
 					position: 'absolute',
+					display: 'block',
 					left: '-9999px'
 				});
 				ghostEl.appendTo('body');
