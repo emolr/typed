@@ -120,20 +120,6 @@
 			return childScope.isOpen;
 		}, function(isOpen) {
 
-			if ( appendToBody && vm.dropdownContent ) {
-
-				var pos = tPositionizer.positionElements(
-					vm.$element,
-					vm.dropdownContent,
-					appendToBodyPosition, true, true);
-
-				vm.dropdownContent.css({
-					top: pos.top + 'px',
-					left: pos.left + 'px',
-					position: 'absolute'
-				});
-			}
-
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
 			// Root element (the "wrapper")
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.wrapperOpenClass);
@@ -157,35 +143,37 @@
 						$compile(tpl.trim())(templateScope, function(dropdownElement) {
 
 							if(appendToBody) {
-								$animate.enter(dropdownElement, document.body, document.body.lastChild);
+								$animate.enter(dropdownElement, document.body, document.body.lastChild)
+									.then(function() {
 
-								vm.dropdownContent = dropdownElement;
-								$timeout(function() {
-									vm.dropdownContent.addClass(config.contentOpenClass);
-								});
+										vm.dropdownContent = dropdownElement;
+
+										if(enableContentNavigation) {
+											_registerNavigation();
+										}
+
+									});
 
 								var pos = tPositionizer.positionElements(
 									vm.$element,
-									vm.dropdownContent,
+									dropdownElement,
 									appendToBodyPosition, true, true);
 
-								vm.dropdownContent.css({
+								dropdownElement.css({
 									top: pos.top + 'px',
 									left: pos.left + 'px',
 									position: 'absolute'
 								});
 
-							} else {
-								$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
-							}
+								dropdownElement.addClass(config.contentOpenClass);
 
-							if(enableContentNavigation) {
-								vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
-								$timeout(function() {
-									vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0])
-								});
-								vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
-								$document.bind('keydown', _bindNavigationKeys);
+							} else {
+								$animate.enter(dropdownElement, vm.$element, vm.toggleElement)
+									.then(function() {
+										if(enableContentNavigation) {
+											_registerNavigation();
+										}
+									});
 							}
 
 						});
@@ -199,9 +187,7 @@
 
 				if(enableContentNavigation && !appendToBody) {
 					vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
-					$timeout(function() {
-						vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0])
-					});
+					vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
 					vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
 					$document.bind('keydown', _bindNavigationKeys);
 				}
@@ -240,6 +226,13 @@
 			}
 		});
 		$scope.$on('$destroy', function() {
+			if ($attrs.tDropdownTemplateUrl) {
+				if(templateScope) {
+					// Destroy the template scope, and animate the menu out
+					templateScope.$destroy();
+					$animate.leave(vm.dropdownContent);
+				}
+			}
 			childScope.$destroy();
 		});
 
@@ -279,7 +272,7 @@
 		}
 
 		function focusContentElement(element) {
-			var element = angular.element(element);
+			element = angular.element(element);
 			var activeElements = element.parent().find('.' + config.contentItemActiveClass);
 
 			// Find all elements with the active class and remove them && and add it to the current.
@@ -289,7 +282,7 @@
 			return element;
 		}
 
-		function _setActiveContentItem(element) {
+		function _setActiveContentItem() {
 			vm.activeContentItem = focusContentElement(this);
 		}
 
@@ -317,6 +310,13 @@
 					}
 				}
 			}
+		}
+
+		function _registerNavigation() {
+			vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
+			vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
+			vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
+			$document.bind('keydown', _bindNavigationKeys);
 		}
 
 	}
