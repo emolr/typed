@@ -3,6 +3,9 @@
 // Disable button style generation
 $include-html-button-classes: false;
 
+// Grid settings
+$row-width: 1050px;
+
 
 // Custom the base font family
 $body-font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
@@ -19,3 +22,37 @@ $color-ui-active: #eee;
 $color-ui-primary: #4a4a4a;
 
 $color-ui-secondary: #6f6f6f;
+
+$color-ui-black: #000;
+$color-ui-dim: #9b9b9b;
+
+
+// Type
+$text-muted-color: $color-ui-dim;
+// $text-small-font-size: 12px;
+
+// Compontents variables
+
+// t-dropdown
+// $t-dropdown-transition: all .2s ease-in-out;
+
+// // Include dropdown default theme classes
+$t-dropdown-include-classes: true;
+
+// Default theme variable
+$t-dropdown-content-offset-top:                     -6px;
+$t-dropdown-content-padding: 						6px 0;
+$t-dropdown-content-background-color: 				$color-ui-base;
+$t-dropdown-content-border-radius: 					3px;
+$t-dropdown-content-border: 						false;
+$t-dropdown-content-shadow: 						false;
+
+$t-dropdown-menu-background-color: 					#fff;
+
+$t-dropdown-menu-item-padding: 						6px 15px;
+
+$t-dropdown-menu-item-color: 						$color-ui-dim;
+$t-dropdown-menu-item-background-color: 			$color-ui-base;
+$t-dropdown-menu-item-color-active: 				$color-ui-black;
+$t-dropdown-menu-item-background-color-active: 		$color-ui-active;
+$t-dropdown-menu-item-divider-color: 				#ddd;

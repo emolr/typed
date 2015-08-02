@@ -1,18 +1,35 @@
-.book__list {
-	@include clearfix;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	white-space: nowrap;
-	overflow-x: auto;
-	overflow-y: hidden;
-	padding-left: 200px;
+// .book__list {
+// 	@include clearfix;
+// 	width: 100%;
+// 	margin: 0;
+// 	padding: 0;
+// 	list-style: none;
+// 	white-space: nowrap;
+// 	overflow-x: auto;
+// 	overflow-y: hidden;
+// 	padding-left: 200px;
 
-	.book__list__book {
+// 	.book__list__book {
+// 		display: inline-block;
+
+// 		// fake lidt lir indtil single books er lidt mere fleksible...
+// 		margin: 0 60px 0 0;
+// 	}
+// }
+
+
+.book-list {
+	// @include block-grid(
+	// 	$per-row: 3,
+	//     $spacing: 30px,
+	//     $base-style: true
+	// )
+
+	display: block;
+
+	& > * {
 		display: inline-block;
-
-		// fake lidt lir indtil single books er lidt mere fleksible...
-		margin: 0 60px 0 0;
+		padding: 0 15px 30px;
 	}
+
 }

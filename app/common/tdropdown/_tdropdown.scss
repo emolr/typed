@@ -12,6 +12,7 @@ $t-dropdown-transition: all .2s ease-in-out;
 $t-dropdown-include-classes: true !default;
 
 // Default theme variable
+$t-dropdown-content-offset-top:                     -6px !default;
 $t-dropdown-content-padding: 						6px 0 !default;
 $t-dropdown-content-background-color: 				#fff !default;
 $t-dropdown-content-border-radius: 					3px !default;
@@ -61,7 +62,8 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 	$content-background,
 	$content-radius,
 	$content-border,
-	$content-shadow
+	$content-shadow,
+	$content-offset-top
 	) {
 
 	// Content box
@@ -72,6 +74,10 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 	padding: $content-padding;
 	background-color: $content-background;
 	border-radius: $content-radius;
+
+	@if ($content-offset-top) {
+		margin-top: $content-offset-top;
+	}
 
 	@if ($content-border) {
 		border: $content-border;
@@ -144,7 +150,8 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 			$content-background: $t-dropdown-content-background-color,
 			$content-radius: $t-dropdown-content-border-radius,
 			$content-border: $t-dropdown-content-border,
-			$content-shadow: $t-dropdown-content-shadow
+			$content-shadow: $t-dropdown-content-shadow,
+			$content-offset-top: $t-dropdown-content-offset-top
 		);
 
 		.t-dropdown__menu {
