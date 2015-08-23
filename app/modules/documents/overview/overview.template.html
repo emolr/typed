@@ -7,8 +7,8 @@
 	</div>
 
 	<div class="row whitespace--large">
-		<div>
-		<ul class="book-list">
+		<div class="books" style="width: 100%;">
+		<ul book-list-width class="book-list" style="display: inline-table; width: 100%;">
 			<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id"
 				class="book-list__book book book--large">
 				<div class="book__actions">
@@ -40,6 +40,7 @@
 			</li>
 		</ul>
 		</div>
+
 	</div>
 </div>
 

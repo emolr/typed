@@ -55,7 +55,8 @@
 				TweenMax.to(bookList, 0.7, {
 					y: '100px',
 					scale: '0.95',
-					ease: Power2.easeIn
+					ease: Power2.easeIn,
+					transformOrigin: 'left bottom'
 				});
 
 

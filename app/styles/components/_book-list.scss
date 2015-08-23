@@ -1,34 +1,23 @@
-// .book__list {
-// 	@include clearfix;
-// 	width: 100%;
-// 	margin: 0;
-// 	padding: 0;
-// 	list-style: none;
-// 	white-space: nowrap;
-// 	overflow-x: auto;
-// 	overflow-y: hidden;
-// 	padding-left: 200px;
-
-// 	.book__list__book {
-// 		display: inline-block;
-
-// 		// fake lidt lir indtil single books er lidt mere fleksible...
-// 		margin: 0 60px 0 0;
-// 	}
-// }
-
+.books {
+	float: left;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
 
 .book-list {
-	// @include block-grid(
-	// 	$per-row: 3,
-	//     $spacing: 30px,
-	//     $base-style: true
-	// )
+	@include clearfix();
+	position:relative;
+   	left:50%;
+	float: left;
+	margin: 0;
+	padding: 0;
 
-	display: block;
 
 	& > * {
-		display: inline-block;
+		list-style-type: none;
+		float: left;
+		right:50%;
 		padding: 0 15px 30px;
 	}
 
