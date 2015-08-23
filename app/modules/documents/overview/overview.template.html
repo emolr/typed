@@ -1,6 +1,7 @@
 <div class="documents__overview">
 	<div ng-if="documents.documents.length < 1">
-		<button ng-click="documents.createDocument();">
+		<button animate-to-book
+				end-fn="documents.createDocument();">
 			Create new
 		</button>
 	</div>
@@ -28,7 +29,9 @@
 				</div>
 
 				<div animate-to-book
+					 animate-to-down
 					 end-fn="documents.selectDocument(document);"
+					 angular-ripple
 					 class="book-cover">
 					<h4 class="book-cover__title">{{document.title}}</h4>
 				</div>

@@ -41,6 +41,8 @@
 'sandbox',
 'tdebugbar',
 'animate-to-book',
+'angularRipple',
+'animatetodown',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

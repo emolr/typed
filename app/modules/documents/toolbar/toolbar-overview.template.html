@@ -8,7 +8,10 @@
 			</div>
 
 			<div class="right">
-				<a class="type-muted right" ng-click="documents.createDocument();">Create new</a>
+				<a animate-to-book
+				   end-fn="documents.createDocument();"
+				   angular-ripple
+				   class="button button--clear">Create new</a>
 			</div>
 
 		</div>

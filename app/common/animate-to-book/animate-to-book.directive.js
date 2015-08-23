@@ -40,6 +40,7 @@
 					}
 				})
 					.to(tempEl, 1, {
+						delay: 0.2,
 						opacity: 0,
 						ease: Power1.easeOut,
 						onComplete: function() {
@@ -48,19 +49,22 @@
 				})
 
 
-				// Animate the clicked element, and the whole book list.
+				// Animate the whole book list downwards
 				var bookList = document.getElementsByClassName('book-list');
-				var parentElement = element.parent()[0];
-
-				TweenMax.to(parentElement, 0.7, {
-					y: '130px',
-					ease: Power2.easeIn
-				});
 
 				TweenMax.to(bookList, 0.7, {
 					y: '100px',
 					scale: '0.95',
 					ease: Power2.easeIn
+				});
+
+
+				// Fade out the toolbar in the transition
+				var toolbar = document.getElementsByClassName('documents__toolbar');
+
+				TweenMax.to(toolbar, 0.7, {
+					opacity: 0,
+					ease: Sine.easeOut
 				});
 
 
