@@ -40,6 +40,7 @@
 'tPositionizer',
 'sandbox',
 'tdebugbar',
+'animate-to-book',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

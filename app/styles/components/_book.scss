@@ -24,12 +24,9 @@ $book-hover-title-color: #4A4A4A !default;
 	position: absolute;
 	z-index: 99; // always on top
 	top: 0;
+	right: 10px;
+	float: right;
 	padding: 10px;
-	width: $book-width-small;
-
-	.book--large & {
-		width: $book-width-large;
-	}
 }
 
 

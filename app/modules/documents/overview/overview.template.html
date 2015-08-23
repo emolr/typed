@@ -6,8 +6,10 @@
 	</div>
 
 	<div class="row whitespace--large">
+		<div>
 		<ul class="book-list">
-			<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id" class="book-list__book book book--large">
+			<li ng-repeat="document in documents.documents | orderBy: '-created' track by document.id"
+				class="book-list__book book book--large">
 				<div class="book__actions">
 
 					<div t-dropdown
@@ -25,15 +27,16 @@
 
 				</div>
 
-				<div class="book-cover"
-					 animate-to
-				     end-fn="documents.selectDocument(document);">
+				<div animate-to-book
+					 end-fn="documents.selectDocument(document);"
+					 class="book-cover">
 					<h4 class="book-cover__title">{{document.title}}</h4>
 				</div>
 
 				<div class="type-small type-muted">Last edited: {{document.touched | date: 'd MMMM, y'}}</div>
 			</li>
 		</ul>
+		</div>
 	</div>
 </div>
 
