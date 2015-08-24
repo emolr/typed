@@ -60,6 +60,14 @@ $button-font-size-large:			rem-calc(22) !default;
 			fill: darken($button-clear-default-color, 30%);
 		}
 	}
+
+	&.button--clear--hover {
+		color: darken($button-clear-default-color, 20%);
+
+		path {
+			fill: darken($button-clear-default-color, 30%);
+		}
+	}
 }
 
 

@@ -50,13 +50,13 @@
 
 
 				// Animate the whole book list downwards
-				var bookList = document.getElementsByClassName('book-list');
+				var bookList = document.getElementsByClassName('books');
 
 				TweenMax.to(bookList, 0.7, {
 					y: '100px',
 					scale: '0.95',
 					ease: Power2.easeIn,
-					transformOrigin: 'left bottom'
+					transformOrigin: 'bottom bottom'
 				});
 
 

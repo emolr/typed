@@ -7,13 +7,14 @@ $document-footer-padding: 15px !default;
 
 
 // Typography
-$document-base-font-size: 20px !default;
-$document-heading1-size: 36px !default;
-$document-heading2-size: 28px !default;
+$document-base-font-size: 16px !default;
+$document-heading1-size: 2.250em !default;
+$document-heading2-size: 1.750em !default;
+$document-p-size: 		 1.250em !default;
 $document-color-primary: #333 !default;
 $document-color-secondary: #858585 !default;
 $document-blockquote-color: #858585 !default;
-$document-blockquote-font-size: 26px !default;
+$document-blockquote-font-size: 1.625em !default;
 
 $document-font-family: georgia, sans-serif !default;
 
@@ -43,7 +44,7 @@ $document-section-color: #fff !default;
 .document__body {
 	width: 100%;
 	min-height: 100vh;
-	padding: 100px 30px;
+	padding: 200px 30px 100px;
 
 	// DHNI
 	margin: 0 auto;
@@ -71,8 +72,8 @@ $document-section-color: #fff !default;
 
 // p
 .document__body p {
-	font-size: $document-base-font-size;
-	line-height: 1.5;
+	font-size: $document-p-size;
+	line-height: 1.675em;
 	letter-spacing: .01rem;
 	font-weight: 400;
 	font-style: normal;
