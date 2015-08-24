@@ -1,19 +1,18 @@
+<div class="toolbar">
+	<ul class="toolbar__nav left">
+		<li>
+			<img src="assets/images/logo-typed-clean.png" alt="Logo" style="width: 25px;">
+		</li>
+	</ul>
 
-<div class="whitespace--medium clearfix">
-	<div class="row-fluid">
-		<div class="columns">
-
-			<div class="left">
-				<img src="assets/images/logo-typed-clean.png" alt="Logo" style="width: 25px;">
-			</div>
-
-			<div class="right">
-				<a animate-to-book
-				   end-fn="documents.createDocument();"
-				   angular-ripple
-				   class="button button--clear">Create new</a>
-			</div>
-
-		</div>
-	</div>
+	<ul class="toolbar__nav right">
+		<li>
+			<button animate-to-book
+			   end-fn="documents.createDocument();"
+			   angular-ripple
+			   class="button button--clear button--round">
+			   <span class="icon-plus button--round__content" t-grunticon data-grunticon-embed></span>
+			 </button>
+		</li>
+	</ul>
 </div>

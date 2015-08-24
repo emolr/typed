@@ -28,6 +28,7 @@ $t-dropdown-menu-item-background-color: 			#fff !default;
 $t-dropdown-menu-item-color-active: 				#111 !default;
 $t-dropdown-menu-item-background-color-active: 		#f2f2f2 !default;
 $t-dropdown-menu-item-divider-color: 				#ddd !default;
+$t-dropdown-menu-item-font-size: 					14px !default;
 
 
 
@@ -95,13 +96,14 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 }
 
 
-@mixin t-dropdown-menu(
+@mixin t-dropdown-menu (
 	$menu-item-padding,
 	$menu-item-color,
 	$menu-item-bg-color,
 	$menu-item-color-active,
 	$menu-item-bg-color-active,
-	$menu-divider-color
+	$menu-divider-color,
+	$menu-font-size
 	) {
 
 		// Dropdown menu
@@ -115,6 +117,7 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 				padding: $menu-item-padding;
 				color: $menu-item-color;
 				background-color: $menu-item-bg-color;
+				font-size: $menu-font-size;
 			}
 
 			// --active, active and hover shares style
@@ -161,7 +164,8 @@ $t-dropdown-menu-item-divider-color: 				#ddd !default;
 				$menu-item-bg-color: $t-dropdown-menu-item-background-color,
 				$menu-item-color-active: $t-dropdown-menu-item-color-active,
 				$menu-item-bg-color-active: $t-dropdown-menu-item-background-color-active,
-				$menu-divider-color: $t-dropdown-menu-item-divider-color
+				$menu-divider-color: $t-dropdown-menu-item-divider-color,
+				$menu-font-size: $t-dropdown-menu-item-font-size
 			)
 		}
 	}

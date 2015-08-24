@@ -44,6 +44,7 @@
 'animatetodown',
 'angularRipple',
 'booklistwidth',
+'animatetooverview',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

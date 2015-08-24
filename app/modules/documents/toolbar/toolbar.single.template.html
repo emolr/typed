@@ -1,3 +1,45 @@
-<a class="type-muted left" ui-sref="application.document.overview">Overview</a>
-<a class="type-muted right" ng-click="documents.destroyDocument(currentDocument);">Delete</a>
-<a class="type-muted right" ng-click="documents.createDocument();">Create new</a>
+<div class="toolbar">
+
+	<ul class="toolbar__nav left">
+		<li>
+			<button class="button button--clear button--round type-muted" angular-ripple animate-to-overview ng-click="documents.goToOverview();">
+				<span class="icon-arrow-back button--round__content" t-grunticon data-grunticon-embed></span>
+			</button>
+		</li>
+	</ul>
+
+	<ul class="toolbar__nav right">
+		<li>
+			<div t-dropdown
+			     t-dropdown-content-navigatable="true"
+			     t-dropdown-append-to-body="true"
+			     t-dropdown-template-url="dropdownSingle.html"
+			     class="t-dropdown right"
+			     t-dropdown-content-position="right-top|inside-inside">
+
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear">
+					<div class="icon-more" t-grunticon data-grunticon-embed></div>
+				</button>
+
+			</div>
+		</li>
+	</ul>
+
+</div>
+
+
+
+<script type="text/ng-template" id="dropdownSingle.html">
+	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default">
+		<ul role="menu" class="t-dropdown__menu">
+			<li class="clearfix">
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear right">
+					<div class="icon-more" t-grunticon data-grunticon-embed></div>
+				</button>
+			</li>
+			<li class="t-dropdown__menu-item t-dropdown__menu-item--active"><a href="#" ng-click="documents.createDocument()">New</a></li>
+			<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(currentDocument);">Delete</a></li>
+		</ul>
+	</div>
+</script>
+

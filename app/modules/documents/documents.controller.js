@@ -16,6 +16,7 @@
 		vm.createDocument = createDocument;
 		vm.selectDocument = selectDocument;
 		vm.destroyDocument = destroyDocument;
+		vm.goToOverview = goToOverview;
 
 		// Watch any changes to the Documents collection and update view accordingly
 		$scope.$watch(function() {
@@ -69,6 +70,13 @@
 		function _selectLatestDocument() {
 			var doc = vm.documents[vm.documents.length - 1];
 			selectDocument(doc);
+		}
+
+
+		/* State change functions */
+		function goToOverview() {
+			console.log('state');
+			$state.go('application.document.overview');
 		}
 
 	}

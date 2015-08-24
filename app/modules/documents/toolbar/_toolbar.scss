@@ -1,3 +1,13 @@
 .toolbar {
+	display: block;
+	height: 60px;
+}
 
+.toolbar__nav {
+	display: flex;
+	min-height: 60px;
+	margin: 0;
+	padding: 10px;
+	justify-content: center;
+    list-style: none;
 }
