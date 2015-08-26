@@ -20,7 +20,8 @@
     "nMessages": "*",
     "nExceptionHandler": "*",
     "nCore": "*",
-    "medium-editor": "~4.9.0"
+    "medium-editor": "~4.9.0",
+    "angular-ripple": "*"
   },
   "appPath": "app",
   "resolutions": {

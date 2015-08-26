@@ -3,11 +3,43 @@
 // Developer: Two cool dudes from Copenhagen
 
 
+
 // Variables
 // ––––––––––––––––––––––––––––––––––––––––––––
 $t-dropdown-transition: all .2s ease-in-out;
 
+// Include dropdown default theme classes
+$t-dropdown-include-classes: true !default;
+
+// Default theme variable
+$t-dropdown-content-offset-top:                     -6px !default;
+$t-dropdown-content-padding: 						6px 0 !default;
+$t-dropdown-content-background-color: 				#fff !default;
+$t-dropdown-content-border-radius: 					3px !default;
+$t-dropdown-content-border: 						false !default;
+$t-dropdown-content-shadow: 						0px 3px 14px rgba(0,0,0,0.5) !default;
+
+$t-dropdown-menu-background-color: 					#fff !default;
+
+$t-dropdown-menu-item-padding: 						6px 15px !default;
+
+$t-dropdown-menu-item-color: 						#3a3a3a !default;
+$t-dropdown-menu-item-background-color: 			#fff !default;
+$t-dropdown-menu-item-color-active: 				#111 !default;
+$t-dropdown-menu-item-background-color-active: 		#f2f2f2 !default;
+$t-dropdown-menu-item-divider-color: 				#ddd !default;
+$t-dropdown-menu-item-font-size: 					14px !default;
+
+
+
 // Base component structure
+// ––––––––––––––––––––––––––––––––––––––––––––
+
+.t-dropdown {
+	position: relative;
+	display: inline-block;
+}
+
 .t-dropdown__content {
 	display: none;
 	z-index: 999; // Should always be on top of content
@@ -15,15 +47,136 @@ $t-dropdown-transition: all .2s ease-in-out;
 
 // Set the content to display block when animation starts
 .t-dropdown__content.ng-animate {
-	display: block;
+	display: inline-block;
 }
 
 // Keep the content in display block as long is it's visible
 .t-dropdown__content--open {
-	display: block;
+	display: inline-block;
 }
 
-// Fade animation
+
+// Dropdown style mixing
+
+@mixin t-dropdown(
+	$content-padding,
+	$content-background,
+	$content-radius,
+	$content-border,
+	$content-shadow,
+	$content-offset-top
+	) {
+
+	// Content box
+	position: absolute;
+	top: 100%;
+	left: 0;
+
+	padding: $content-padding;
+	background-color: $content-background;
+	border-radius: $content-radius;
+
+	@if ($content-offset-top) {
+		margin-top: $content-offset-top;
+	}
+
+	@if ($content-border) {
+		border: $content-border;
+	}
+
+	@if ($content-shadow) {
+		box-shadow: $content-shadow;
+	}
+
+	// This is mainly for inline dropdowns
+	&.t-dropdown--align-right {
+		left: auto;
+		right: 0;
+	}
+}
+
+
+@mixin t-dropdown-menu (
+	$menu-item-padding,
+	$menu-item-color,
+	$menu-item-bg-color,
+	$menu-item-color-active,
+	$menu-item-bg-color-active,
+	$menu-divider-color,
+	$menu-font-size
+	) {
+
+		// Dropdown menu
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		& > li {
+			& > a {
+				display: block;
+				padding: $menu-item-padding;
+				color: $menu-item-color;
+				background-color: $menu-item-bg-color;
+				font-size: $menu-font-size;
+			}
+
+			// --active, active and hover shares style
+			&.t-dropdown__menu-item--active > a,
+			& > a:focus,
+			& > a:hover {
+				outline: 0;
+				color: $menu-item-color-active;
+				background-color: $menu-item-bg-color-active;
+			}
+		}
+
+		.t-dropdown__menu-divider {
+			width: 100%;
+			height: 1px;
+			display: block;
+			margin: $menu-item-padding;
+			margin-left: 0;
+			margin-right: 0;
+			background-color: $menu-divider-color;
+		}
+}
+
+
+// Outputting css classes
+
+@if ($t-dropdown-include-classes == true) {
+
+	.t-dropdown--default {
+
+		@include t-dropdown(
+			$content-padding: $t-dropdown-content-padding,
+			$content-background: $t-dropdown-content-background-color,
+			$content-radius: $t-dropdown-content-border-radius,
+			$content-border: $t-dropdown-content-border,
+			$content-shadow: $t-dropdown-content-shadow,
+			$content-offset-top: $t-dropdown-content-offset-top
+		);
+
+		.t-dropdown__menu {
+			@include t-dropdown-menu(
+				$menu-item-padding: $t-dropdown-menu-item-padding,
+				$menu-item-color: $t-dropdown-menu-item-color,
+				$menu-item-bg-color: $t-dropdown-menu-item-background-color,
+				$menu-item-color-active: $t-dropdown-menu-item-color-active,
+				$menu-item-bg-color-active: $t-dropdown-menu-item-background-color-active,
+				$menu-divider-color: $t-dropdown-menu-item-divider-color,
+				$menu-font-size: $t-dropdown-menu-item-font-size
+			)
+		}
+	}
+
+} // @if end
+
+
+// Animation
+// ––––––––––––––––––––––––––––––––––––––––––––
+
+// Fade in transition
 .t-dropdown-animation--fade {
 
 	&.ng-animate {
@@ -48,6 +201,65 @@ $t-dropdown-transition: all .2s ease-in-out;
 	&.ng-leave-active,
 	&.t-dropdown__content--open-remove-active {
 		opacity: 0;
+	}
+
+}
+
+
+// Growing transition
+.t-dropdown-animation--grow {
+
+	transform-origin: top left;
+
+	.t-dropdown__menu > * {
+		opacity: 0;
+		transition: all .4s ease-in-out;
+		transition-delay: .1s;
+	}
+
+
+	&.ng-animate {
+		transition: $t-dropdown-transition;
+	}
+
+	&.ng-enter,
+	&.t-dropdown__content--open-add {
+		opacity: 0;
+		transform: scale(0.2);
+	}
+
+	&.ng-enter-active,
+	&.t-dropdown__content--open-add-active {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&.t-dropdown__content--open {
+		> .t-dropdown__menu > *{
+			opacity: 1;
+		}
+	}
+
+	&.ng-leave,
+	&.t-dropdown__content--open-remove {
+		opacity: 1;
+		transform: scale(1);
+
+		> .t-dropdown__menu > *{
+			opacity: 1;
+			transition: all .2s ease-in-out;
+		}
+	}
+
+	&.ng-leave-active,
+	&.t-dropdown__content--open-remove-active {
+		opacity: 0;
+		transform: scale(0.2);
+
+		> .t-dropdown__menu > *{
+			opacity: 0;
+		}
+
 	}
 
 }

@@ -7,7 +7,7 @@
 
 // Variables
 $button-default-bg: 				#4a4a4a !default;
-$button-clear-default-color: 		#4a4a4a !default;
+$button-clear-default-color: 		#999 !default;
 
 $button-padding-small: 				rem-calc(6) !default;
 $button-padding-medium: 			rem-calc(10) !default;
@@ -27,8 +27,19 @@ $button-font-size-large:			rem-calc(22) !default;
 		$radius: 2px
 	);
 
+	margin-bottom: 0;
+
+	&:focus,
+	&:active {
+		outline: 0;
+	}
+
 	font-size: $button-font-size-medium;
 	color: #fff;
+
+	path {
+		fill: #FFF;
+	}
 }
 
 
@@ -38,8 +49,25 @@ $button-font-size-large:			rem-calc(22) !default;
 	background: transparent;
 	color: $button-clear-default-color;
 
+	path {
+		fill: $button-clear-default-color;
+	}
+
 	.no-touch &:hover {
 		color: darken($button-clear-default-color, 20%);
+
+		path {
+			fill: darken($button-clear-default-color, 30%);
+		}
+	}
+
+	&.button--clear--hover,
+	&.active {
+		color: darken($button-clear-default-color, 20%);
+
+		path {
+			fill: darken($button-clear-default-color, 30%);
+		}
 	}
 }
 
@@ -54,4 +82,29 @@ $button-font-size-large:			rem-calc(22) !default;
 .button--large {
 	@include button-size($button-padding-large);
 	font-size: $button-font-size-large;
+}
+
+
+// Button shapes
+
+.button.button--round {
+	position: relative;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	padding: 0;
+	overflow: hidden;
+	-webkit-transform: translateZ(0);
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+
+	& > .button--round__content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.angular-ripple {
+		border-radius: 50%;
+	}
 }

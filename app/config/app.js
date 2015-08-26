@@ -40,6 +40,13 @@
 'tPositionizer',
 'sandbox',
 'tdebugbar',
+'animate-to-book',
+'animatetodown',
+'angularRipple',
+'booklistwidth',
+'animatetooverview',
+'usersettings',
+'animate-fade-in-overlay',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

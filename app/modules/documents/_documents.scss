@@ -6,7 +6,7 @@
 $document__list-width: 250px !default;
 $document__list-background: #fafafa !default;
 
-$document__overview-background: #fafafa;
+$document__overview-background: #f9f9f9;
 
 .documents {
 	display: flex;
@@ -41,7 +41,8 @@ $document__overview-background: #fafafa;
 		width: 100%;
 		height: 100%;
 		flex: 1;
-		overflow: hidden;
+		overflow: auto;
 		background-color: $document__overview-background;
+		padding-top: 150px;
 	}
 }

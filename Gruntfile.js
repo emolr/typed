@@ -32,7 +32,7 @@ var bowerIgnore = [
 	'js-data'
 ];
 // Since we are writing a new environment file, we remove it from the usemin processing
-var envFile = 'config/enviroment.js';
+var envFile = 'config/environment.js';
 function skipEnv(context, block) {
 	var cfg = {files: []};
 
@@ -250,7 +250,7 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		//
+
 		ngconstant: {
 			options: {
 				name: 'DEBUG_ENV',
@@ -298,16 +298,16 @@ module.exports = function (grunt) {
 			options: {
 				dest: '<%= yeoman.dist %>',
 				flow: {
-					html: {
+					steps: {
 						js: [
 							{
 								name: 'concat',
 								createConfig: skipEnv
 							},
 							'uglifyjs'
-						],
-						post: {}
-					}
+						]
+					},
+					post: {}
 				}
 			}
 		},
@@ -322,8 +322,9 @@ module.exports = function (grunt) {
 		// Concatenate the scripts and the newly generated environment constant
 		concat: {
 			dist: {
-				src: ['.tmp/concat/scripts/scripts.js', '.tmp/concat/scripts/enviroment.js'],
-				dest: '.tmp/concat/scripts/scripts.js'
+				src: ['.tmp/concat/scripts/scripts.js', '.tmp/concat/scripts/environment.js'],
+				dest: '.tmp/concat/scripts/scripts.js',
+				nonull: true
 			}
 		},
 		// Disable Mangling: http://lisperator.net/uglifyjs/mangle
@@ -348,7 +349,7 @@ module.exports = function (grunt) {
 						'assets/images/{,*/}*.{webp}',
 						'assets/fonts/*',
 						'!assets/icons/raw',
-						'assets/icons/*.{svg,png}'
+						'assets/icons/*'
 					]
 				}, {
 					expand: true,

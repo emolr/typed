@@ -7,7 +7,7 @@
 
 	/* @ngInject */
 	function tDropdownController(
-		$scope, $attrs, $parse, $animate, $document, $compile, $templateRequest,
+		$scope, $attrs, $parse, $animate, $document, $compile, $templateRequest, $timeout,
 		tDropdownService,
 		tPositionizer
 	) {
@@ -24,8 +24,8 @@
 			toggleActiveClass: 't-dropdown__active',
 
 			contentOpenClass: 't-dropdown__content--open',
-			contentItemClass: 't-dropdown__content-item',
-			contentItemActiveClass: 't-dropdown__content-item--active'
+			contentItemClass: 't-dropdown__menu-item',
+			contentItemActiveClass: 't-dropdown__menu-item--active'
 		};
 
 		var getAttributeClassConfig = $parse($attrs.tDropdownClassConfig);
@@ -120,20 +120,6 @@
 			return childScope.isOpen;
 		}, function(isOpen) {
 
-			if ( appendToBody && vm.dropdownContent ) {
-
-				var pos = tPositionizer.positionElements(
-					vm.$element,
-					vm.dropdownContent,
-					appendToBodyPosition, true, true);
-
-				vm.dropdownContent.css({
-					top: pos.top + 'px',
-					left: pos.left + 'px',
-					position: 'absolute'
-				});
-			}
-
 			// Use ngAnimate to toggle the openClass (see docs for ngAnimate + css classes)
 			// Root element (the "wrapper")
 			$animate[isOpen ? 'addClass' : 'removeClass'](vm.$element, config.wrapperOpenClass);
@@ -157,31 +143,37 @@
 						$compile(tpl.trim())(templateScope, function(dropdownElement) {
 
 							if(appendToBody) {
-								$animate.enter(dropdownElement, document.body, document.body.lastChild);
+								$animate.enter(dropdownElement, document.body, document.body.lastChild)
+									.then(function() {
 
-								vm.dropdownContent = dropdownElement;
-								vm.dropdownContent.addClass(config.contentOpenClass);
+										vm.dropdownContent = dropdownElement;
+
+										if(enableContentNavigation) {
+											_registerNavigation();
+										}
+
+									});
 
 								var pos = tPositionizer.positionElements(
 									vm.$element,
-									vm.dropdownContent,
+									dropdownElement,
 									appendToBodyPosition, true, true);
 
-								vm.dropdownContent.css({
+								dropdownElement.css({
 									top: pos.top + 'px',
 									left: pos.left + 'px',
 									position: 'absolute'
 								});
 
-							} else {
-								$animate.enter(dropdownElement, vm.$element, vm.toggleElement);
-							}
+								dropdownElement.addClass(config.contentOpenClass);
 
-							if(enableContentNavigation) {
-								vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
-								vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
-								vm.activeContentItem.addClass(config.contentItemActiveClass);
-								$document.bind('keydown', _bindNavigationKeys);
+							} else {
+								$animate.enter(dropdownElement, vm.$element, vm.toggleElement)
+									.then(function() {
+										if(enableContentNavigation) {
+											_registerNavigation();
+										}
+									});
 							}
 
 						});
@@ -196,7 +188,7 @@
 				if(enableContentNavigation && !appendToBody) {
 					vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
 					vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
+					vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
 					$document.bind('keydown', _bindNavigationKeys);
 				}
 
@@ -234,6 +226,13 @@
 			}
 		});
 		$scope.$on('$destroy', function() {
+			if ($attrs.tDropdownTemplateUrl) {
+				if(templateScope) {
+					// Destroy the template scope, and animate the menu out
+					templateScope.$destroy();
+					$animate.leave(vm.dropdownContent);
+				}
+			}
 			childScope.$destroy();
 		});
 
@@ -274,26 +273,50 @@
 
 		function focusContentElement(element) {
 			element = angular.element(element);
+			var activeElements = element.parent().find('.' + config.contentItemActiveClass);
+
+			// Find all elements with the active class and remove them && and add it to the current.
+			activeElements.removeClass(config.contentItemActiveClass);
+			element.addClass(config.contentItemActiveClass);
 			element.find('a').focus();
 			return element;
+		}
+
+		function _setActiveContentItem() {
+			vm.activeContentItem = focusContentElement(this);
 		}
 
 		function _bindNavigationKeys(event) {
 
 			if(event.which === 40) {
 				if(vm.activeContentItem.next().length > 0) {
-					vm.activeContentItem.removeClass(config.contentItemActiveClass);
-					vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
+
+					// Skip the next item if it is not a menu item
+					if (!vm.activeContentItem.next().hasClass(config.contentItemClass)) {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.next().next());
+					} else {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.next());
+					}
 				}
 			}
 			if(event.which === 38) {
 				if(vm.activeContentItem.prev().length > 0) {
-					vm.activeContentItem.removeClass(config.contentItemActiveClass);
-					vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
-					vm.activeContentItem.addClass(config.contentItemActiveClass);
+
+					// Skip the prev item if it is not a menu item
+					if (!vm.activeContentItem.prev().hasClass(config.contentItemClass)) {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.prev().prev());
+					} else {
+						vm.activeContentItem = focusContentElement(vm.activeContentItem.prev());
+					}
 				}
 			}
+		}
+
+		function _registerNavigation() {
+			vm.dropdownContentItems = vm.dropdownContent.find('.' + config.contentItemClass);
+			vm.activeContentItem = focusContentElement(vm.dropdownContentItems[0]);
+			vm.dropdownContentItems.bind('mouseover', _setActiveContentItem);
+			$document.bind('keydown', _bindNavigationKeys);
 		}
 
 	}

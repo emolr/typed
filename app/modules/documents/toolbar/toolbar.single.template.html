@@ -1,3 +1,130 @@
-<a class="type-muted left" ui-sref="application.document.overview">Overview</a>
-<a class="type-muted right" ng-click="documents.destroyDocument(currentDocument);">Delete</a>
-<a class="type-muted right" ng-click="documents.createDocument();">Create new</a>
+<div class="toolbar">
+
+	<ul class="toolbar__nav left">
+		<li>
+			<button animate-fade-in-overlay end-fn="documents.goToOverview();"
+					class="button button--clear button--round type-muted"
+					angular-ripple>
+				<span class="icon-arrow-back button--round__content" t-grunticon data-grunticon-embed></span>
+			</button>
+		</li>
+	</ul>
+
+	<ul class="toolbar__nav right">
+		<li>
+			<div t-dropdown
+			     t-dropdown-content-navigatable="true"
+			     t-dropdown-append-to-body="true"
+			     t-dropdown-template-url="dropdownsize.html"
+			     class="t-dropdown right"
+			     style="margin-right: 8px;"
+			     t-dropdown-content-position="right-top|inside-inside">
+
+				<button t-dropdown-toggle
+						class="t-dropdown__toggle button button--clear button--round">
+					<div class="icon-a button--clear__content" t-grunticon data-grunticon-embed></div>
+				</button>
+
+			</div>
+		</li>
+		<li>
+			<div t-dropdown
+			     t-dropdown-content-navigatable="true"
+			     t-dropdown-append-to-body="true"
+			     t-dropdown-template-url="dropdownlight.html"
+			     class="t-dropdown right"
+			     t-dropdown-content-position="right-top|inside-inside">
+
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear button--round">
+					<div class="icon-bulb button--clear__content" t-grunticon data-grunticon-embed></div>
+				</button>
+
+			</div>
+		</li>
+		<li>
+			<div t-dropdown
+			     t-dropdown-content-navigatable="true"
+			     t-dropdown-append-to-body="true"
+			     t-dropdown-template-url="dropdownmore.html"
+			     class="t-dropdown right"
+			     t-dropdown-content-position="right-top|inside-inside">
+
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear button--round">
+					<div class="icon-more button--clear__content" t-grunticon data-grunticon-embed></div>
+				</button>
+
+			</div>
+		</li>
+	</ul>
+
+</div>
+
+
+<script type="text/ng-template" id="dropdownsize.html">
+	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default" style="width:200px;">
+		<ul role="menu" class="t-dropdown__menu">
+			<li class="clearfix">
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear button--clear--hover right button--round">
+					<div class="icon-a button--round__content" t-grunticon data-grunticon-embed></div>
+				</button>
+			</li>
+		</ul>
+		<div class="toolbar">
+			<ul class="toolbar__nav letter-size">
+				<li>
+					<button ng-click="documents.changeFontSize(1)"
+							class="button button--clear"
+							ng-class="{'active': documents.userSettings.fontSetting === 1}">
+						<span class="icon-letter button--round__content letter-size__small" t-grunticon data-grunticon-embed></span>
+					</button>
+				</li>
+
+				<li>
+					<button ng-click="documents.changeFontSize(2)"
+							class="button button--clear"
+							ng-class="{'active': documents.userSettings.fontSetting === 2}">
+						<span class="icon-letter button--round__content" t-grunticon data-grunticon-embed></span>
+					</button>
+				</li>
+
+				<li>
+					<button ng-click="documents.changeFontSize(3)"
+							class="button button--clear"
+							ng-class="{'active': documents.userSettings.fontSetting === 3}">
+						<span class="icon-letter button--round__content letter-size__large" t-grunticon data-grunticon-embed></span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="dropdownmore.html">
+	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default">
+		<ul role="menu" class="t-dropdown__menu">
+			<li class="clearfix">
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear button--clear--hover right button--round">
+					<div class="icon-more button--round__content" t-grunticon data-grunticon-embed></div>
+				</button>
+			</li>
+			<li class="t-dropdown__menu-item t-dropdown__menu-item--active"><a href="#" ng-click="documents.createDocument()">New</a></li>
+			<li class="t-dropdown__menu-item"><a href="#" ng-click="documents.destroyDocument(currentDocument);">Delete</a></li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/ng-template" id="dropdownlight.html">
+	<div t-dropdown-content ng-animate-children class="t-dropdown__content t-dropdown-animation--fade t-dropdown--default">
+		<ul role="menu" class="t-dropdown__menu">
+			<li class="clearfix">
+				<button t-dropdown-toggle class="t-dropdown__toggle button button--clear button--clear--hover right button--round">
+					<div class="icon-bulb button--round__content" t-grunticon data-grunticon-embed></div>
+				</button>
+			</li>
+		</ul>
+		<div class="text-center">
+
+		</div>
+	</div>
+</script>
+

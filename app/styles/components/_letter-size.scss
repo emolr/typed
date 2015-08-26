@@ -1,0 +1,18 @@
+.letter-size {
+
+}
+
+
+.letter-size__small {
+	svg {
+		transform: scale(0.6);
+		transform-origin: bottom;
+	}
+}
+
+.letter-size__large {
+	svg {
+		transform-origin: bottom;
+		transform: scale(1.4);
+	}
+}

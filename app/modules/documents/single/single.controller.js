@@ -6,7 +6,7 @@
 		.controller('Single', Single);
 
 	/* @ngInject */
-	function Single($state, $timeout, $scope, doc, Document, documents, nMessages) {
+	function Single($rootScope, $state, $timeout, $scope, doc, Document, documents, nMessages, UserSettings) {
 		/*jshint validthis: true */
 		var vm = this;
 

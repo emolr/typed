@@ -6,19 +6,20 @@
     ng-animate-ref="{{single.currentDocument.id}}"
     ng-model="single.currentDocument.content"
     ng-model-options="{ debounce: 1000 }"
-    class="document__body"></div>
+    class="document__body"
+    ng-style="{'font-size': documents.userSettings.fontSize}"></div>
 
 </article>
 
 <div class="single__footer">
 	<i
 		ng-if="single.isSaving"
-		class="document__footer__save-state right type-muted type-small">
+		class="document__footer__save-state right type-muted type-medium">
 		Saving...
 	</i>
 	<span
 		ng-if="!single.isSaving"
-		class="document__footer__save-state right type-muted type-small">
+		class="document__footer__save-state right type-muted type-medium">
 		Saved
 	</span>
 

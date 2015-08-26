@@ -4,6 +4,7 @@
 
 $text-muted-color: #ccc !default;
 $text-small-font-size: 12px !default;
+$text-medium-font-size: 14px !default;
 
 .type-muted {
 	color: $text-muted-color;
@@ -12,4 +13,8 @@ $text-small-font-size: 12px !default;
 
 .type-small {
 	font-size: $text-small-font-size;
+}
+
+.type-medium {
+	font-size: $text-medium-font-size;
 }

@@ -6,15 +6,18 @@
 		.controller('Toolbar', Toolbar);
 
 	/* @ngInject */
-	function Toolbar() {
+	function Toolbar($rootScope, $scope, UserSettings) {
 		/*jshint validthis: true */
 		var vm = this;
+
 
 		activate();
 
 		function activate() {
-
+			//...
 		};
+
+
 	};
 
 })();
