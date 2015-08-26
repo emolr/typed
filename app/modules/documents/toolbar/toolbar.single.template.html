@@ -70,23 +70,28 @@
 		<div class="toolbar">
 			<ul class="toolbar__nav letter-size">
 				<li>
-					<button class="button button--clear">
+					<button ng-click="toolbar.changeFontSize(1)"
+							class="button button--clear"
+							ng-class="{'active': $root.userSettings.fontSetting === 1}">
 						<span class="icon-letter button--round__content letter-size__small" t-grunticon data-grunticon-embed></span>
 					</button>
 				</li>
 
 				<li>
-					<button class="button button--clear">
+					<button ng-click="toolbar.changeFontSize(2)"
+							class="button button--clear"
+							ng-class="{'active': $root.userSettings.fontSetting === 2}">
 						<span class="icon-letter button--round__content" t-grunticon data-grunticon-embed></span>
 					</button>
 				</li>
 
 				<li>
-					<button class="button button--clear">
+					<button ng-click="toolbar.changeFontSize(3)"
+							class="button button--clear"
+							ng-class="{'active': $root.userSettings.fontSetting === 3}">
 						<span class="icon-letter button--round__content letter-size__large" t-grunticon data-grunticon-embed></span>
 					</button>
 				</li>
-
 			</ul>
 		</div>
 	</div>

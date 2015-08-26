@@ -45,6 +45,7 @@
 'angularRipple',
 'booklistwidth',
 'animatetooverview',
+'usersettings',
 			/* ---> Do not delete this comment (ngImports) <--- */
 		]);
 })();

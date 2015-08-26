@@ -75,9 +75,9 @@
 
 		/* State change functions */
 		function goToOverview() {
-			console.log('state');
 			$state.go('application.document.overview');
 		}
+
 
 	}
 

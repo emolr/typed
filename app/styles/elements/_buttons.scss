@@ -61,7 +61,8 @@ $button-font-size-large:			rem-calc(22) !default;
 		}
 	}
 
-	&.button--clear--hover {
+	&.button--clear--hover,
+	&.active {
 		color: darken($button-clear-default-color, 20%);
 
 		path {
