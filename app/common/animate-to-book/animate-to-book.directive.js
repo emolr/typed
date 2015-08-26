@@ -31,7 +31,7 @@
 				// and fade it out and destroy afterwards.
 				var tlOverlay = new TimelineMax();
 
-				tlOverlay.to(tempEl, 0.6, {
+				tlOverlay.to(tempEl, 0.5, {
 					delay: 0.4,
 					y: '-100%',
 					ease: Power2.easeOut,
@@ -39,10 +39,10 @@
 						scope.endFn()
 					}
 				})
-					.to(tempEl, 1, {
-						delay: 0.2,
+					.to(tempEl, 0.8, {
+
 						opacity: 0,
-						ease: Power1.easeOut,
+						ease: Sine.easeOut,
 						onComplete: function() {
 							tempEl.remove();
 						}
@@ -79,7 +79,7 @@
 		var newAnchorEl = document.createElement('DIV');
 
 		newAnchorEl.style.position = 'fixed';
-		newAnchorEl.style.zIndex = '9999';
+		newAnchorEl.style.zIndex = '10';
 		newAnchorEl.style.width = '100vw';
 		newAnchorEl.style.height = '100vh';
 		newAnchorEl.style.top = '100vh';

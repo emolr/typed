@@ -22,6 +22,14 @@
 
 
 			function activate() {
+				// First clear any left overlays
+				var oldOverlay = document.getElementsByClassName('singleOverlay')[0];
+
+				if(oldOverlay) {
+					oldOverlay.remove();
+				}
+
+
 				slideBooksUp();
 				slideOverlayDown();
 				fadeInToolbar();
@@ -34,6 +42,7 @@
 
 
 			function createAnchorNode() {
+
 				var newAnchorEl = document.createElement('DIV');
 
 				newAnchorEl.style.position = 'fixed';

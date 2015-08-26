@@ -2,7 +2,9 @@
 
 	<ul class="toolbar__nav left">
 		<li>
-			<button class="button button--clear button--round type-muted" angular-ripple animate-to-overview ng-click="documents.goToOverview();">
+			<button animate-fade-in-overlay end-fn="documents.goToOverview();"
+					class="button button--clear button--round type-muted"
+					angular-ripple>
 				<span class="icon-arrow-back button--round__content" t-grunticon data-grunticon-embed></span>
 			</button>
 		</li>
